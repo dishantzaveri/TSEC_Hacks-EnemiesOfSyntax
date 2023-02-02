@@ -28,7 +28,7 @@ const Mentors = ({navigation}) => {
     console.log(user?.token);
     var config = {
       method: 'get',
-      url: 'http://vismayvora.pythonanywhere.com/account/mentors_list/',
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/mentors_list/',
       headers: {
         Authorization: `Token ${user?.token}`,
         Cookie:
@@ -57,7 +57,7 @@ const Mentors = ({navigation}) => {
     );
     var config = {
       method: 'post',
-      url: 'https://vismayvora.pythonanywhere.com/account/search_mentors/',
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/search_mentors/',
       headers: myHeaders,
       data: data,
     };

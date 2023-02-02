@@ -29,7 +29,7 @@ const Mentees = ({navigation}) => {
     console.log(user?.token);
     var config = {
       method: 'get',
-      url: 'http://vismayvora.pythonanywhere.com/account/startups_list/',
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/startups_list/',
       headers: {
         Authorization: `Token ${user?.token}`,
         Cookie:
@@ -58,7 +58,7 @@ const Mentees = ({navigation}) => {
     );
     var config = {
       method: 'post',
-      url: 'https://vismayvora.pythonanywhere.com/account/search_startups/',
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/search_startups/',
       headers: myHeaders,
       data: data,
     };

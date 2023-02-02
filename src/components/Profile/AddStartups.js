@@ -32,7 +32,7 @@ const GSTNumber = ({}) => {
     };
 
     fetch(
-      'http://vismayvora.pythonanywhere.com/account/gstverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/gstverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -98,7 +98,7 @@ const CINNumber = ({}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/cinverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/cinverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -220,7 +220,7 @@ const PanNumber = () => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/panverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/panverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -239,7 +239,7 @@ const PanNumber = () => {
           redirect: 'follow',
         };
         fetch(
-          'https://vismayvora.pythonanywhere.com/account/startup/',
+          'https://hackathon-a64l3uuv6q-uc.a.run.app/account/startup/',
           requestOptions2,
         )
           .then(response => response.text())
@@ -375,7 +375,7 @@ const PatentNumber = ({}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/patentverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/patentverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -504,7 +504,7 @@ const AddStartups = ({navigation}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/entrepreneur/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/entrepreneur/',
       requestOptions,
     )
       .then(response => response.text())

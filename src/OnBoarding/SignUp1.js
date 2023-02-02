@@ -40,7 +40,7 @@ function SignUp1({ navigation }) {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/entrepreneur_register/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/entrepreneur_register/',
       requestOptions,
     )
       .then(response => response.text())

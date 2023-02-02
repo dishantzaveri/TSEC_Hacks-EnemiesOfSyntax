@@ -44,7 +44,7 @@ function Login({navigation}) {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/login/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/login/',
       requestOptions,
     )
       .then(response => response.json())

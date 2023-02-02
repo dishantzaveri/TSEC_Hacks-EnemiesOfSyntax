@@ -59,8 +59,8 @@ const Onboarding1 = ({route}) => {
 
     fetch(
       route.params.role === 'mentor'
-        ? 'https://vismayvora.pythonanywhere.com/account/mentor_register/'
-        : 'https://vismayvora.pythonanywhere.com/account/entrepreneur_register/',
+        ? 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/mentor_register/'
+        : 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/entrepreneur_register/',
       requestOptions,
     )
       .then(response => response.text())

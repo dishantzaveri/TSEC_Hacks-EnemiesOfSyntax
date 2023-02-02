@@ -74,7 +74,7 @@ const Profile2 = ({navigation, route}) => {
         redirect: 'follow',
       };
       fetch(
-        'https://vismayvora.pythonanywhere.com/account/mentor/',
+        'https://hackathon-a64l3uuv6q-uc.a.run.app/account/mentor/',
         requestOptions,
       )
         .then(response => response.text())
@@ -108,7 +108,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/education/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/education/',
       requestOptions,
     )
       .then(response => response.text())
@@ -142,7 +142,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/experience/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/experience/',
       requestOptions,
     )
       .then(response => response.text())
@@ -172,7 +172,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'http://vismayvora.pythonanywhere.com/account/gstverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/gstverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -199,7 +199,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'http://vismayvora.pythonanywhere.com/account/mentor/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/mentor/',
       requestOptions,
     )
       .then(response => {
@@ -235,7 +235,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/cinverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/cinverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -265,7 +265,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/panverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/panverify/',
       requestOptions,
     )
       .then(response => response.text())

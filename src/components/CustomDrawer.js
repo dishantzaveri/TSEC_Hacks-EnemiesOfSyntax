@@ -31,7 +31,7 @@ const CustomDrawer = props => {
     };
 
     fetch(
-      `https://vismayvora.pythonanywhere.com/account/${
+      `https://hackathon-a64l3uuv6q-uc.a.run.app/account/${
         user?.is_mentor ? 'mentor' : 'entrepreneur'
       }/`,
       requestOptions,
