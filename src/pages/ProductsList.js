@@ -54,6 +54,8 @@ export function ProductsList ({navigation}) {
     }
     else if(e.value[0]=="go to video call page"){
       navigation.navigate('VideoCall');
+    }else if(e.value[0]=="open drawer"){
+      navigation.openDrawer();
     }
     console.log(e.value[0]);
 
@@ -81,7 +83,7 @@ export function ProductsList ({navigation}) {
     <View style={{flex:1}}>
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate('VideoCall')
+          navigation.navigate("VideoCall")
         }>
         <Text style={styles.text1Style}>Arts by our Artisians</Text>
       </TouchableOpacity>
