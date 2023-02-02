@@ -8,12 +8,16 @@ import {
   View,
   Linking,
   Image,
+  FlatList
 } from 'react-native';
 import {WebView} from 'react-native-webview';
 import LinearGradient from 'react-native-linear-gradient';
 import {height, width} from '../Consts';
 import logo from '../assets/mentordots.png';
 import {useTheme } from '@react-navigation/native';
+import { black } from 'react-native-paper/lib/typescript/styles/colors';
+import { ScrollView } from 'react-native-gesture-handler';
+// import photo1 from '../assets/photo1.png';
 
 const WelcomePage = ({navigation}) => {
   const { colors } = useTheme();
@@ -23,64 +27,34 @@ const WelcomePage = ({navigation}) => {
     'https://docs.google.com/forms/d/e/1FAIpQLSc3uWpEeBUCXMoGAJ5qm31p9URBppxXT5L4RJFrTOJee9TFjQ/viewform';
   const discorUrl = 'https://discord.gg/4fNygpXsaJ';
 
+  const imageData = [
+    { id: 1, source: require('../assets/photo1.png') },
+    { id: 2, source: require('../assets/photo2.png') },
+    { id: 3, source: require('../assets/photo3.png') },
+    { id: 4, source: require('../assets/photo4.png') },
+    { id: 5, source: require('../assets/photo5.png') },
+    { id: 6, source: require('../assets/photo6.png') },
+    // add more images here
+  ];
+
+  function renderItem({item}){
+    return (
+      <View style={{ flex: 1, flexDirection: 'column', margin: 1 }}>
+        <Image style={styles.image} source={item.source} />
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.main}>
-      <View style={styles.iconView}>
-        <Image source={logo} style={styles.image} />
-        {/* <Text style={styles.headerText}>Find Mentor & Mentees</Text> */}
-      </View>
-
-      <TouchableOpacity
-        onPress={() => Linking.openURL(githubFindMentor)}
-        style={{
-          marginVertical: 20,
-          flexDirection: 'row',
-          alignItems: 'center',
-        }}>
-        {/* <Github width={24} height={24} />
-        <Text style={styles.text1Style}> Feel free to contribute! </Text> */}
-      </TouchableOpacity>
-      <View style={{marginHorizontal: 19}}>
-      </View>
-      <View style={styles.discordView}>
-        <WebView
-          style={styles.webView}
-          source={{
-            uri: discorUrl,
-          }}
-        />
-      </View>
-      <View style={styles.discordTextView}>
-        <Text>Join this channel to communicate with each other.</Text>
-      </View>
-      <View style={{marginVertical: 5}}>
-        {/* <TouchableOpacity
-            onPress={() => Linking.openURL(joinNow)}
-            style={styles.joinButton}>
-            <JoinNowAddUser width={25} height={25} fill={'white'} />
-            <Text style={styles.buttonText}>Join Now</Text>
-          </TouchableOpacity> */}
-        <TouchableOpacity onPress={() => Linking.openURL(joinNow)}>
-          {/* <JoinNowAddUser width={40} height={40} fill={'white'} /> */}
-          <LinearGradient
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 0}}
-            style={styles.linearGradient}
-            colors={['#4186F5', '#00FFA3']}>
-            <Text style={styles.label}>Join Now</Text>
-          </LinearGradient>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('TopPicksScreen')}>
-          {/* <JoinNowAddUser width={40} height={40} fill={'white'} /> */}
-          <LinearGradient
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 0}}
-            style={styles.linearGradient}
-            colors={['#4186F5', '#00FFA3']}>
-            <Text style={styles.label}>Top Picks</Text>
-          </LinearGradient>
-        </TouchableOpacity>
-      </View>
+      
+      <Text style={styles.text1Style}>Arts by our Artisians</Text>
+      <FlatList
+        data={imageData}
+        numColumns={3}
+        renderItem={renderItem}
+        keyExtractor={item => item.id.toString()}
+      />
 
     </SafeAreaView>
   );
@@ -88,7 +62,7 @@ const WelcomePage = ({navigation}) => {
 
 const styles = StyleSheet.create({
   main: {
-    alignItems: 'center',
+    // alignItems: 'center',
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
     backgroundColor: 'white',
@@ -102,6 +76,7 @@ const styles = StyleSheet.create({
     marginTop: 150,
   },
   text1Style: {
+    margin:15,
     fontSize: 25,
     color: '#007bff',
     fontWeight: 'bold',
@@ -143,7 +118,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: Dimensions.get('window').width / 3,
-    height: Dimensions.get('window').height / 10,
+    height:300,
     margin:10
   },
   buttonText: {
