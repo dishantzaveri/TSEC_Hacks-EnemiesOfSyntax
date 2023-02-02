@@ -4,7 +4,7 @@ import Router from './src/Router';
 import {Provider} from 'react-redux';
 import store from './src/redux/store';
 import {CometChat} from '@cometchat-pro/react-native-chat';
-const app_id = '2164028c4655171c';
+const app_id = '231614ce9c90ad83';
 const region = 'us';
 const appSetting = new CometChat.AppSettingsBuilder()
   .subscribePresenceForAllUsers()

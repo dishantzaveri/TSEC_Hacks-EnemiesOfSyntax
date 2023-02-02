@@ -134,7 +134,7 @@ const MatchingScreens = () => {
 function Tabs() {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Jobs"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           if (route.name === 'Home') {
@@ -153,9 +153,6 @@ function Tabs() {
               <MaterialIcons name="dynamic-feed" size={27} color={color} />
             );
           }
-          if (route.name === 'Upload') {
-            return <AntDesign name="plussquareo" size={27} color={color} />;
-          }
         },
         tabBarStyle: {
           backgroundColor: 'white',
@@ -163,6 +160,21 @@ function Tabs() {
         tabBarActiveTintColor: '#4186F5',
         tabBarInactiveTintColor: theme.colors.greyDark,
       })}>
+      <Tab.Screen
+        name="Jobs"
+        component={Jobs}
+        options={{
+          headerShown: false,
+          headerStyle: {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      />
+
       <Tab.Screen
         name="Home"
         component={HomeScreens}
@@ -184,20 +196,6 @@ function Tabs() {
         }}
       /> */}
 
-      <Tab.Screen
-        name="Jobs"
-        component={Jobs}
-        options={{
-          headerShown: false,
-          headerStyle: {
-            backgroundColor: '#f4511e',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }}
-      />
 
       <Tab.Screen
         name="ChatBot"
@@ -211,32 +209,22 @@ function Tabs() {
 
 const HomeStackScreen = () => {
   return (
-    <HomeStack.Navigator screenOptions={{headerShown: false}}>
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen
         name="HomeMain"
         component={HomeScreen}
-        screenOptions={{headerShown: false}}
+        screenOptions={{ headerShown: false }}
       />
       <HomeStack.Screen
         name="Event"
         component={EventScreen}
-        screenOptions={{headerShown: false}}
+        screenOptions={{ headerShown: false }}
       />
-      {/* <HomeStack.Screen
-        name="Add Event"
-        component={AddEventC}
-        screenOptions={{headerShown: false}}
-      /> */}
       <HomeStack.Screen
         name="Chat"
         component={ChatScreen}
-        screenOptions={{headerShown: false}}
+        screenOptions={{ headerShown: false }}
       />
-      {/* <HomeStack.Screen
-        name="RazorpayScreens"
-        component={RazorpayScreens}
-        screenOptions={{headerShown: false}}
-      /> */}
     </HomeStack.Navigator>
   );
 };
@@ -334,12 +322,12 @@ const AppStack = () => {
             ),
           }}
         />
-           <Drawer.Screen
+        <Drawer.Screen
           name="Events"
           component={HomeStackScreen}
           options={{
             headerShown: false,
-            drawerIcon: ({color}) => (
+            drawerIcon: ({ color }) => (
               <MaterialIcons name="emoji-events" size={22} color={color} />
             ),
           }}
