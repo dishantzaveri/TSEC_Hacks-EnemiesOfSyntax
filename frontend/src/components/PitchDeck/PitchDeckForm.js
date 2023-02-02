@@ -1,7 +1,7 @@
-import  React, {useState} from 'react';
+import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { MdDeleteForever } from 'react-icons/md';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { removeTile, updatePitch } from '../../app/pitchdeckSlice';
 import { formSections, fields } from '../../app/pitchdeckFields';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ const selectField = (field) => {
   switch (field) {
     case 4:
       return 'problems';
-    case 8: 
+    case 8:
       return 'solution';
     case 10:
       return 'marketValidation';
@@ -30,7 +30,7 @@ const selectField = (field) => {
   }
 }
 
-const MultipleFields = ({field, key}) => {
+const MultipleFields = ({ field, key }) => {
   const dispatch = useDispatch();
   const formData = useSelector(state => state.pitchdeck);
   const [error, setError] = useState(false)
@@ -40,7 +40,7 @@ const MultipleFields = ({field, key}) => {
     let count = 0;
     console.log(field)
     field.forEach(x => {
-      if(formData[fields[x]['id']] === '') {
+      if (formData[fields[x]['id']] === '') {
         count++
         setError(true)
       }
@@ -50,15 +50,15 @@ const MultipleFields = ({field, key}) => {
     if (count === 0) {
       setError(false)
       dispatch(updatePitch([selectField(field[0]), object]))
-    } 
+    }
   }
   return (
     <div key={key}>
       {formData[selectField(field[0])].map((x, i) => (
         <div className='flex w-full justify-between px-2 py-2 bg-purple-gray-500 my-2 rounded-xl'>
-          <h1>{i+1}.</h1>
+          <h1>{i + 1}.</h1>
           {Object.values(x).map(data => <h1>{data}</h1>)}
-          <button className='bg-red-400 px-1 py-1 text-xl rounded' onClick={() => {dispatch(removeTile([selectField(field[0]), i]))}}><MdDeleteForever /></button>
+          <button className='bg-red-400 px-1 py-1 text-xl rounded' onClick={() => { dispatch(removeTile([selectField(field[0]), i])) }}><MdDeleteForever /></button>
         </div>
       ))}
       {field.map(x => (
@@ -84,45 +84,45 @@ export default function PitchDeckForm() {
   const formData = useSelector(state => state.pitchdeck);
   return (
     <div className="bg-purple-gray-500 ">
-      <div className="container max-w-[50%] mx-auto flex-1 flex flex-col items-center justify-center px-1 "> 
-      <h1 style={{fontSize:30, margin:"10%", fontWeight:"bolder" , color:"#F1F2F7"}}>Pitch Deck Details </h1>
-      <div 
-        className="bg-purple-gray-100 px-6 py-8 rounded shadow-md text-black w-full mb-10"
-        component="form"
-        sx={{
-          '& .MuiTextField-root': { m:1, width: '25ch' }, display:""
-          ,
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        {
-          Object.entries(formSections).map(([key, value]) => (
-            <div className='my-4'>
-              <h1 className='text-2xl font-semibold'>{key} :</h1>
-              {
-                value.map((field, index) => (
-                  Array.isArray(field) ? <MultipleFields key={index} field={field} /> : (
-                    <div class="flex items-end gap-2">
-                      <h1 className='text-lg'>{fields[field]['title']} :</h1>
-                      <TextField
-                        required
-                        value={formData[fields[field]['id']]}
-                        onChange={(e) => dispatch(updatePitch([fields[field]['id'], e.target.value]))}
-                        id="standard-required"
-                        label=""
-                        variant="standard"
-                      />
-                    </div>
-                  )
-                ))
-              }
-            </div>
-          ))
-        }
-        <PitchDeck />
+      <div className="container max-w-[50%] mx-auto flex-1 flex flex-col items-center justify-center px-1 ">
+        <h1 style={{ fontSize: 30, margin: "10%", fontWeight: "bolder", color: "#F1F2F7" }}>Pitch Deck Details </h1>
+        <div
+          className="bg-purple-gray-100 px-6 py-8 rounded shadow-md text-black w-full mb-10"
+          component="form"
+          sx={{
+            '& .MuiTextField-root': { m: 1, width: '25ch' }, display: ""
+            ,
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          {
+            Object.entries(formSections).map(([key, value]) => (
+              <div className='my-4'>
+                <h1 className='text-2xl font-semibold'>{key} :</h1>
+                {
+                  value.map((field, index) => (
+                    Array.isArray(field) ? <MultipleFields key={index} field={field} /> : (
+                      <div class="flex items-end gap-2">
+                        <h1 className='text-lg'>{fields[field]['title']} :</h1>
+                        <TextField
+                          required
+                          value={formData[fields[field]['id']]}
+                          onChange={(e) => dispatch(updatePitch([fields[field]['id'], e.target.value]))}
+                          id="standard-required"
+                          label=""
+                          variant="standard"
+                        />
+                      </div>
+                    )
+                  ))
+                }
+              </div>
+            ))
+          }
+          <PitchDeck />
+        </div>
       </div>
     </div>
-  </div>
   );
 }

@@ -124,7 +124,7 @@ const Section1 = () => {
       <div className="flex flex-col items-center w-[50vw]">
         <h1 className="text-6xl font-semibold text-gray-800">
           {t("evn1")}{" "}
-          <span className="text-purple-gray-700">{t("Mentor")}</span>
+          <span className="text-purple-gray-700">{t("Job")}</span>
         </h1>
         <h1 className="text-center text-xl text-gray-700 mt-6">
           {t("search")}
@@ -316,7 +316,7 @@ const Home = () => {
 
   useEffect(() => {
     alanBtn({
-      key: "ecc5936429f8831a0a3f3bd73ff973822e956eca572e1d8b807a3e2338fdd0dc/stage",
+      key: "7c6fbb4d8de206d909ff5ccdfb12a29f2e956eca572e1d8b807a3e2338fdd0dc/stage",
     });
   }, []);
 

@@ -33,13 +33,13 @@ export const listSlice = apiSlice.injectEndpoints({
 })
 
 export const {
-  useGetMentorsListQuery,
-  useGetMentorsLocationQuery,
-  useGetFundingPlacesQuery,
-  useGetFundingRegionBarQuery,
-  useGetTop25FundedCompanyBarQuery,
-  useGetCompanyCPMBarQuery,
-  useGetMonthWiseFundingPieQuery,
-  useGetStageSectorMixPieQuery,
-  useGetStateFundedCompanyCountPieQuery,
+    useGetMentorsListQuery,
+    useGetMentorsLocationQuery,
+    useGetFundingPlacesQuery,
+    useGetFundingRegionBarQuery,
+    useGetTop25FundedCompanyBarQuery,
+    useGetCompanyCPMBarQuery,
+    useGetMonthWiseFundingPieQuery,
+    useGetStageSectorMixPieQuery,
+    useGetStateFundedCompanyCountPieQuery,
 } = listSlice;

@@ -39,6 +39,9 @@ export default function FormPropsTextFields() {
     }
     axios(options).then(res => { console.log(res.data) }).catch(err => { console.log(err) })
   }, [])
+  const convertDate = (date) => {
+    return date.toJSON().substr(5, 2) + '/' + date.toJSON().substr(8, 2) + '/' + date.toJSON().substr(0, 4)
+  }
   const add = async () => {
     if (input.institute && input.degree && input.study_field && input.start_date && input.end_date) {
       const curr = [...list];
@@ -51,8 +54,8 @@ export default function FormPropsTextFields() {
           institute: input.institute,
           degree: input.degree,
           study_field: input.study_field,
-          start_date: input.start_date,
-          end_date: input.end_date,
+          start_date: convertDate(input.start_date),
+          end_date: convertDate(input.end_date),
         },
         header: {
           'Authorization': `Token ${token}`,
