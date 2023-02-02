@@ -70,8 +70,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/registerMentor" element={<RegisterMentor />} />
-        <Route path="/registerMentee" element={<RegisterMentee />} /> */}
+          <Route path="/registerMentor" element={<RegisterMentor />} />
+          <Route path="/registerMentee" element={<RegisterMentee />} />
           <Route path="/signup" element={<Signup />} />
           <Route element={<RequireAuth />}>
             <Route path="/object-detection" element={<ObjectDetection />} />

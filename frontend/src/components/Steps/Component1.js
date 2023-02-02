@@ -8,6 +8,7 @@ import { MdDelete } from 'react-icons/md';
 import axios from 'axios';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import alanBtn from '@alan-ai/alan-sdk-web';
 // import { AutoCompletePlaces } from "./AutoCompletePlaces";
 
 export default function FormPropsTextFields() {
@@ -15,6 +16,7 @@ export default function FormPropsTextFields() {
   const { work } = useSelector(state => state.register)
   const { token } = useSelector(state => state.auth)
   const [list, setList] = useState(work ? [...work] : [])
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     'job_title': '',
     'company_name': '',
@@ -32,6 +34,7 @@ export default function FormPropsTextFields() {
       }
     }
     axios(options).then(res => { console.log(res.data) }).catch(err => { console.log(err) })
+
   }, [])
 
   const submit = () => {

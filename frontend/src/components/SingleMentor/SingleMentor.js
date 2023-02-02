@@ -42,11 +42,11 @@ const SingleMentor = () => {
 				<div className="flex items-center pb-4">
 					<img
 						className="w-[150px] h-[150px] rounded-full object-cover self-center"
-						src={'http://localhost:8000/' + mentor.profile_pic}
+						src='https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg'
 					/>
 					<div className="ml-5">
 						<h1 className="font-extrabold text-[35px] cursor-pointer ml-4 self-center">
-							{mentor.name}
+							Serina
 						</h1>
 						<h4 className="font-bold text-[23px] cursor-pointer ml-4 self-center">
 							Company Name

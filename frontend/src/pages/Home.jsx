@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { BiSearch, BiRightArrowAlt } from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux";
@@ -184,6 +184,7 @@ const Home = () => {
   const [companyCMP, setCompanyCMP] = useState(null);
   const [monthlyFunding, setMonthlyFunding] = useState(null);
   const [sector, setSector] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
     if (fundingPlaces) {
       let array = [];
@@ -317,6 +318,31 @@ const Home = () => {
   useEffect(() => {
     alanBtn({
       key: "7c6fbb4d8de206d909ff5ccdfb12a29f2e956eca572e1d8b807a3e2338fdd0dc/stage",
+      onCommand: (commandData) => {
+        if (commandData.command === 'navigate') {
+          switch (commandData.data) {
+            case 'home':
+              navigate('/');
+              break;
+            case 'login':
+              navigate('/login');
+              break;
+            case 'register':
+              navigate('/signup');
+              break;
+            case 'feed':
+              navigate('/feed');
+              break;
+            case 'community':
+              navigate('/community');
+              break;
+            case 'profile':
+
+            default:
+              break;
+          }
+        }
+      }
     });
   }, []);
 
