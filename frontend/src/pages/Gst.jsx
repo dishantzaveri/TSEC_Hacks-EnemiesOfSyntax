@@ -15,7 +15,7 @@ const Gst = () => {
     let x = data.data.split('\n')
     console.log(x)
     var add = false
-    var value = {key: null, value: null}
+    var value = { key: null, value: null }
     x = x.map(item => {
       if (item.includes('Registration Date') && add) {
         add = false
@@ -25,27 +25,27 @@ const Gst = () => {
         value.value = [...value.value, item]
         return null
       } else if (!item.includes('Nature of Business Activities')) {
-        if(item.includes(':')) {
+        if (item.includes(':')) {
           if (item.includes('Address Branch No')) {
             let y = item.split(' : ')
             let key = y[0].split('Address ')
-            return value =  {
+            return value = {
               key: key[1],
               value: y[1] ? y[1] : null
             }
           } else {
             let y = item.split(' : ')
-            return value =  {
+            return value = {
               key: y[0],
               value: y[1] ? y[1] : null
             }
           }
         } else {
           keys.forEach(key => {
-            if(item.includes(key)) {
+            if (item.includes(key)) {
               let l = key.split(' ')
               let y = item.split(l[l.length - 1] + ' ')
-              value =  {
+              value = {
                 key: key,
                 value: y[1] ? y[1] : null
               }
@@ -55,7 +55,7 @@ const Gst = () => {
         }
       }
       if (item.includes('Nature of Business Activities')) {
-        value =  {
+        value = {
           key: 'Nature of Business Activities',
           value: []
         }
@@ -91,7 +91,7 @@ const Gst = () => {
     // console.log(getFilterData(data))
     // let x = new FormData();
     // x.append('gstnumber', '27AAICS1406R3ZV');
-    
+
     // var config = {
     //   method: 'post',
     //   url: 'https://gst-verify-api.herokuapp.com/api/gstverify',
@@ -118,7 +118,7 @@ const Gst = () => {
     //   redirect: 'follow'
     // };
 
-    // fetch("http://vismayvora.pythonanywhere.com/account/gstverify/", requestOptions)
+    // fetch("https://hackathon-a64l3uuv6q-uc.a.run.app/account/gstverify/", requestOptions)
     //   .then(response => response.text())
     //   .then(result => console.log(result))
     //   .catch(error => console.log('error', error));

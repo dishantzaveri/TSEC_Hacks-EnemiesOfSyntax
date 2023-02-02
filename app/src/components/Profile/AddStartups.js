@@ -1,13 +1,13 @@
-import {ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {RadioButton, Button} from 'react-native-paper';
-import {useSelector} from 'react-redux';
-import {width, height} from '../../Consts';
-import {useNavigation} from '@react-navigation/native';
+import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { RadioButton, Button } from 'react-native-paper';
+import { useSelector } from 'react-redux';
+import { width, height } from '../../Consts';
+import { useNavigation } from '@react-navigation/native';
 
-const GSTNumber = ({}) => {
+const GSTNumber = ({ }) => {
   const [gstNumber, setGstNumber] = useState(0);
-  const {signUpToken} = useSelector(state => state.user);
+  const { signUpToken } = useSelector(state => state.user);
 
   const navigation = useNavigation();
   useEffect(() => {
@@ -32,7 +32,7 @@ const GSTNumber = ({}) => {
     };
 
     fetch(
-      'http://vismayvora.pythonanywhere.com/account/gstverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/gstverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -72,13 +72,13 @@ const GSTNumber = ({}) => {
   );
 };
 
-const CINNumber = ({}) => {
+const CINNumber = ({ }) => {
   const [name, setName] = useState('');
   const [cin, setCinNumber] = useState('');
   const [date, setDate] = useState('');
   const [location, setLocation] = useState('');
   const [type, setType] = useState('');
-  const {signUpToken} = useSelector(state => state.user);
+  const { signUpToken } = useSelector(state => state.user);
   const sendCin = () => {
     var myHeaders = new Headers();
     myHeaders.append('Authorization', `Token ${signUpToken}`);
@@ -98,7 +98,7 @@ const CINNumber = ({}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/cinverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/cinverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -200,7 +200,7 @@ const PanNumber = () => {
   const [date, setDate] = useState('');
   const [location, setLocation] = useState('');
   const [type, setType] = useState('');
-  const {signUpToken} = useSelector(state => state.user);
+  const { signUpToken } = useSelector(state => state.user);
   const sendPan = () => {
     var myHeaders = new Headers();
     myHeaders.append('Authorization', `Token ${signUpToken}`);
@@ -220,7 +220,7 @@ const PanNumber = () => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/panverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/panverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -239,7 +239,7 @@ const PanNumber = () => {
           redirect: 'follow',
         };
         fetch(
-          'https://vismayvora.pythonanywhere.com/account/startup/',
+          'https://hackathon-a64l3uuv6q-uc.a.run.app/account/startup/',
           requestOptions2,
         )
           .then(response => response.text())
@@ -346,14 +346,14 @@ const PanNumber = () => {
   );
 };
 
-const PatentNumber = ({}) => {
+const PatentNumber = ({ }) => {
   const [name, setName] = useState('');
   const [diaryNo, setDiaryNo] = useState('');
   const [date, setDate] = useState('');
   const [location, setLocation] = useState('');
   const [type, setType] = useState('');
   const [rockNo, setRockNo] = useState('');
-  const {signUpToken} = useSelector(state => state.user);
+  const { signUpToken } = useSelector(state => state.user);
 
   const navigation = useNavigation();
   const sendPatent = async () => {
@@ -375,7 +375,7 @@ const PatentNumber = ({}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/patentverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/patentverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -485,9 +485,9 @@ const PatentNumber = ({}) => {
   );
 };
 
-const AddStartups = ({navigation}) => {
+const AddStartups = ({ navigation }) => {
   const [checked, setChecked] = useState('gst');
-  const {signUpToken} = useSelector(state => state.user);
+  const { signUpToken } = useSelector(state => state.user);
   const sendData = async () => {
     var myHeaders = new Headers();
     myHeaders.append('Authorization', `Token ${signUpToken}`);
@@ -504,7 +504,7 @@ const AddStartups = ({navigation}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/entrepreneur/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/entrepreneur/',
       requestOptions,
     )
       .then(response => response.text())

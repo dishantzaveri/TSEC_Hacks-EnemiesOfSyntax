@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useCallback, useRef} from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import {
   View,
   StyleSheet,
@@ -7,14 +7,14 @@ import {
   ScrollView,
   Modal,
 } from 'react-native';
-import {useTheme} from '@react-navigation/native';
-import {Text, RadioButton, Subheading, Button} from 'react-native-paper';
-import {height, width} from '../../Consts';
+import { useTheme } from '@react-navigation/native';
+import { Text, RadioButton, Subheading, Button } from 'react-native-paper';
+import { height, width } from '../../Consts';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
-const Profile2 = ({navigation, route}) => {
-  const {colors} = useTheme();
+const Profile2 = ({ navigation, route }) => {
+  const { colors } = useTheme();
   const [gst, setGst] = useState('');
   const [pan, setPan] = useState('');
   const [cin, setCin] = useState('');
@@ -36,7 +36,7 @@ const Profile2 = ({navigation, route}) => {
   const [studyhere, setStudyhere] = useState('');
   const [workhere, setWorkhere] = useState('');
   const [expertise, setExpertise] = useState('');
-  const {signUpToken, signUpRole} = useSelector(state => state.user);
+  const { signUpToken, signUpRole } = useSelector(state => state.user);
   const toggleModalVisibility = () => {
     setModalVisible(!isModalVisible);
   };
@@ -58,7 +58,7 @@ const Profile2 = ({navigation, route}) => {
     setModalVisible4(!isModalVisible4);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const savePost = async () => {
     if (signUpRole === 'mentor') {
@@ -74,7 +74,7 @@ const Profile2 = ({navigation, route}) => {
         redirect: 'follow',
       };
       fetch(
-        'https://vismayvora.pythonanywhere.com/account/mentor/',
+        'https://hackathon-a64l3uuv6q-uc.a.run.app/account/mentor/',
         requestOptions,
       )
         .then(response => response.text())
@@ -108,7 +108,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/education/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/education/',
       requestOptions,
     )
       .then(response => response.text())
@@ -142,7 +142,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/experience/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/experience/',
       requestOptions,
     )
       .then(response => response.text())
@@ -172,7 +172,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'http://vismayvora.pythonanywhere.com/account/gstverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/gstverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -199,7 +199,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'http://vismayvora.pythonanywhere.com/account/mentor/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/mentor/',
       requestOptions,
     )
       .then(response => {
@@ -235,7 +235,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/cinverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/cinverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -265,7 +265,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/panverify/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/panverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -274,7 +274,7 @@ const Profile2 = ({navigation, route}) => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
       <ScrollView>
         <View style={styles.card}>
           <View
@@ -283,14 +283,14 @@ const Profile2 = ({navigation, route}) => {
               justifyContent: 'space-between',
               marginHorizontal: 10,
             }}>
-            <Text style={{fontSize: 18, fontWeight: 'bold'}}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
               Known Languages
             </Text>
             <TouchableOpacity>
-              <Text style={{fontSize: 18, color: '#00CFDE'}}>Add</Text>
+              <Text style={{ fontSize: 18, color: '#00CFDE' }}>Add</Text>
             </TouchableOpacity>
           </View>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <Button style={styles.button1}>
               <Text style={styles.nameInput2}>English X</Text>
             </Button>
@@ -309,9 +309,9 @@ const Profile2 = ({navigation, route}) => {
               justifyContent: 'space-between',
               marginHorizontal: 10,
             }}>
-            <Text style={{fontSize: 18, fontWeight: 'bold'}}>Education</Text>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Education</Text>
             <TouchableOpacity onPress={toggleModalVisibility}>
-              <Text style={{fontSize: 18, color: '#00CFDE'}}>Add</Text>
+              <Text style={{ fontSize: 18, color: '#00CFDE' }}>Add</Text>
             </TouchableOpacity>
             <Modal
               animationType="slide"
@@ -331,14 +331,14 @@ const Profile2 = ({navigation, route}) => {
                       name="book"
                       size={20}
                       color="#00CFDE"
-                      style={{margin: 10}}
+                      style={{ margin: 10 }}
                     />
-                    <Text style={{margin: 10}}>Add/Edit Work Education</Text>
+                    <Text style={{ margin: 10 }}>Add/Edit Work Education</Text>
                     <Icon
                       name="close"
                       size={20}
                       color="#00CFDE"
-                      style={{margin: 10}}
+                      style={{ margin: 10 }}
                       onPress={toggleModalVisibility}
                     />
                   </View>
@@ -433,7 +433,7 @@ const Profile2 = ({navigation, route}) => {
                   <RadioButton.Group
                     onValueChange={j => setStudyhere(j)}
                     value={studyhere}>
-                    <View style={{flexDirection: 'column'}}>
+                    <View style={{ flexDirection: 'column' }}>
                       {study.map((i, k) => (
                         <View
                           style={{
@@ -443,7 +443,7 @@ const Profile2 = ({navigation, route}) => {
                           }}
                           key={k}>
                           <RadioButton value={i} color={colors.textAfter} />
-                          <Text style={{fontSize: 15}}>{i}</Text>
+                          <Text style={{ fontSize: 15 }}>{i}</Text>
                         </View>
                       ))}
                     </View>
@@ -475,11 +475,11 @@ const Profile2 = ({navigation, route}) => {
               justifyContent: 'space-between',
               marginHorizontal: 10,
             }}>
-            <Text style={{fontSize: 18, fontWeight: 'bold'}}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
               Work Experience
             </Text>
             <TouchableOpacity onPress={toggleModalVisibility2}>
-              <Text style={{fontSize: 18, color: '#00CFDE'}}>Add</Text>
+              <Text style={{ fontSize: 18, color: '#00CFDE' }}>Add</Text>
             </TouchableOpacity>
             <Modal
               animationType="slide"
@@ -499,14 +499,14 @@ const Profile2 = ({navigation, route}) => {
                       name="book"
                       size={20}
                       color="#00CFDE"
-                      style={{margin: 10}}
+                      style={{ margin: 10 }}
                     />
-                    <Text style={{margin: 10}}>Add/Edit Work Experience</Text>
+                    <Text style={{ margin: 10 }}>Add/Edit Work Experience</Text>
                     <Icon
                       name="close"
                       size={20}
                       color="#00CFDE"
-                      style={{margin: 10}}
+                      style={{ margin: 10 }}
                       onPress={toggleModalVisibility2}
                     />
                   </View>
@@ -596,7 +596,7 @@ const Profile2 = ({navigation, route}) => {
                   <RadioButton.Group
                     onValueChange={j => setWorkhere(j)}
                     value={workhere}>
-                    <View style={{flexDirection: 'column'}}>
+                    <View style={{ flexDirection: 'column' }}>
                       {works.map((i, k) => (
                         <View
                           style={{
@@ -606,7 +606,7 @@ const Profile2 = ({navigation, route}) => {
                           }}
                           key={k}>
                           <RadioButton value={i} color={colors.textAfter} />
-                          <Text style={{fontSize: 15}}>{i}</Text>
+                          <Text style={{ fontSize: 15 }}>{i}</Text>
                         </View>
                       ))}
                     </View>
@@ -748,9 +748,9 @@ const Profile2 = ({navigation, route}) => {
               justifyContent: 'space-between',
               marginHorizontal: 10,
             }}>
-            <Text style={{fontSize: 18, fontWeight: 'bold'}}>Expertise</Text>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Expertise</Text>
             <TouchableOpacity onPress={toggleModalVisibility4}>
-              <Text style={{fontSize: 18, color: '#00CFDE'}}>Add</Text>
+              <Text style={{ fontSize: 18, color: '#00CFDE' }}>Add</Text>
             </TouchableOpacity>
             <Modal
               animationType="slide"
@@ -770,14 +770,14 @@ const Profile2 = ({navigation, route}) => {
                       name="book"
                       size={20}
                       color="#00CFDE"
-                      style={{margin: 10}}
+                      style={{ margin: 10 }}
                     />
-                    <Text style={{margin: 10}}>Enter your Expertise</Text>
+                    <Text style={{ margin: 10 }}>Enter your Expertise</Text>
                     <Icon
                       name="close"
                       size={20}
                       color="#00CFDE"
-                      style={{margin: 10}}
+                      style={{ margin: 10 }}
                       onPress={toggleModalVisibility4}
                     />
                   </View>
@@ -825,20 +825,20 @@ const Profile2 = ({navigation, route}) => {
               justifyContent: 'space-between',
               marginHorizontal: 10,
             }}>
-            <Text style={{fontSize: 18, fontWeight: 'bold'}}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
               My Preference
             </Text>
             <TouchableOpacity>
-              <Text style={{fontSize: 18, color: '#00CFDE'}}>Add</Text>
+              <Text style={{ fontSize: 18, color: '#00CFDE' }}>Add</Text>
             </TouchableOpacity>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={styles.nameInput1}>My preferred job form.</Text>
             <Button style={styles.button}>
               <Text style={styles.nameInput2}>Design</Text>
             </Button>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={styles.nameInput1}>My preferred job site.</Text>
             <Button style={styles.button}>
               <Text style={styles.nameInput2}>Bangalore</Text>
@@ -852,34 +852,34 @@ const Profile2 = ({navigation, route}) => {
               justifyContent: 'space-between',
               marginHorizontal: 10,
             }}>
-            <Text style={{fontSize: 18, fontWeight: 'bold'}}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
               Personal Information
             </Text>
             <TouchableOpacity>
-              <Text style={{fontSize: 18, color: '#00CFDE'}}>Add</Text>
+              <Text style={{ fontSize: 18, color: '#00CFDE' }}>Add</Text>
             </TouchableOpacity>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={styles.nameInput4}>Date of Birth.</Text>
             <Text style={styles.nameInput3}>23rd Nov. 1997.</Text>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={styles.nameInput4}>Gender.</Text>
             <Text style={styles.nameInput3}>Male.</Text>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={styles.nameInput4}>Current Salary.</Text>
             <Text style={styles.nameInput3}>3 LPA.</Text>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={styles.nameInput4}>Experience.</Text>
             <Text style={styles.nameInput3}>1 year.</Text>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={styles.nameInput4}>Qualification.</Text>
             <Text style={styles.nameInput3}>Graduate.</Text>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={styles.nameInput4}>Expected Salary.</Text>
             <Text style={styles.nameInput3}>6 LPA.</Text>
           </View>
@@ -952,7 +952,7 @@ const styles = StyleSheet.create({
     borderColor: '#D9D9D9',
     borderWidth: 1,
   },
-  nameInput: {fontSize: 12, color: '#808080', margin: 10},
+  nameInput: { fontSize: 12, color: '#808080', margin: 10 },
   nameInput1: {
     fontSize: 12,
     color: '#808080',
@@ -1046,7 +1046,7 @@ const styles = StyleSheet.create({
     top: '25%',
     left: '50%',
     elevation: 5,
-    transform: [{translateX: -(width * 0.4)}, {translateY: -90}],
+    transform: [{ translateX: -(width * 0.4) }, { translateY: -90 }],
 
     width: width * 0.8,
     backgroundColor: '#fff',
@@ -1065,7 +1065,7 @@ const styles = StyleSheet.create({
     top: '25%',
     left: '50%',
     elevation: 5,
-    transform: [{translateX: -(width * 0.4)}, {translateY: -90}],
+    transform: [{ translateX: -(width * 0.4) }, { translateY: -90 }],
     height: height * 0.6,
     width: width * 0.82,
     backgroundColor: '#fff',

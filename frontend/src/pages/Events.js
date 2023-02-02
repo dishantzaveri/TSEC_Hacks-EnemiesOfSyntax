@@ -80,7 +80,7 @@ const Events = () => {
 
   // const getEvents = async () => {
   //   const res = await axios.get(
-  //     "https://vismayvora.pythonanywhere.com/api/session/"
+  //     "https://hackathon-a64l3uuv6q-uc.a.run.app/api/session/"
   //   );
 
   //   console.log(res.data);

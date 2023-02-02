@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {useNavigation} from '@react-navigation/native';
-import React, {useState, useEffect, useRef} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-const StartupDetails = ({route, props}) => {
+const StartupDetails = ({ route, props }) => {
   const [data, setData] = useState(route.params.slug);
   const navigation = useNavigation();
   useEffect(() => {
@@ -53,7 +53,7 @@ const StartupDetails = ({route, props}) => {
           <Image
             source={{
               uri: data?.profile_pic
-                ? `http://vismayvora.pythonanywhere.com/${data.profile_pic}`
+                ? `https://hackathon-a64l3uuv6q-uc.a.run.app/${data.profile_pic}`
                 : 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png',
             }}
             style={{
@@ -100,7 +100,7 @@ const StartupDetails = ({route, props}) => {
             </Text>
           </TouchableOpacity>
         </View>
-        
+
       </ScrollView>
     </View>
   );
@@ -222,4 +222,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {StartupDetails};
+export { StartupDetails };

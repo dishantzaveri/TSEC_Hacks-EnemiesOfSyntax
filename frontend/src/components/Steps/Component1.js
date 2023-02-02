@@ -1,4 +1,4 @@
-import  React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
@@ -12,9 +12,9 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 export default function FormPropsTextFields() {
   const dispatch = useDispatch();
-  const {work} = useSelector(state => state.register)
-  const {token} = useSelector(state => state.auth)
-	const [list, setList] = useState(work ? [...work] : [])
+  const { work } = useSelector(state => state.register)
+  const { token } = useSelector(state => state.auth)
+  const [list, setList] = useState(work ? [...work] : [])
   const [input, setInput] = useState({
     'job_title': '',
     'company_name': '',
@@ -26,24 +26,24 @@ export default function FormPropsTextFields() {
   useEffect(() => {
     const options = {
       method: 'GET',
-      url: 'https://vismayvora.pythonanywhere.com/account/experience/',
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/experience/',
       headers: {
         'Authorization': `Token ${token}`,
       }
     }
-    axios(options).then(res => {console.log(res.data)}).catch(err => {console.log(err)})
+    axios(options).then(res => { console.log(res.data) }).catch(err => { console.log(err) })
   }, [])
-  
+
   const submit = () => {
     console.log(list)
-    if(list!==[]) {
-      dispatch(setField({field: 'work', value: [...list]}))
+    if (list !== []) {
+      dispatch(setField({ field: 'work', value: [...list] }))
     } else {
       alert('Please add atleast one work experience')
     }
   }
   const add = () => {
-    if(input.job_title && input.company_name && input.location && input.industry && input.start_year && input.end_year) {
+    if (input.job_title && input.company_name && input.location && input.industry && input.start_year && input.end_year) {
       const curr = [...list];
       curr.push(input);
       setList(curr);
@@ -80,11 +80,11 @@ export default function FormPropsTextFields() {
       //   })
       // var FormData = require('form-data');
       // var data = new FormData();
-      
+
 
       // var config = {
       //   method: 'POST',
-      //   url: 'https://vismayvora.pythonanywhere.com/account/experience/',
+      //   url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/experience/',
       //   headers: { 
       //     'Authorization': 'Token ' + token, 
       //     'Cookie': 'csrftoken=ONSFu7hzHlkazVZWCUFueznNNNq0ZUfY',
@@ -116,11 +116,11 @@ export default function FormPropsTextFields() {
       }
       var config = {
         method: 'post',
-        url: 'https://vismayvora.pythonanywhere.com/account/experience/',
-        headers: { 
-          'Authorization': 'Token '+token,
+        url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/experience/',
+        headers: {
+          'Authorization': 'Token ' + token,
         },
-        data : data
+        data: data
       };
       console.log(config)
       axios(config)
@@ -140,21 +140,21 @@ export default function FormPropsTextFields() {
     curr.splice(index, 1);
     setList(curr);
   }
-	return (
-		<div
-			class="bg-purple-gray-100 px-6 py-8 rounded shadow-md text-black w-full"
-			component="form"
-			sx={{
-				"& .MuiTextField-root": { m: 1, width: "25ch" },
-				display: "",
-			}}
-			noValidate
-			autoComplete="off"
-		>
-			<Box className="education">
-				<h2 className='text-2xl font-bold mb-4'>
-					Work Experience :
-				</h2>
+  return (
+    <div
+      class="bg-purple-gray-100 px-6 py-8 rounded shadow-md text-black w-full"
+      component="form"
+      sx={{
+        "& .MuiTextField-root": { m: 1, width: "25ch" },
+        display: "",
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <Box className="education">
+        <h2 className='text-2xl font-bold mb-4'>
+          Work Experience :
+        </h2>
         <div className="flex flex-col gap-2 mb-3">
           {list?.map((currentItem, index) => (
             <div key={index} className='flex w-full justify-between items-center bg-gray-200 px-3 py-2'>
@@ -163,8 +163,8 @@ export default function FormPropsTextFields() {
             </div>
           ))}
         </div>
-				<div className='flex flex-col gap-6'>
-          <div className='flex gap-6'> 
+        <div className='flex flex-col gap-6'>
+          <div className='flex gap-6'>
             <h1 className='text-lg'>Job Title</h1>
             <TextField
               required
@@ -172,10 +172,10 @@ export default function FormPropsTextFields() {
               label=""
               variant="standard"
               value={input.job_title}
-              onChange={(e) => setInput(prevState => ({...prevState, job_title: e.target.value}))}
-            />  
+              onChange={(e) => setInput(prevState => ({ ...prevState, job_title: e.target.value }))}
+            />
           </div>
-          <div className='flex gap-6'> 
+          <div className='flex gap-6'>
             <h1 className='text-lg'>Company Name</h1>
             <TextField
               required
@@ -183,10 +183,10 @@ export default function FormPropsTextFields() {
               label=""
               variant="standard"
               value={input.company_name}
-              onChange={(e) => setInput(prevState => ({...prevState, company_name: e.target.value}))}
-            />  
+              onChange={(e) => setInput(prevState => ({ ...prevState, company_name: e.target.value }))}
+            />
           </div>
-          <div className='flex gap-6'> 
+          <div className='flex gap-6'>
             <h1 className='text-lg'>Location</h1>
             <TextField
               required
@@ -194,10 +194,10 @@ export default function FormPropsTextFields() {
               label=""
               variant="standard"
               value={input.location}
-              onChange={(e) => setInput(prevState => ({...prevState, location: e.target.value}))}
-            />  
+              onChange={(e) => setInput(prevState => ({ ...prevState, location: e.target.value }))}
+            />
           </div>
-          <div className='flex gap-6'> 
+          <div className='flex gap-6'>
             <h1 className='text-lg'>Industry</h1>
             <TextField
               required
@@ -205,38 +205,38 @@ export default function FormPropsTextFields() {
               label=""
               variant="standard"
               value={input.industry}
-              onChange={(e) => setInput(prevState => ({...prevState, industry: e.target.value}))}
-            />  
+              onChange={(e) => setInput(prevState => ({ ...prevState, industry: e.target.value }))}
+            />
           </div>
-          <div className='flex gap-6'> 
+          <div className='flex gap-6'>
             <h1 className='text-lg'>Start year</h1>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 value={input.start_year}
                 onChange={(newValue) => {
-                  setInput(prevState => ({...prevState, start_year: newValue}))
+                  setInput(prevState => ({ ...prevState, start_year: newValue }))
                 }}
                 renderInput={(params) => <TextField {...params} variant="standard" />}
               />
             </LocalizationProvider>
           </div>
-          <div className='flex gap-6'> 
+          <div className='flex gap-6'>
             <h1 className='text-lg'>End year</h1>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 value={input.end_year}
                 onChange={(newValue) => {
-                  setInput(prevState => ({...prevState, end_year: newValue}))
+                  setInput(prevState => ({ ...prevState, end_year: newValue }))
                 }}
                 renderInput={(params) => <TextField {...params} variant="standard" />}
               />
             </LocalizationProvider>
           </div>
-				</div>
+        </div>
         <button className='w-full mt-4 bg-purple-gray-700 py-2 text-gray-100' onClick={() => add()}>Add</button>
         <button className='w-full mt-4 bg-purple-gray-700 py-2 text-gray-100' onClick={() => submit()}>{'Save'}</button>
-			</Box>
-		</div>
-	);
+      </Box>
+    </div>
+  );
 }
 

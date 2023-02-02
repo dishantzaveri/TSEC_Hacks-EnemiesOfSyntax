@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -10,16 +10,16 @@ import {
   StatusBar,
 } from 'react-native';
 import axios from 'axios';
-import {Card} from '../components/MentorMentees';
-import {SearchBar} from '../components/SearchBar';
-import {useSelector} from 'react-redux';
+import { Card } from '../components/MentorMentees';
+import { SearchBar } from '../components/SearchBar';
+import { useSelector } from 'react-redux';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-const Mentors = ({navigation}) => {
+const Mentors = ({ navigation }) => {
   const [person, setPerson] = useState(['']);
   const [loading, setLoading] = useState(true);
   const [text, setText] = useState('');
   const [mentors, setMentors] = useState([]);
-  const {user} = useSelector(state => state.user);
+  const { user } = useSelector(state => state.user);
   useEffect(() => {
     if (text === '') getMentorsList();
   }, [text]);
@@ -28,7 +28,7 @@ const Mentors = ({navigation}) => {
     console.log(user?.token);
     var config = {
       method: 'get',
-      url: 'http://vismayvora.pythonanywhere.com/account/mentors_list/',
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/mentors_list/',
       headers: {
         Authorization: `Token ${user?.token}`,
         Cookie:
@@ -57,7 +57,7 @@ const Mentors = ({navigation}) => {
     );
     var config = {
       method: 'post',
-      url: 'https://vismayvora.pythonanywhere.com/account/search_mentors/',
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/search_mentors/',
       headers: myHeaders,
       data: data,
     };
@@ -72,7 +72,7 @@ const Mentors = ({navigation}) => {
         console.log(error);
       });
   };
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return <Card navigation={navigation} data={item} />;
   };
   return (
@@ -84,7 +84,7 @@ const Mentors = ({navigation}) => {
         alignSelf: 'center',
         elevation: 3,
         backgroundColor: '#fff',
-        shadowOffset: {width: 3, height: 3},
+        shadowOffset: { width: 3, height: 3 },
         shadowColor: '#333',
         shadowOpacity: 0.2,
         shadowRadius: 1,
@@ -106,11 +106,11 @@ const Mentors = ({navigation}) => {
         />
       </View>
       {loading ? (
-        <View style={{marginVertical: 10}}>
+        <View style={{ marginVertical: 10 }}>
           <ActivityIndicator size="large" color="#32475b" />
         </View>
       ) : (
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
           <FlatList
             data={mentors}
             keyExtractor={(_, index) => index.toString()}
@@ -155,4 +155,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {Mentors};
+export { Mentors };

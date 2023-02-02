@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
-import {launchImageLibrary} from 'react-native-image-picker';
+import React, { useState } from 'react';
+import { launchImageLibrary } from 'react-native-image-picker';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 const UploadPost = () => {
   const [title, setTitle] = useState('');
@@ -40,7 +40,7 @@ const UploadPost = () => {
       redirect: 'follow',
     };
 
-    fetch('https://vismayvora.pythonanywhere.com/api/posts/', requestOptions)
+    fetch('https://hackathon-a64l3uuv6q-uc.a.run.app/api/posts/', requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));

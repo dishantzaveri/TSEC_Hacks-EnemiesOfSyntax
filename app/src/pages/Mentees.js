@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -10,17 +10,17 @@ import {
   StatusBar,
 } from 'react-native';
 import axios from 'axios';
-import {Card} from '../components/MentorMentees';
-import {SearchBar} from '../components/SearchBar';
-import {useSelector} from 'react-redux';
+import { Card } from '../components/MentorMentees';
+import { SearchBar } from '../components/SearchBar';
+import { useSelector } from 'react-redux';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { CardMentees } from '../components/MentorMentees/CardMentees';
-const Mentees = ({navigation}) => {
+const Mentees = ({ navigation }) => {
   const [person, setPerson] = useState(['']);
   const [loading, setLoading] = useState(true);
   const [text, setText] = useState('');
   const [mentors, setMentors] = useState([]);
-  const {user} = useSelector(state => state.user);
+  const { user } = useSelector(state => state.user);
   useEffect(() => {
     if (text === '') getMentorsList();
   }, [text]);
@@ -29,7 +29,7 @@ const Mentees = ({navigation}) => {
     console.log(user?.token);
     var config = {
       method: 'get',
-      url: 'http://vismayvora.pythonanywhere.com/account/startups_list/',
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/startups_list/',
       headers: {
         Authorization: `Token ${user?.token}`,
         Cookie:
@@ -58,7 +58,7 @@ const Mentees = ({navigation}) => {
     );
     var config = {
       method: 'post',
-      url: 'https://vismayvora.pythonanywhere.com/account/search_startups/',
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/search_startups/',
       headers: myHeaders,
       data: data,
     };
@@ -73,7 +73,7 @@ const Mentees = ({navigation}) => {
         console.log(error);
       });
   };
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return <CardMentees navigation={navigation} data={item} />;
   };
   return (
@@ -85,7 +85,7 @@ const Mentees = ({navigation}) => {
         alignSelf: 'center',
         elevation: 3,
         backgroundColor: '#fff',
-        shadowOffset: {width: 3, height: 3},
+        shadowOffset: { width: 3, height: 3 },
         shadowColor: '#333',
         shadowOpacity: 0.2,
         shadowRadius: 1,
@@ -107,11 +107,11 @@ const Mentees = ({navigation}) => {
         />
       </View>
       {loading ? (
-        <View style={{marginVertical: 10}}>
+        <View style={{ marginVertical: 10 }}>
           <ActivityIndicator size="large" color="#32475b" />
         </View>
       ) : (
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
           <FlatList
             data={mentors}
             keyExtractor={(_, index) => index.toString()}
@@ -156,4 +156,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {Mentees};
+export { Mentees };

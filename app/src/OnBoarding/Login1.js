@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -16,11 +16,11 @@ import {
 } from 'react-native-responsive-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import TouchId from 'react-native-touch-id';
-import {CometChat} from '@cometchat-pro/react-native-chat';
-import {useDispatch} from 'react-redux';
-import {setUser} from '../redux/reducers/user';
+import { CometChat } from '@cometchat-pro/react-native-chat';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../redux/reducers/user';
 
-function Login1({navigation}) {
+function Login1({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [tok, setTok] = useState();
@@ -45,7 +45,7 @@ function Login1({navigation}) {
     };
 
     fetch(
-      'https://vismayvora.pythonanywhere.com/account/login/',
+      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/login/',
       requestOptions,
     )
       .then(response => response.json())
@@ -57,10 +57,10 @@ function Login1({navigation}) {
         const uuid = result.name.split(' ')[0] + result.email.split('@')[0];
         CometChat.login(uuid, CONSTANTS.AUTH_KEY).then(
           user => {
-            console.log('Login Successful:', {user});
+            console.log('Login Successful:', { user });
           },
           error => {
-            console.log('Login failed with exception:', {error});
+            console.log('Login failed with exception:', { error });
           },
         );
       })
@@ -112,7 +112,7 @@ function Login1({navigation}) {
         }}>
         <Text style={styles.textStyle}>Login</Text>
       </TouchableOpacity>
-      <Text style={{fontSize: 20, margin: 5}}>OR</Text>
+      <Text style={{ fontSize: 20, margin: 5 }}>OR</Text>
       <TouchableOpacity
         style={styles.button}
         onPress={() =>
@@ -135,7 +135,7 @@ function Login1({navigation}) {
           navigation.navigate('SignUp1');
           // console.log("Signed Up");
         }}>
-        <Text style={{fontSize: 15, margin: 30}}>
+        <Text style={{ fontSize: 15, margin: 30 }}>
           Don't have an account? Signup
         </Text>
       </TouchableOpacity>

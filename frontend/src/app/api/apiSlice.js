@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'https://vismayvora.pythonanywhere.com',
+    baseUrl: 'https://hackathon-a64l3uuv6q-uc.a.run.app',
     prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.token
         if (token) {

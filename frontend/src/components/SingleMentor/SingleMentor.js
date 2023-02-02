@@ -10,12 +10,12 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import {Routes, Route, useNavigate, useLocation} from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Header from "../Header/Header";
 
 const SingleMentor = () => {
 	const location = useLocation();
-	const {mentor} = location.state
+	const { mentor } = location.state
 	console.log(mentor)
 	const [open, setOpen] = React.useState(false);
 
@@ -27,12 +27,12 @@ const SingleMentor = () => {
 		setOpen(false);
 	};
 
-    const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const navigateToChat = () => {
-    // 👇️ navigate to /contacts
-    navigate('/chat');
-  };
+	const navigateToChat = () => {
+		// 👇️ navigate to /contacts
+		navigate('/chat');
+	};
 
 	return (
 		<div>
@@ -42,7 +42,7 @@ const SingleMentor = () => {
 				<div className="flex items-center pb-4">
 					<img
 						className="w-[150px] h-[150px] rounded-full object-cover self-center"
-						src={'https://vismayvora.pythonanywhere.com/'+mentor.profile_pic}
+						src={'https://hackathon-a64l3uuv6q-uc.a.run.app/' + mentor.profile_pic}
 					/>
 					<div className="ml-5">
 						<h1 className="font-extrabold text-[35px] cursor-pointer ml-4 self-center">

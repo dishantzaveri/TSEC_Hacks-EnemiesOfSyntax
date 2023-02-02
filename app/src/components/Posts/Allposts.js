@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -14,13 +14,13 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import theme from '../../theme';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-export default function AllPosts({navigation}) {
+export default function AllPosts({ navigation }) {
   const [search, setSearch] = useState('');
   const [filteredData, setFilteredData] = useState([]);
   const [masterData, setMasterData] = useState([]);
-  const {user} = useSelector(state => state.user);
+  const { user } = useSelector(state => state.user);
   const onShare = async () => {
     try {
       const result = await Share.share({
@@ -49,7 +49,7 @@ export default function AllPosts({navigation}) {
 
     var config = {
       method: 'get',
-      url: 'https://vismayvora.pythonanywhere.com/api/posts/',
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/api/posts/',
       headers: {
         Authorization: 'Token 72f957f003d1ae579df255c5e46c5adefcb0d7c7',
         Cookie:
@@ -98,7 +98,7 @@ export default function AllPosts({navigation}) {
     }
   };
 
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return (
       <View
         style={{
@@ -113,7 +113,7 @@ export default function AllPosts({navigation}) {
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Image
               style={{
                 height: 55,
@@ -124,11 +124,11 @@ export default function AllPosts({navigation}) {
                 uri: 'https://imgnew.outlookindia.com/public/uploads/articles/2021/10/30/Mrunal_Thakur_21.jpg',
               }}
             />
-            <View style={{marginLeft: 10}}>
-              <Text style={{fontWeight: '600', color: 'black', fontSize: 16}}>
+            <View style={{ marginLeft: 10 }}>
+              <Text style={{ fontWeight: '600', color: 'black', fontSize: 16 }}>
                 {item.owner}
               </Text>
-              <Text style={{color: 'black'}}>{item.title}</Text>
+              <Text style={{ color: 'black' }}>{item.title}</Text>
             </View>
           </View>
           <Text
@@ -138,7 +138,7 @@ export default function AllPosts({navigation}) {
             + Follow
           </Text>
         </View>
-        <Text style={{marginTop: 10}}>{item.body}</Text>
+        <Text style={{ marginTop: 10 }}>{item.body}</Text>
         <Image
           source={{
             uri: item.images_post,
@@ -160,15 +160,15 @@ export default function AllPosts({navigation}) {
             borderTopWidth: 1,
             paddingTop: 20,
           }}>
-          <View style={{flexDirection: 'row'}}>
-            <AntDesign name="like2" size={25} style={{marginHorizontal: 20}} />
+          <View style={{ flexDirection: 'row' }}>
+            <AntDesign name="like2" size={25} style={{ marginHorizontal: 20 }} />
             <Text>{item.like_on_post_count}</Text>
           </View>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <Fontisto
               name="commenting"
               size={25}
-              style={{marginHorizontal: 20}}
+              style={{ marginHorizontal: 20 }}
             />
             <Text>{item.comment_on_post_count}</Text>
           </View>
@@ -239,7 +239,7 @@ export default function AllPosts({navigation}) {
 
       <FlatList
         data={filteredData}
-        keyExtractor={({id}) => id}
+        keyExtractor={({ id }) => id}
         contentContainerStyle={{}}
         renderItem={renderItem}
       />
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     margin: 25,
     shadowColor: '#000000',
-    shadowOffset: {height: 15},
+    shadowOffset: { height: 15 },
     shadowRadius: 15,
     shadowOpacity: 10,
   },

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {useNavigation} from '@react-navigation/native';
-import React, {useState, useEffect, useRef} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-const MentorMenteesDetail = ({route, props}) => {
+const MentorMenteesDetail = ({ route, props }) => {
   const [data, setData] = useState(route.params.slug);
   const navigation = useNavigation();
   useEffect(() => {
@@ -53,7 +53,7 @@ const MentorMenteesDetail = ({route, props}) => {
           <Image
             source={{
               uri: data?.profile_pic
-                ? `http://vismayvora.pythonanywhere.com/${data.profile_pic}`
+                ? `https://hackathon-a64l3uuv6q-uc.a.run.app/${data.profile_pic}`
                 : 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png',
             }}
             style={{
@@ -121,36 +121,36 @@ const MentorMenteesDetail = ({route, props}) => {
                 backgroundColor: 'white',
                 elevation: 3,
               }}>
-              <View style={{flexDirection: 'row', marginVertical: 2}}>
-                <Text style={{color: 'black', fontWeight: '600'}}>
+              <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                <Text style={{ color: 'black', fontWeight: '600' }}>
                   Company:{' '}
                 </Text>
-                <Text style={{color: 'black'}}> {exp.company_name}</Text>
+                <Text style={{ color: 'black' }}> {exp.company_name}</Text>
               </View>
-              <View style={{flexDirection: 'row', marginVertical: 2}}>
-                <Text style={{color: 'black', fontWeight: '600'}}>Role: </Text>
-                <Text style={{color: 'black'}}> {exp.job_title}</Text>
+              <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                <Text style={{ color: 'black', fontWeight: '600' }}>Role: </Text>
+                <Text style={{ color: 'black' }}> {exp.job_title}</Text>
               </View>
-              <View style={{flexDirection: 'row', marginVertical: 2}}>
-                <Text style={{color: 'black', fontWeight: '600'}}>
+              <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                <Text style={{ color: 'black', fontWeight: '600' }}>
                   Period :{' '}
                 </Text>
-                <Text style={{color: 'black'}}>
+                <Text style={{ color: 'black' }}>
                   {' '}
                   {exp.start_date} - {exp.end_date}
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginVertical: 2}}>
-                <Text style={{color: 'black', fontWeight: '600'}}>
+              <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                <Text style={{ color: 'black', fontWeight: '600' }}>
                   Location:{' '}
                 </Text>
-                <Text style={{color: 'black'}}> {exp.location}</Text>
+                <Text style={{ color: 'black' }}> {exp.location}</Text>
               </View>
-              <View style={{flexDirection: 'row', marginVertical: 2}}>
-                <Text style={{color: 'black', fontWeight: '600'}}>
+              <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                <Text style={{ color: 'black', fontWeight: '600' }}>
                   Industry:{' '}
                 </Text>
-                <Text style={{color: 'black'}}> {exp.industry}</Text>
+                <Text style={{ color: 'black' }}> {exp.industry}</Text>
               </View>
             </View>
           ))}
@@ -160,7 +160,7 @@ const MentorMenteesDetail = ({route, props}) => {
             marginTop: 10,
             padding: 10,
           }}>
-          <Text style={{fontWeight: 'bold', color: 'black', fontSize: 16}}>
+          <Text style={{ fontWeight: 'bold', color: 'black', fontSize: 16 }}>
             Education :{' '}
           </Text>
           {data?.education?.map(edu => (
@@ -173,31 +173,31 @@ const MentorMenteesDetail = ({route, props}) => {
                 backgroundColor: 'white',
                 elevation: 3,
               }}>
-              <View style={{flexDirection: 'row', marginVertical: 2}}>
-                <Text style={{color: 'black', fontWeight: '600'}}>
+              <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                <Text style={{ color: 'black', fontWeight: '600' }}>
                   College :{' '}
                 </Text>
-                <Text style={{color: 'black'}}> {edu.institute}</Text>
+                <Text style={{ color: 'black' }}> {edu.institute}</Text>
               </View>
-              <View style={{flexDirection: 'row', marginVertical: 2}}>
-                <Text style={{color: 'black', fontWeight: '600'}}>Year : </Text>
-                <Text style={{color: 'black'}}>
+              <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                <Text style={{ color: 'black', fontWeight: '600' }}>Year : </Text>
+                <Text style={{ color: 'black' }}>
                   {edu.start_date.split('-')[0]} - {edu.end_date.split('-')[0]}
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginVertical: 2}}>
-                <Text style={{color: 'black', fontWeight: '600'}}>
+              <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                <Text style={{ color: 'black', fontWeight: '600' }}>
                   Course :{' '}
                 </Text>
-                <Text style={{color: 'black'}}>
+                <Text style={{ color: 'black' }}>
                   {edu.degree} in {edu.study_field}
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginVertical: 2}}>
-                <Text style={{color: 'black', fontWeight: '600'}}>
+              <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                <Text style={{ color: 'black', fontWeight: '600' }}>
                   Grade :{' '}
                 </Text>
-                <Text style={{color: 'black'}}>{edu.grade}</Text>
+                <Text style={{ color: 'black' }}>{edu.grade}</Text>
               </View>
             </View>
           ))}
@@ -323,4 +323,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {MentorMenteesDetail};
+export { MentorMenteesDetail };

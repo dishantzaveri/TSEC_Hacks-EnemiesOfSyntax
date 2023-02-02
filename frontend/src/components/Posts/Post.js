@@ -11,29 +11,29 @@ import { VscLoading } from "react-icons/vsc";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
-const CommentBody = ({comment, comments}) => {
-  const {token} = useSelector(state => state.auth)
+const CommentBody = ({ comment, comments }) => {
+  const { token } = useSelector(state => state.auth)
   const [body, setBody] = useState('')
   const [list, setList] = useState([])
   console.log(comment, comments);
   const getComments = comment => {
     var config = {
       method: 'get',
-      url: 'https://vismayvora.pythonanywhere.com/api/comments/'+comment+'/',
-      headers: { 
-        'Authorization': 'Token '+token,
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/api/comments/' + comment + '/',
+      headers: {
+        'Authorization': 'Token ' + token,
       },
-      data : ''
+      data: ''
     };
-    
+
     axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-      setList(response.data)
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setList(response.data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
   const postComment = () => {
     var data = new FormData();
@@ -42,35 +42,35 @@ const CommentBody = ({comment, comments}) => {
 
     var config = {
       method: 'post',
-      url: 'https://vismayvora.pythonanywhere.com/api/comments/',
-      headers: { 
-        'Authorization': 'Token '+token, 
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/api/comments/',
+      headers: {
+        'Authorization': 'Token ' + token,
       },
-      data : data
+      data: data
     };
 
     axios(config)
-    .then(function (response) {
-      setList(prevState => [...prevState, response.data])
-      setBody('')
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        setList(prevState => [...prevState, response.data])
+        setBody('')
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
   useEffect(() => {
     getComments(comment)
   }, [])
 
-  const Tile = ({item}) => {
-    return(
+  const Tile = ({ item }) => {
+    return (
       <div className="w-full border-t p-2">
         <h1 className="">{item.body}</h1>
         <h1 className="text-xs text-gray-400">by {item.owner}</h1>
       </div>
     )
   }
-  
+
   return (
     <div className="p-2">
       <div className="flex w-full">
@@ -84,7 +84,7 @@ const CommentBody = ({comment, comments}) => {
 }
 
 const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
-  const {token} = useSelector(state => state.auth)
+  const { token } = useSelector(state => state.auth)
   const [data, setData] = useState([])
   const [liked, setLiked] = useState(false)
   const [likedId, setLikedId] = useState(null)
@@ -95,31 +95,31 @@ const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
     console.log(id)
     var config = {
       method: 'post',
-      url: 'https://vismayvora.pythonanywhere.com/api/post-like/',
-      headers: { 
-        'Authorization': 'Token '+token, 
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/api/post-like/',
+      headers: {
+        'Authorization': 'Token ' + token,
       },
-      data : data
+      data: data
     };
     axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-      setLikedId(response.data.id)
-      getPosts()
-      setLiked(true)
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setLikedId(response.data.id)
+        getPosts()
+        setLiked(true)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
   const dislike = () => {
     var config = {
       method: 'delete',
-      url: 'https://vismayvora.pythonanywhere.com/api/post-like/'+likedId,
-      headers: { 
-        'Authorization': 'Token '+token, 
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/api/post-like/' + likedId,
+      headers: {
+        'Authorization': 'Token ' + token,
       },
-      data : data
+      data: data
     };
     axios(config)
       .then(function (response) {
@@ -131,28 +131,28 @@ const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
         console.log(error);
       });
   }
-  
+
   const getPosts = () => {
     var config = {
       method: 'get',
-      url: 'https://vismayvora.pythonanywhere.com/api/posts/',
-      headers: { 
-        'Authorization': 'Token '+token, 
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/api/posts/',
+      headers: {
+        'Authorization': 'Token ' + token,
       },
     };
 
     axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-      setData(response.data)
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setData(response.data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
   useEffect(() => {
     getPosts()
-  } , [])
+  }, [])
   function InputLikeOption({ Icon, title, color, id }) {
     return (
       <div className="inputOption" onClick={() => liked ? dislike() : like(id)} >
@@ -163,7 +163,7 @@ const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
   }
   function InputCommentOption({ Icon, title, color, id }) {
     return (
-      <div className="inputOption" onClick={() => comments===id ? setComments(null) : setComments(id)}>
+      <div className="inputOption" onClick={() => comments === id ? setComments(null) : setComments(id)}>
         <Icon style={{ color: color }} />
         <h4>{title}</h4>
       </div>
@@ -176,8 +176,8 @@ const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
     return match && match[7].length === 11 ? match[7] : false;
   }
 
-  const Post = ({post}) => {
-    return(
+  const Post = ({ post }) => {
+    return (
       <div ref={ref} key={post.id} className="post shadow-xl">
         <div className="post_header items-center gap-4 p-3 border-b">
           <Avatar src={photoUrl}></Avatar>
@@ -226,7 +226,7 @@ const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
             id={post.id}
           />
         </div>
-        {comments===post.id && <CommentBody comment={post.id} comments={comments}/>}
+        {comments === post.id && <CommentBody comment={post.id} comments={comments} />}
       </div>
     )
   }
@@ -241,7 +241,7 @@ const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
             <Post post={post} />
           ))
       }
-      {!(data===[]) && (
+      {!(data === []) && (
         <div className="w-full flex flex-col justify-center items-center my-8">
           <VscLoading className="w-8 h-8 animate-spin text-center text-gray-600" />
           <h1 className="text-xl mt-2">Loading...</h1>

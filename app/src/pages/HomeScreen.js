@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, FlatList, TouchableOpacity} from 'react-native';
-import {Text} from 'react-native-paper';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View, FlatList, TouchableOpacity } from 'react-native';
+import { Text } from 'react-native-paper';
 import EventCard from '../components/EventCard';
 import Header from '../components/Header';
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const HomeScreen = ({navigation}) => {
       redirect: 'follow',
     };
 
-    fetch('https://vismayvora.pythonanywhere.com/news/funding/', requestOptions)
+    fetch('https://hackathon-a64l3uuv6q-uc.a.run.app/news/funding/', requestOptions)
       .then(response => response.json())
       .then(result => {
         console.log(result);
@@ -46,7 +46,7 @@ const HomeScreen = ({navigation}) => {
           onPress={() => {
             navigation.navigate('Add Event');
           }}
-          style={{position: 'absolute', right: 20}}>
+          style={{ position: 'absolute', right: 20 }}>
           <Text
             style={{
               fontSize: 16,
@@ -63,7 +63,7 @@ const HomeScreen = ({navigation}) => {
         <FlatList
           data={events}
           keyExtractor={(x, i) => i.toString()}
-          renderItem={({item}) => <EventCard event={item} />}
+          renderItem={({ item }) => <EventCard event={item} />}
         />
       </View>
     </View>

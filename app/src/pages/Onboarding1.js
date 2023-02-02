@@ -1,5 +1,5 @@
-import React, {useRef, useState, useEffect} from 'react';
-import {height, width} from '../Consts';
+import React, { useRef, useState, useEffect } from 'react';
+import { height, width } from '../Consts';
 import {
   SafeAreaView,
   StyleSheet,
@@ -11,25 +11,25 @@ import {
   PermissionsAndroid,
   TouchableHighlight,
 } from 'react-native';
-import {Button} from 'react-native-paper';
+import { Button } from 'react-native-paper';
 import logo from '../assets/logo.jpg';
 import Uploadpic from '../assets/uploadpic.png';
 import Selectpic from '../assets/selectpic.png';
 import LinearGradient from 'react-native-linear-gradient';
-import {useTheme} from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 import Circle1 from '../assets/circle1.png';
 import * as CONSTANTS from '../CONSTANTS';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import {Dimensions} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {CometChat} from '@cometchat-pro/react-native-chat';
-import {useDispatch, useSelector} from 'react-redux';
-import {setSignUpRole, setSignUpToken} from '../redux/reducers/user';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { CometChat } from '@cometchat-pro/react-native-chat';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSignUpRole, setSignUpToken } from '../redux/reducers/user';
 
-const Onboarding1 = ({route}) => {
+const Onboarding1 = ({ route }) => {
   const [filePath, setFilePath] = useState({});
   const [Pic, SetPic] = useState('');
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   const navigation = useNavigation();
 
   const dispatch = useDispatch();
@@ -59,8 +59,8 @@ const Onboarding1 = ({route}) => {
 
     fetch(
       route.params.role === 'mentor'
-        ? 'https://vismayvora.pythonanywhere.com/account/mentor_register/'
-        : 'https://vismayvora.pythonanywhere.com/account/entrepreneur_register/',
+        ? 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/mentor_register/'
+        : 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/entrepreneur_register/',
       requestOptions,
     )
       .then(response => response.text())
@@ -79,10 +79,10 @@ const Onboarding1 = ({route}) => {
             console.log('user created', user);
             CometChat.login(uuid, CONSTANTS.AUTH_KEY).then(
               user => {
-                console.log('Signup Successful:', {user});
+                console.log('Signup Successful:', { user });
               },
               error => {
-                console.log('Login failed with exception:', {error});
+                console.log('Login failed with exception:', { error });
               },
             );
           })
@@ -200,7 +200,7 @@ const Onboarding1 = ({route}) => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <LinearGradient
         colors={[colors.primary, '#ADD8E6']}
         style={{
@@ -257,14 +257,14 @@ const Onboarding1 = ({route}) => {
                 marginTop: 10,
                 padding: 10,
                 backgroundColor: '#00CFDE',
-       
+
               }}
               onPress={() => captureImage('photo')}>
               <Text
                 style={{
                   color: 'white',
                   fontSize: 16,
-                fontWeight: 'bold'
+                  fontWeight: 'bold'
                 }}>
                 Take a picture
               </Text>
@@ -348,7 +348,7 @@ const styles = StyleSheet.create({
   card: {
     elevation: 10,
     backgroundColor: '#fff',
-    shadowOffset: {width: 5, height: 5},
+    shadowOffset: { width: 5, height: 5 },
     shadowColor: '#333',
     shadowOpacity: 0.5,
     shadowRadius: 2,

@@ -90,7 +90,7 @@ const style = {
 const Schemes = (scheme) => {
   // var config = {
   //     method: 'get',
-  //     url: 'https://vismayvora.pythonanywhere.com/news/scheme/',
+  //     url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/news/scheme/',
   //     headers: {
   //       'Authorization': 'Token 8ee14cbf8c09c0baeae939b60041b703ed240e82'
   //     }

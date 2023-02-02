@@ -1,4 +1,4 @@
-import  React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Grid, Stepper } from '@mui/material';
@@ -15,11 +15,11 @@ import { setField } from '../../features/auth/registerSlice';
 const GST = ({ gst }) => {
   const [data, setData] = useState(["div"]);
   function removeGst() {
-		const curr = [...data];
-		curr.pop();
-		setData(curr);
-	}
-  
+    const curr = [...data];
+    curr.pop();
+    setData(curr);
+  }
+
   console.log(gst);
   return (
     <div className='flex items-center justify-center'>
@@ -33,8 +33,8 @@ const GST = ({ gst }) => {
             <h1 className="mt-[5px]">GST IN : {gst.gstin}</h1>
           </div>
           <button onClick={() => removeGst()}
-									class=" bg-purple-gray-500 hover:bg-purple-gray-600 text-white font-bold py-2 px-4 rounded m-5 "><CancelIcon /></button>
-        </div>    
+            class=" bg-purple-gray-500 hover:bg-purple-gray-600 text-white font-bold py-2 px-4 rounded m-5 "><CancelIcon /></button>
+        </div>
       </div>
     </div>
   );
@@ -45,30 +45,30 @@ export default function FormPropsTextFields() {
   const [input, setInput] = useState('')
   const [startups, setStartups] = useState([])
   const [select, setSelect] = useState('GST')
-  const {token} = useSelector(state => state.auth)
+  const { token } = useSelector(state => state.auth)
   const [postGst] = usePostGstMutation()
   const dispatch = useDispatch()
   const getStartups = () => {
     let config = {
       method: 'get',
-      url: 'https://vismayvora.pythonanywhere.com/account/startup/',
-      headers: { 
+      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/startup/',
+      headers: {
         'Authorization': 'Token ' + token
       }
     };
     axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-      setStartups(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setStartups(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   // const postGst = () => {
   //   let config = {
   //     method: 'post',
-  //     url: 'https://vismayvora.pythonanywhere.com/account/gstverify/',
+  //     url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/gstverify/',
   //     headers: { 
   //       'Authorization': 'Token ' + token
   //     },
@@ -87,46 +87,46 @@ export default function FormPropsTextFields() {
   //     });
   // };
 
-  
+
   const submit = async () => {
-    if(select === 'GST') {
+    if (select === 'GST') {
       var formdata = new FormData();
       formdata.append("gstnumber", input);
       try {
         const data = await postGst(formdata).unwrap();
         console.log(data)
-        dispatch(setField({field: 'verification', value: data}))
+        dispatch(setField({ field: 'verification', value: data }))
       } catch (error) {
         console.log(error);
       }
-    } else if(select === 'PAN') {
+    } else if (select === 'PAN') {
       var data = new FormData();
       data.append('pannumber', 'AAACT2803M');
 
       var config = {
         method: 'post',
-        url: 'https://vismayvora.pythonanywhere.com/account/panverify/',
-        headers: { 
-          'Authorization': 'Token '+token, 
+        url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/panverify/',
+        headers: {
+          'Authorization': 'Token ' + token,
         },
-        data : data
+        data: data
       };
 
       axios(config)
-      .then(function (response) {
-        dispatch(setField({field: 'verification', value: response.data}))
-        navigate('/login')
-        console.log(JSON.stringify(response.data));
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+        .then(function (response) {
+          dispatch(setField({ field: 'verification', value: response.data }))
+          navigate('/login')
+          console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   }
   useEffect(() => {
     getStartups()
   }, []);
-  
+
   return (
     <div className='w-full'>
       <div className="bg-purple-gray-100 px-6 py-8 rounded shadow-md text-black w-full" >
@@ -140,12 +140,12 @@ export default function FormPropsTextFields() {
               </label>
             ))}
           </div>
-        <h1 className='text-2xl font-semibold uppercase mb-4'>{select}</h1>
-        <input className='px-3 py-2' placeholder={`Enter ${select} Number`} value={input} onChange={e => setInput(e.target.value)} type="text" />
-        <button className='px-3 py-2 bg-purple-gray-700' onClick={() => submit()}>add</button>
-        <div className="w-full flex flex-col gap-4 mt-4">
-        </div>
-          {startups!==[] && select==='GST' && startups.map((gst) => (
+          <h1 className='text-2xl font-semibold uppercase mb-4'>{select}</h1>
+          <input className='px-3 py-2' placeholder={`Enter ${select} Number`} value={input} onChange={e => setInput(e.target.value)} type="text" />
+          <button className='px-3 py-2 bg-purple-gray-700' onClick={() => submit()}>add</button>
+          <div className="w-full flex flex-col gap-4 mt-4">
+          </div>
+          {startups !== [] && select === 'GST' && startups.map((gst) => (
             <GST gst={gst} />
           ))}
         </div>

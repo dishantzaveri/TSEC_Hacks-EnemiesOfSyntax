@@ -80,7 +80,7 @@ const CreatePosts = () => {
             };
 
             fetch(
-              "https://vismayvora.pythonanywhere.com/api/posts/",
+              "https://hackathon-a64l3uuv6q-uc.a.run.app/api/posts/",
               requestOptions
             )
               .then((response) => response.text())
@@ -121,7 +121,7 @@ const CreatePosts = () => {
           };
 
           fetch(
-            "https://vismayvora.pythonanywhere.com/api/posts/",
+            "https://hackathon-a64l3uuv6q-uc.a.run.app/api/posts/",
             requestOptions
           )
             .then((response) => response.text())

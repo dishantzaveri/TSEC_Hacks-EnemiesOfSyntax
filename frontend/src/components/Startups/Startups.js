@@ -56,7 +56,7 @@ export default function Startups() {
   const getMentorsList = async () => {
     var config = {
       method: "get",
-      url: "http://vismayvora.pythonanywhere.com/account/startups_list/",
+      url: "https://hackathon-a64l3uuv6q-uc.a.run.app/account/startups_list/",
       headers: {
         Authorization: `Token ${token}`,
       },

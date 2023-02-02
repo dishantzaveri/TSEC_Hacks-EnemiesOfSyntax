@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -12,12 +12,12 @@ import {
 } from '@react-navigation/drawer';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useDispatch, useSelector} from 'react-redux';
-import {resetUser} from '../redux/reducers/user';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetUser } from '../redux/reducers/user';
 
 const CustomDrawer = props => {
   const dispatch = useDispatch();
-  const {user} = useSelector(state => state.user);
+  const { user } = useSelector(state => state.user);
   const [data, setData] = useState([]);
   useEffect(() => {
     console.log(user);
@@ -31,8 +31,7 @@ const CustomDrawer = props => {
     };
 
     fetch(
-      `https://vismayvora.pythonanywhere.com/account/${
-        user?.is_mentor ? 'mentor' : 'entrepreneur'
+      `https://hackathon-a64l3uuv6q-uc.a.run.app/account/${user?.is_mentor ? 'mentor' : 'entrepreneur'
       }/`,
       requestOptions,
     )
@@ -51,18 +50,18 @@ const CustomDrawer = props => {
     dispatch(resetUser());
   };
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <DrawerContentScrollView
         {...props}
-        contentContainerStyle={{backgroundColor: '#8200d6'}}>
+        contentContainerStyle={{ backgroundColor: '#8200d6' }}>
         <ImageBackground
           source={require('../assets/menu-bg.jpeg')}
-          style={{padding: 20}}>
+          style={{ padding: 20 }}>
           <Image
             source={{
               uri: data?.profile_pic,
             }}
-            style={{height: 80, width: 80, borderRadius: 40, marginBottom: 10}}
+            style={{ height: 80, width: 80, borderRadius: 40, marginBottom: 10 }}
           />
           <Text
             style={{
@@ -73,7 +72,7 @@ const CustomDrawer = props => {
             }}>
             {user?.name}
           </Text>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <Text
               style={{
                 color: '#fff',
@@ -85,11 +84,11 @@ const CustomDrawer = props => {
             <FontAwesome5 name="coins" size={14} color="#fff" />
           </View>
         </ImageBackground>
-        <View style={{flex: 1, backgroundColor: '#fff', paddingTop: 10}}>
+        <View style={{ flex: 1, backgroundColor: '#fff', paddingTop: 10 }}>
           <DrawerItemList {...props} />
         </View>
         <View
-          style={{backgroundColor: 'white', padding: 20, alignItems: 'center'}}>
+          style={{ backgroundColor: 'white', padding: 20, alignItems: 'center' }}>
           <TouchableOpacity
             style={{
               padding: 10,
@@ -99,7 +98,7 @@ const CustomDrawer = props => {
             onPress={() => {
               logout();
             }}>
-            <Text style={{fontSize: 16, color: 'white'}}>Logout</Text>
+            <Text style={{ fontSize: 16, color: 'white' }}>Logout</Text>
           </TouchableOpacity>
         </View>
       </DrawerContentScrollView>

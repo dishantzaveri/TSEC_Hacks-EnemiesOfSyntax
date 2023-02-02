@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -9,10 +9,10 @@ import {
   Dimensions,
   Image,
 } from 'react-native';
-import {Avatar} from 'react-native-elements';
-import {Github, Linkedin, Twitter} from '../SVGR-Components';
+import { Avatar } from 'react-native-elements';
+import { Github, Linkedin, Twitter } from '../SVGR-Components';
 
-const CardMentees = ({navigation, data, listType = 'mentor'}) => {
+const CardMentees = ({ navigation, data, listType = 'mentor' }) => {
   const twitterUrl = '';
   const githubUrl = '';
   const linkedinUrl = '';
@@ -54,17 +54,17 @@ const CardMentees = ({navigation, data, listType = 'mentor'}) => {
         }}>
         <View style={styles.iconView}>
           <TouchableOpacity
-            style={twitterUrl !== '' ? styles.oneIconView : {display: 'none'}}
+            style={twitterUrl !== '' ? styles.oneIconView : { display: 'none' }}
             onPress={() => Linking.openURL(twitterUrl)}>
             <Twitter width={26} height={26} />
           </TouchableOpacity>
           <TouchableOpacity
-            style={githubUrl !== '' ? styles.oneIconView : {display: 'none'}}
+            style={githubUrl !== '' ? styles.oneIconView : { display: 'none' }}
             onPress={() => Linking.openURL(githubUrl)}>
             <Github width={26} height={26} />
           </TouchableOpacity>
           <TouchableOpacity
-            style={linkedinUrl !== '' ? styles.oneIconView : {display: 'none'}}
+            style={linkedinUrl !== '' ? styles.oneIconView : { display: 'none' }}
             onPress={() => Linking.openURL(linkedinUrl)}>
             <Linkedin width={26} height={26} />
           </TouchableOpacity>
@@ -74,7 +74,7 @@ const CardMentees = ({navigation, data, listType = 'mentor'}) => {
           rounded
           source={{
             uri: data?.profile_pic
-              ? `http://vismayvora.pythonanywhere.com/${data.profile_pic}`
+              ? `https://hackathon-a64l3uuv6q-uc.a.run.app/${data.profile_pic}`
               : 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png',
           }}
           size="large"
@@ -83,7 +83,7 @@ const CardMentees = ({navigation, data, listType = 'mentor'}) => {
           <Text
             numberOfLines={2}
             ellipsizeMode="tail"
-            style={{...styles.nameStyle, color: getBorderTopColor()}}>
+            style={{ ...styles.nameStyle, color: getBorderTopColor() }}>
             {data?.legalNameOfBusiness}
           </Text>
         </View>
@@ -91,7 +91,7 @@ const CardMentees = ({navigation, data, listType = 'mentor'}) => {
           <Text
             numberOfLines={2}
             ellipsizeMode="tail"
-            style={{...styles.nameStyle, color: getBorderTopColor()}}>
+            style={{ ...styles.nameStyle, color: getBorderTopColor() }}>
             {data?.dateOfRegistration}
           </Text>
         </View>
@@ -99,18 +99,18 @@ const CardMentees = ({navigation, data, listType = 'mentor'}) => {
           <Text
             numberOfLines={2}
             ellipsizeMode="tail"
-            style={{...styles.nameStyle, color: getBorderTopColor()}}>
+            style={{ ...styles.nameStyle, color: getBorderTopColor() }}>
             {data?.constitutionOfBusiness}
           </Text>
         </View>
-       
+
         {listType === 'both' && (
           <View style={styles.goalsView}>
             <Text style={styles.goalsText}>Expertise : {data?.expertise}</Text>
           </View>
         )}
-        <View style={{...styles.hireMe, borderColor: getBorderTopColor()}}>
-          <Text style={[styles.hireMeText, {color: getBorderTopColor()}]}>
+        <View style={{ ...styles.hireMe, borderColor: getBorderTopColor() }}>
+          <Text style={[styles.hireMeText, { color: getBorderTopColor() }]}>
             View Profile
           </Text>
         </View>
@@ -177,4 +177,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {CardMentees};
+export { CardMentees };

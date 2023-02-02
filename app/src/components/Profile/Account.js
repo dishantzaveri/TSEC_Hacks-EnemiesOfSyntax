@@ -1,15 +1,15 @@
-import {View, Text, Image, Dimensions, ScrollView} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {useTheme} from '@react-navigation/native';
+import { View, Text, Image, Dimensions, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { useTheme } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 export default function Account() {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   const [data, setData] = useState([]);
-  const {user} = useSelector(state => state.user);
+  const { user } = useSelector(state => state.user);
   useEffect(() => {
     console.log(user);
     var myHeaders = new Headers();
@@ -22,8 +22,7 @@ export default function Account() {
     };
 
     fetch(
-      `https://vismayvora.pythonanywhere.com/account/${
-        user?.is_mentor ? 'mentor' : 'entrepreneur'
+      `https://hackathon-a64l3uuv6q-uc.a.run.app/account/${user?.is_mentor ? 'mentor' : 'entrepreneur'
       }/`,
       requestOptions,
     )
@@ -39,11 +38,11 @@ export default function Account() {
   }, []);
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
       <ScrollView>
         <LinearGradient
           colors={[colors.primary, '#ADD8E6']}
-          style={{width: '100%', height: 200, position: 'relative'}}>
+          style={{ width: '100%', height: 200, position: 'relative' }}>
           <View
             style={{
               backgroundColor: 'white',
@@ -116,7 +115,7 @@ export default function Account() {
             </View>
           </View>
         </LinearGradient>
-        <View style={{marginTop: 160, paddingHorizontal: 30}}>
+        <View style={{ marginTop: 160, paddingHorizontal: 30 }}>
           <View
             style={{
               backgroundColor: 'white',
@@ -133,7 +132,7 @@ export default function Account() {
                 justifyContent: 'space-between',
                 alignItems: 'center',
               }}>
-              <Text style={{fontSize: 16, fontWeight: 'bold', color: 'black'}}>
+              <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black' }}>
                 About
               </Text>
               <AntDesign name="edit" color={colors.primary} size={22} />
@@ -142,44 +141,44 @@ export default function Account() {
               style={{
                 marginTop: 10,
               }}>
-              <Text style={{fontWeight: '600', color: 'black', fontSize: 14}}>
+              <Text style={{ fontWeight: '600', color: 'black', fontSize: 14 }}>
                 Experience:{' '}
               </Text>
               <View>
                 {data?.experience?.map(exp => (
                   <View key={exp.id}>
-                    <View style={{flexDirection: 'row', marginVertical: 2}}>
-                      <Text style={{color: 'black', fontWeight: '600'}}>
+                    <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                      <Text style={{ color: 'black', fontWeight: '600' }}>
                         Company:{' '}
                       </Text>
-                      <Text style={{color: 'black'}}> {exp.company_name}</Text>
+                      <Text style={{ color: 'black' }}> {exp.company_name}</Text>
                     </View>
-                    <View style={{flexDirection: 'row', marginVertical: 2}}>
-                      <Text style={{color: 'black', fontWeight: '600'}}>
+                    <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                      <Text style={{ color: 'black', fontWeight: '600' }}>
                         Role:{' '}
                       </Text>
-                      <Text style={{color: 'black'}}> {exp.job_title}</Text>
+                      <Text style={{ color: 'black' }}> {exp.job_title}</Text>
                     </View>
-                    <View style={{flexDirection: 'row', marginVertical: 2}}>
-                      <Text style={{color: 'black', fontWeight: '600'}}>
+                    <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                      <Text style={{ color: 'black', fontWeight: '600' }}>
                         Period :{' '}
                       </Text>
-                      <Text style={{color: 'black'}}>
+                      <Text style={{ color: 'black' }}>
                         {' '}
                         {exp.start_date} - {exp.end_date}
                       </Text>
                     </View>
-                    <View style={{flexDirection: 'row', marginVertical: 2}}>
-                      <Text style={{color: 'black', fontWeight: '600'}}>
+                    <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                      <Text style={{ color: 'black', fontWeight: '600' }}>
                         Location:{' '}
                       </Text>
-                      <Text style={{color: 'black'}}> {exp.location}</Text>
+                      <Text style={{ color: 'black' }}> {exp.location}</Text>
                     </View>
-                    <View style={{flexDirection: 'row', marginVertical: 2}}>
-                      <Text style={{color: 'black', fontWeight: '600'}}>
+                    <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                      <Text style={{ color: 'black', fontWeight: '600' }}>
                         Industry:{' '}
                       </Text>
-                      <Text style={{color: 'black'}}> {exp.industry}</Text>
+                      <Text style={{ color: 'black' }}> {exp.industry}</Text>
                     </View>
                   </View>
                 ))}
@@ -189,39 +188,39 @@ export default function Account() {
               style={{
                 marginTop: 10,
               }}>
-              <Text style={{fontWeight: '600', color: 'black', fontSize: 14}}>
+              <Text style={{ fontWeight: '600', color: 'black', fontSize: 14 }}>
                 Education :{' '}
               </Text>
               {data?.education?.map(edu => (
                 <View>
-                  <View style={{flexDirection: 'row', marginVertical: 2}}>
-                    <Text style={{color: 'black', fontWeight: '600'}}>
+                  <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                    <Text style={{ color: 'black', fontWeight: '600' }}>
                       College :{' '}
                     </Text>
-                    <Text style={{color: 'black'}}> {edu.institute}</Text>
+                    <Text style={{ color: 'black' }}> {edu.institute}</Text>
                   </View>
-                  <View style={{flexDirection: 'row', marginVertical: 2}}>
-                    <Text style={{color: 'black', fontWeight: '600'}}>
+                  <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                    <Text style={{ color: 'black', fontWeight: '600' }}>
                       Year :{' '}
                     </Text>
-                    <Text style={{color: 'black'}}>
+                    <Text style={{ color: 'black' }}>
                       {edu.start_date.split('-')[0]} -{' '}
                       {edu.end_date.split('-')[0]}
                     </Text>
                   </View>
-                  <View style={{flexDirection: 'row', marginVertical: 2}}>
-                    <Text style={{color: 'black', fontWeight: '600'}}>
+                  <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                    <Text style={{ color: 'black', fontWeight: '600' }}>
                       Course :{' '}
                     </Text>
-                    <Text style={{color: 'black'}}>
+                    <Text style={{ color: 'black' }}>
                       {edu.degree} in {edu.study_field}
                     </Text>
                   </View>
-                  <View style={{flexDirection: 'row', marginVertical: 2}}>
-                    <Text style={{color: 'black', fontWeight: '600'}}>
+                  <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+                    <Text style={{ color: 'black', fontWeight: '600' }}>
                       Grade :{' '}
                     </Text>
-                    <Text style={{color: 'black'}}>{edu.grade}</Text>
+                    <Text style={{ color: 'black' }}>{edu.grade}</Text>
                   </View>
                 </View>
               ))}
@@ -248,7 +247,7 @@ export default function Account() {
                     alignItems: 'center',
                   }}>
                   <Text
-                    style={{fontSize: 16, fontWeight: 'bold', color: 'black'}}>
+                    style={{ fontSize: 16, fontWeight: 'bold', color: 'black' }}>
                     Startups
                   </Text>
                   <AntDesign name="edit" color={colors.primary} size={22} />
@@ -270,7 +269,7 @@ export default function Account() {
                           marginVertical: 10,
                           flexDirection: 'row',
                         }}>
-                        <View style={{width: '80%', marginLeft: 10}}>
+                        <View style={{ width: '80%', marginLeft: 10 }}>
                           <Text
                             style={{
                               fontSize: 16,
@@ -279,13 +278,13 @@ export default function Account() {
                             }}>
                             {s.legalNameOfBusiness}
                           </Text>
-                          <Text style={{color: 'black'}}>
+                          <Text style={{ color: 'black' }}>
                             {s.principalPlaceOfBusinessAddress}
                           </Text>
-                          <Text style={{color: 'black', fontWeight: '600'}}>
+                          <Text style={{ color: 'black', fontWeight: '600' }}>
                             Type : {s.constitutionOfBusiness}
                           </Text>
-                          <Text style={{color: 'black', fontWeight: '600'}}>
+                          <Text style={{ color: 'black', fontWeight: '600' }}>
                             Date : {s.dateOfRegistration}
                           </Text>
                         </View>
