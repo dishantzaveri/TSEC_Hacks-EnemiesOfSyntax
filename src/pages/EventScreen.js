@@ -11,11 +11,40 @@ import {Button} from 'react-native-elements';
 import {Paragraph, Subheading, useTheme} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
+import RazorpayCheckout from 'react-native-razorpay';
 
 const EventScreen = ({route}) => {
   const {event} = route.params;
   const {colors} = useTheme();
   const navigation = useNavigation();
+
+  let options = {
+    description: 'Online Fee',
+    image: 'https://i.imgur.com/3g7nmJC.png',
+    currency: 'INR',
+    amount: '25000',
+    key: 'rzp_test_631wMxKie5nOL2',
+    name: 'Test',
+    prefill: {
+      email: 'test@email.com',
+      contact: '9191919191',
+      name: 'ReactNativeForYou',
+    },
+    theme: {color: '#528FF0'},
+  };
+
+  const onPressButton = () => {
+    RazorpayCheckout.open(options)
+      .then((data) => {
+        // handle success
+        Alert.alert(`Success: ${data.razorpay_payment_id}`);
+      })
+      .catch((error) => {
+        // handle failure
+        Alert.alert(`Error: ${error.code} | ${error.description}`);
+      });
+  };
+  
 
   const Detail = ({name, value}) => {
     return (
@@ -35,7 +64,7 @@ const EventScreen = ({route}) => {
   };
 
   return (
-    <ImageBackground source={{uri: event.images}} style={styles.container}>
+    <ImageBackground source={{uri: event.image}} style={styles.container}>
       <View
         style={{...StyleSheet.absoluteFill, backgroundColor: 'rgba(0,0,0,0.4)'}}
       />
@@ -98,7 +127,7 @@ const EventScreen = ({route}) => {
             }}>
             <Button
               title={'Donate'}
-              // onPress={() => navigation.navigate('RazorpayScreens')}
+              onPress={() => onPressButton()}
               style={'solid'}
               buttonStyle={{
                 backgroundColor: '#00CFDE',

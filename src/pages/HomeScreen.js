@@ -1,71 +1,58 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, FlatList, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, View, FlatList} from 'react-native';
 import {Text} from 'react-native-paper';
 import EventCard from '../components/EventCard';
 import Header from '../components/Header';
 
-const HomeScreen = ({navigation}) => {
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    var requestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-    };
-
-    fetch('http://127.0.0.1:8000/news/funding/', requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        console.log(result);
-        setEvents([...result]);
-      })
-      .catch(error => console.log('error', error));
-  }, []);
+const HomeScreen = () => {
+  const [events, setEvents] = useState([
+    {
+      _id: 1,
+      name: "Neelam's Life's Mission Is To Give Abandoned People With Disabilities Love & Respect, Join Her",
+      description:
+        "Neelam's Life's Mission Is To Give Abandoned People With Disabilities Love & Respect, Join Her Neelam's Life's Mission Is To Give Abandoned People With Disabilities Love & Respect, Join Her",
+      image:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9HMDplkER-A9s2Z1V8Ay79sIs3MPVw9V-Zw&usqp=CAU',
+      createdBy: 'Lorem Ipsum',
+      targetAmount: 1000000,
+      collectedAmount: 900000,
+      event_date: new Date().toString(),
+      contributors: 100,
+      subEvents: ['Intro', 'Do-work', 'Come Back'],
+      targetVolunteers: 100,
+      registeredVolunteers: 10,
+      address: 'test building , Test Lane , test city :- 8797383 ',
+      latitude: -21.25653,
+      longitude: -100.84926,
+    },
+    {
+      _id: 2,
+      name: "Neelam's Life's Mission Is To Give Abandoned People With Disabilities Love & Respect, Join Her",
+      description:
+        "Neelam's Life's Mission Is To Give Abandoned People With Disabilities Love & Respect, Join Her Neelam's Life's Mission Is To Give Abandoned People With Disabilities Love & Respect, Join Her",
+      image: 'https://thelogicalindian.com/h-upload/2020/01/27/152340-10-1.jpg',
+      createdBy: 'Lorem Ipsum',
+      targetAmount: 9000000,
+      collectedAmount: 700000,
+      event_date: new Date().toString(),
+      contributors: 50,
+      subEvents: ['Intro', 'Do-work', 'Come Back'],
+      targetVolunteers: 80,
+      registeredVolunteers: 7,
+      address: 'test building , Test Lane , test city :- 8797383 ',
+      latitude: 19.1061636,
+      longitude: 72.8369622,
+    },
+  ]);
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          alignItems: 'center',
-          padding: 15,
-          elevation: 3,
-          backgroundColor: 'white',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          position: 'relative',
-        }}>
-        <Text
-          style={{
-            fontSize: 18,
-            fontWeight: 'bold',
-            color: 'black',
-          }}>
-          Campaigns
-        </Text>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Add Event');
-          }}
-          style={{position: 'absolute', right: 20}}>
-          <Text
-            style={{
-              fontSize: 16,
-              color: '#1CD6CE',
-            }}>
-            Add
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          padding: 10,
-        }}>
-        <FlatList
-          data={events}
-          keyExtractor={(x, i) => i.toString()}
-          renderItem={({item}) => <EventCard event={item} />}
-        />
-      </View>
+      <Header title={'Events'} />
+      <FlatList
+        data={events}
+        keyExtractor={(x, i) => i.toString()}
+        renderItem={({item}) => <EventCard event={item} />}
+      />
     </View>
   );
 };
@@ -73,8 +60,7 @@ const HomeScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
-    marginBottom: 50,
+    padding: 15,
   },
 });
 

@@ -66,6 +66,7 @@
     "react-native-star-rating-widget": "^1.2.0",
     "react-native-svg": "^12.4.4",
     "react-native-swiper": "^1.6.0",
+    "react-native-tab-view": "^3.3.4",
     "react-native-touch-id": "^4.4.1",
     "react-native-touchable-scale": "^2.2.0",
     "react-native-tts": "^4.1.0",

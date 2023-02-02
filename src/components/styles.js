@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
   typeMsgContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    
   
   },
 
@@ -42,15 +44,18 @@ const styles = StyleSheet.create({
     borderWidth: 0.8,
     borderColor: 'grey',
  backgroundColor: 'white',
-    width: width*0.85,
+    width: width*0.80,
     borderRadius: 20,
-    margin:4
+    margin:5
   },
 
   sendBtn: {
-    width: width*0.2,
+    width: width*0.15,
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 20,
+    margin:2
+
   },
   send: {
     alignContent: 'center',

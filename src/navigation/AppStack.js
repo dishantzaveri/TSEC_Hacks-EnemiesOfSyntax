@@ -176,13 +176,13 @@ function Tabs() {
         }}
       />
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Events"
         component={EventScreen}
         options={{
           headerShown: false,
         }}
-      />
+      /> */}
 
       <Tab.Screen
         name="Jobs"
@@ -211,28 +211,32 @@ function Tabs() {
 
 const HomeStackScreen = () => {
   return (
-    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+    <HomeStack.Navigator screenOptions={{headerShown: false}}>
       <HomeStack.Screen
-        name="AllEvents"
-        component={AllEvents}
-        screenOptions={{ headerShown: false }}
+        name="HomeMain"
+        component={HomeScreen}
+        screenOptions={{headerShown: false}}
       />
       <HomeStack.Screen
         name="Event"
         component={EventScreen}
-        screenOptions={{ headerShown: false }}
+        screenOptions={{headerShown: false}}
       />
-      <HomeStack.Screen
+      {/* <HomeStack.Screen
         name="Add Event"
         component={AddEventC}
-        screenOptions={{ headerShown: false }}
-      />
+        screenOptions={{headerShown: false}}
+      /> */}
       <HomeStack.Screen
         name="Chat"
         component={ChatScreen}
-        screenOptions={{ headerShown: false }}
+        screenOptions={{headerShown: false}}
       />
-
+      {/* <HomeStack.Screen
+        name="RazorpayScreens"
+        component={RazorpayScreens}
+        screenOptions={{headerShown: false}}
+      /> */}
     </HomeStack.Navigator>
   );
 };
@@ -330,6 +334,16 @@ const AppStack = () => {
             ),
           }}
         />
+           <Drawer.Screen
+          name="Events"
+          component={HomeStackScreen}
+          options={{
+            headerShown: false,
+            drawerIcon: ({color}) => (
+              <MaterialIcons name="emoji-events" size={22} color={color} />
+            ),
+          }}
+        />
         <Drawer.Screen
           name="Profile"
           component={Account}
@@ -420,7 +434,7 @@ const AppStack = () => {
             ),
           }}
         />
-        <Drawer.Screen
+        {/* <Drawer.Screen
           name="Events"
           component={HomeStackScreen}
           options={{
@@ -429,7 +443,7 @@ const AppStack = () => {
               <MaterialIcons name="emoji-events" size={22} color={color} />
             ),
           }}
-        />
+        /> */}
         <Drawer.Screen
           name="ReferralClub"
           component={ReferralClub}
