@@ -11,12 +11,14 @@ import { DeafDumb } from "./screens/DeafDumb";
 import { Dyslexia } from "./screens/Dyslexia";
 import { DyslexiaReader } from "./screens/DyslexiaReader";
 import { Chat } from "./screens/Chat";
+import SignUp from "./screens/SignUp";
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/visually_impaired" element={<VisuallyImpaired />} />
           <Route path="/deaf_and_dumb" element={<DeafDumb />} />
           <Route path="/dyslexia" element={<Dyslexia />} />

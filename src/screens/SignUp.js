@@ -34,7 +34,7 @@ function SignUp() {
   };
   return (
     <div>
-      <div className="flex flex-col space-y-4 items-center justify-center bg-green-200 text-[#0F092D] w-full min-h-screen">
+      <div className="flex flex-col space-y-4 items-center justify-center text-[#0F092D] w-full min-h-screen">
         <Link to='/'>
           <img src={logo} alt='' className='w-36'></img>
         </Link>

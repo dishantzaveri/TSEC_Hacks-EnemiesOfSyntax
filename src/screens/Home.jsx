@@ -3,7 +3,7 @@ import logo from '../utils/logo.png'
 
 export const Home = () => {
   return (
-    <div className='bg-green-200 min-h-screen'>
+    <div className='min-h-screen'>
       <Navbar />
       <div className='flex flex-col justify-between items-center h-[90vh]'>
         <div className='flex flex-col justify-between items-center'>
