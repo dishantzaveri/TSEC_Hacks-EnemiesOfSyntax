@@ -65,27 +65,6 @@ export default function FormPropsTextFields() {
         console.log(error);
       });
   };
-  // const postGst = () => {
-  //   let config = {
-  //     method: 'post',
-  //     url: 'http://localhost:8000/account/gstverify/',
-  //     headers: { 
-  //       'Authorization': 'Token ' + token
-  //     },
-  //     data: {
-  //       gstnumber: input
-  //     }
-  //   };
-  //   console.log(config)
-  //   axios(config)
-  //     .then(function (response) {
-  //       console.log(JSON.stringify(response.data));
-  //       setStartups(response.data);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
 
 
   const submit = async () => {

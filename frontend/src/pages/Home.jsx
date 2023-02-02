@@ -103,11 +103,6 @@ const Section1 = () => {
 
   // This function put query that helps to
   // change the language
-  const handleLanguage = (e) => {
-    setLang(e.target.value);
-    let loc = "http://localhost:3000/";
-    window.location.replace(loc + "?lng=" + e.target.value);
-  };
   return (
     <div className="h-screen w-full flex justify-center items-center">
       {/* {window.location.pathname === "/" && (

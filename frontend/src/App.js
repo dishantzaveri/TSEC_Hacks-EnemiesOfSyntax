@@ -58,11 +58,6 @@ function App() {
 
   // This function put query that helps to
   // change the language
-  const handleChange = (e) => {
-    setLang(e.target.value);
-    let loc = "http://localhost:3000/";
-    window.location.replace(loc + "?lng=" + e.target.value);
-  };
 
   return (
     <>
