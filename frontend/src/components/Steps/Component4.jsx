@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +13,7 @@ import ReactImageUploading from "react-images-uploading";
 import { setField } from "../../features/auth/registerSlice";
 import { setCredentails } from "../../features/auth/authSlice";
 import { Checkbox, FormControlLabel } from "@mui/material/node";
+import alanBtn from "@alan-ai/alan-sdk-web";
 
 const Photo = ({ inputs, setInputs }) => {
   const onChange = (imageList, addUpdateIndex) => {
@@ -100,9 +101,68 @@ export default function FormPropsTextFields() {
       : {
           name: "",
           email: "",
-          password: ""
+          password: "",
+          photo: null,
+          type: "None",
         }
   );
+  useEffect(() => {
+    alanBtn({
+      key: "7c6fbb4d8de206d909ff5ccdfb12a29f2e956eca572e1d8b807a3e2338fdd0dc/stage",
+      onCommand: (commandData) => {
+        console.log(commandData);
+        if (commandData.command === "navigate") {
+          switch (commandData.data) {
+            case "home":
+              navigate("/");
+              break;
+            case "login":
+              navigate("/login");
+              break;
+            case "register":
+              navigate("/signup");
+              break;
+            case "feed":
+              navigate("/feed");
+              break;
+            case "community":
+              navigate("/community");
+              break;
+            case "profile":
+
+            default:
+              break;
+          }
+        }
+        switch (commandData.command) {
+          case "login_form:name":
+            setInputs((prevState) => ({
+              ...prevState,
+              name: commandData.data,
+            }));
+            break;
+          case "login_form:email":
+            setInputs((prevState) => ({
+              ...prevState,
+              email: commandData.data,
+            }));
+            break;
+          case "login_form:password":
+            setInputs((prevState) => ({
+              ...prevState,
+              password: commandData.data,
+            }));
+            break;
+          case "login_form:submit":
+            submit();
+            break;
+          default:
+            break;
+        }
+      },
+    });
+  }, []);
+  const [pass, setPass] = useState("");
   const [registerMentor, { isLoading: mentor }] = useRegisterMentorMutation();
   const [registerMentee, { isLoading: mentee }] = useRegisterMenteeMutation();
   const submit = async () => {
@@ -119,6 +179,13 @@ export default function FormPropsTextFields() {
             email: inputs.email,
             password: inputs.password,
           }).unwrap();
+          const user = {
+            ...data,
+            name: inputs.name,
+            isMentee: false,
+            isMentor: true,
+          };
+          dispatch(setCredentails(user));
           dispatch(setField({ field: "details", value: inputs }));
         } catch (e) {
           alert(Object.entries(e.data));
@@ -130,6 +197,13 @@ export default function FormPropsTextFields() {
             email: inputs.email,
             password: inputs.password,
           }).unwrap();
+          const user = {
+            ...data,
+            name: inputs.name,
+            isMentee: true,
+            isMentor: false,
+          };
+          dispatch(setCredentails(user));
           dispatch(setField({ field: "details", value: inputs }));
         } catch (error) {
           console.log(error);
@@ -200,8 +274,18 @@ export default function FormPropsTextFields() {
                 }
               />
             </div>
+            <div className="flex gap-4 items-center">
+              <h1 className="text-lg">Choose</h1>
+              <DropDown inputs={inputs} setInputs={setInputs} />
+            </div>
           </div>
         </div>
+        <button
+          className="w-full mt-4 bg-purple-gray-700 py-2 text-gray-100"
+          onClick={() => submit()}
+        >
+          {mentor || mentee ? "Loading" : "Save"}
+        </button>
       </Box>
     </div>
   );

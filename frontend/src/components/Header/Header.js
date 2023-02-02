@@ -10,7 +10,7 @@ import logo from "../../assets/logo.png";
 
 const Header = ({ event }) => {
   const languages = [
-    { value: "", text: "Options" },
+    { value: "", text: "Languages" },
     { value: "en", text: "English" },
     { value: "hi", text: "Hindi" },
     { value: "gu", text: "Gujarati" },
@@ -101,6 +101,9 @@ const Header = ({ event }) => {
             <h1 className="font-medium text-lg">{t("chat")}</h1>
           </Link>
 
+          <Link to="/resume">
+            <h1 className="font-medium text-lg">{t("Resume")}</h1>
+          </Link>
           <div>
             <button
               id="fade-button"

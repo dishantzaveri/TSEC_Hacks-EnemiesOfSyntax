@@ -12,8 +12,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setField } from '../../features/auth/registerSlice';
 import { useNavigate } from 'react-router-dom';
 
-const steps = ['Register','Education', 'Work Experience', 'Startup Details'];
-const state = ['details', 'education', 'work', 'startup'] 
+const steps = ['Register','Education', 'Work Experience'];
+const state = ['details', 'education', 'work'] 
 
 export default function Signup() {
   const dispatch = useDispatch()

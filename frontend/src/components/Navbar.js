@@ -78,6 +78,10 @@ export default function  Navbar  ()  {
         <Link to="/myProfile">
         <HeaderOption Icon={PersonIcon} title="Profile" />
         </Link>
+
+        <Link to="/resume">
+        <HeaderOption Icon={BusinessCenterIcon} title="Resume" />
+        </Link>
         
         {/* <HeaderOption Icon={NotificationsIcon} title="Notifications" /> */}
         {/* <HeaderOption avatar={user.photoUrl} title="me" /> */}

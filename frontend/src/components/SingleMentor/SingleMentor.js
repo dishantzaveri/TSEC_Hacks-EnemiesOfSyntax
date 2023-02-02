@@ -34,21 +34,25 @@ const SingleMentor = () => {
     navigate("/chat");
   };
 
-  return (
-    <div>
-      {/* <Navbar /> */}
-      <Header />
-      <div className="px-60 py-14 bg-gradient-to-r from-[#2eb6b8] via-blue-300  to-[#DAF0F4] w-full h-64 relative">
-        <div className="flex items-center pb-4">
-          <div className="ml-5">
-            <h1 className="font-extrabold text-[35px] cursor-pointer ml-4 self-center">
-              {mentor.name}
-            </h1>
-            <h4 className="font-b old text-[23px] cursor-pointer ml-4 self-center">
-              Company Name
-            </h4>
-          </div>
-        </div>
+	return (
+		<div>
+			{/* <Navbar /> */}
+			<Header />
+			<div className="px-60 py-14 bg-gradient-to-r from-[#2eb6b8] via-blue-300  to-[#DAF0F4] w-full h-64 relative">
+				<div className="flex items-center pb-4">
+					<img
+						className="w-[150px] h-[150px] rounded-full object-cover self-center"
+						src='https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg'
+					/>
+					<div className="ml-5">
+						<h1 className="font-extrabold text-[35px] cursor-pointer ml-4 self-center">
+							Serina
+						</h1>
+						<h4 className="font-bold text-[23px] cursor-pointer ml-4 self-center">
+							Company Name
+						</h4>
+					</div>
+				</div>
 
         <div className="flex justify-between absolute mb-8 ">
           <div className="shadow bg-white shadow-gray-300 p-8 w-96 flex flex-col rounded h-fit">

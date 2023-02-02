@@ -41,6 +41,7 @@ import ObjectDetection from "./pages/ObjectDetection";
 import SignDetection from "./pages/SignDetection";
 import Startups from "./components/Startups/Startups";
 import Schemes from "./components/GovernmentSchemes/GovernmentSchemes";
+import Resume from "./components/Resume";
 
 const languages = [
   { value: "", text: "Options" },
@@ -65,7 +66,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/registerMentor" element={<RegisterMentor />} />
+          <Route path="/registerMentee" element={<RegisterMentee />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/resume" element={<Resume />} />
           <Route element={<RequireAuth />}>
             <Route path="/object-detection" element={<ObjectDetection />} />
             <Route path="/sign-detection" element={<SignDetection />} />
