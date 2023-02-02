@@ -35,7 +35,7 @@ class User(AbstractUser):
     # extra fields
     email = models.EmailField(("Email Address"),primary_key=True)
     name = models.CharField(max_length = 30)
-    dob = models.DateField(blank=True,null=True)
+    # dob = models.DateField(blank=True,null=True)
     twitter = models.URLField(max_length = 255,null=True,blank=True)
     linkedin = models.URLField(max_length = 255,null=True,blank=True)
     interests = models.TextField(max_length = 255,null=True,blank=True)

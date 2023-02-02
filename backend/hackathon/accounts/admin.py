@@ -14,19 +14,19 @@ class EntrepreneurProfileInline(admin.StackedInline):
 # Register your models here.
 class UserAdmin(UserAdmin):
     model = User
-    list_display = ['email', 'name', 'dob', 'twitter', 'linkedin', 'interests','about', 'profile_pic', 'is_staff','is_active','is_entrepreneur','is_mentor']
-    list_filter = ['email', 'name', 'dob', 'twitter', 'linkedin', 'interests','about', 'profile_pic', 'is_staff','is_active','is_entrepreneur','is_mentor']
+    list_display = ['email', 'name', 'twitter', 'linkedin', 'interests','about', 'profile_pic', 'is_staff','is_active','is_entrepreneur','is_mentor']
+    list_filter = ['email', 'name', 'twitter', 'linkedin', 'interests','about', 'profile_pic', 'is_staff','is_active','is_entrepreneur','is_mentor']
 
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('name','dob', 'twitter', 'linkedin', 'interests','about', 'profile_pic',)}),
+        ('Personal info', {'fields': ('name', 'twitter', 'linkedin', 'interests','about', 'profile_pic',)}),
         ('Permissions', {'fields': ('is_active','is_staff','is_entrepreneur','is_mentor','is_superuser')}),
     )
 
     add_fieldsets = (
         (None, {
             'classes': ('wide,'),
-            'fields': ('email', 'password1', 'password2', 'name', 'dob', 'twitter', 'linkedin', 
+            'fields': ('email', 'password1', 'password2', 'name', 'twitter', 'linkedin', 
             'interests','about', 'profile_pic', 'is_staff','is_active','is_entrepreneur','is_mentor'),
         }),
     )

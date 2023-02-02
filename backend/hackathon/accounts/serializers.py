@@ -11,7 +11,7 @@ class MentorRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['email', 'password', 'name', 'dob', 'twitter', 'linkedin', 'interests','about', 'profile_pic','is_entrepreneur', 'is_mentor']
+        fields = ['email', 'password', 'name', 'twitter', 'linkedin', 'interests','about', 'profile_pic','is_entrepreneur', 'is_mentor']
 
     # To validate data received
     def validate(self, attrs):
@@ -39,7 +39,7 @@ class EntrepreneurRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['email', 'password', 'name', 'dob', 'twitter', 'linkedin', 'interests','about', 'profile_pic','is_entrepreneur', 'is_mentor']
+        fields = ['email', 'password', 'name', 'twitter', 'linkedin', 'interests','about', 'profile_pic','is_entrepreneur', 'is_mentor']
 
     # To validate data received
     def validate(self, attrs):
