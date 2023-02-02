@@ -12,6 +12,7 @@ const appSetting = new CometChat.AppSettingsBuilder()
   .build();
 
 const App = () => {
+  console. disableYellowBox = true;
   useEffect(() => {
     CometChat.init(app_id, appSetting).then(
       () => {
