@@ -7,7 +7,7 @@ Column,
 FooterLink,
 Heading,
 } from "./FooterStyles";
-import logo from "../../assets/logo2.png";
+import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';

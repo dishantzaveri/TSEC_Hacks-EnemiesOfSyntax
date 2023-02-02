@@ -16,7 +16,6 @@ const steps = ['Register','Education', 'Work Experience', 'Startup Details'];
 const state = ['details', 'education', 'work', 'startup'] 
 
 export default function Signup() {
-  const navigate = useNavigate();
   const dispatch = useDispatch()
   const {page} = useSelector(state => state.register)
   const register = useSelector(state => state.register)

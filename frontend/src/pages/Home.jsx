@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { BiSearch, BiRightArrowAlt } from "react-icons/bi";
-import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../features/auth/authSlice.js";
 import { useEffect } from "react";
 import { SimpleMap } from "../components/Map/Map.jsx";
 import {
@@ -20,12 +18,9 @@ import { VscLoading } from "react-icons/vsc";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   PieChart,
   Pie,
@@ -34,92 +29,17 @@ import Header from "../components/Header/Header.js";
 import Eligibility from "../components/Eligibility.js";
 import alanBtn from "@alan-ai/alan-sdk-web";
 
-// const Header = () => {
-//   const dispatch = useDispatch();
-//   const { token } = useSelector((state) => state.auth);
-//   console.log(token);
-
-//   return (
-//     <div className="px-24 py-4 flex justify-between border-b">
-//       <Link className="font-bold text-3xl" to="/">
-//         mentoree
-//       </Link>
-//       <div className={`flex gap-4 ${token && "hidden"} items-center`}>
-//         <Link className="font-semibold text-xl" to="/registermentor">
-//           Become a Mentor
-//         </Link>
-//         <Link className="font-semibold text-xl" to="/registermentor">
-//           Find a Mentor
-//         </Link>
-//         <Link to="/registermentee">
-//           <button className="uppercase rounded-full border w-[8vw] py-2 hover:bg-purple-gray-600 hover:text-white transition-all duration-150">
-//             Sign Up
-//           </button>
-//         </Link>
-//         <Link to="/login">
-//           <button className="uppercase rounded-full border w-[8vw] py-2 hover:bg-inherit hover:text-inherit bg-purple-gray-600 text-white transition-all duration-150">
-//             Log in
-//           </button>
-//         </Link>
-//       </div>
-//       {token && (
-//         <button
-//           className="uppercase rounded-full border w-[8vw] py-2 hover:bg-inherit hover:text-inherit bg-purple-gray-600 text-white transition-all duration-150"
-//           onClick={() => dispatch(logout())}
-//         >
-//           Log out
-//         </button>
-//       )}
-//     </div>
-//   );
-// };
-
-// const Categories = () => {
-//   return (
-//     <div className="px-24 py-6 flex justify-center gap-8 border-b">
-//       <h1 className="text-lg text-gray-700">All</h1>
-//       <h1 className="text-lg text-gray-700">Entrepreneurship</h1>
-//       <h1 className="text-lg text-gray-700">Education</h1>
-//       <h1 className="text-lg text-gray-700">Art / Creative</h1>
-//       <h1 className="text-lg text-gray-700">Media / Production</h1>
-//       <h1 className="text-lg text-gray-700">Law</h1>
-//       <h1 className="text-lg text-gray-700">Recreational</h1>
-//     </div>
-//   );
-// };
-
 const Section1 = () => {
-  const languages = [
-    { value: "", text: "Options" },
-    { value: "en", text: "English" },
-    { value: "hi", text: "Hindi" },
-    { value: "gu", text: "Gujarati" },
-    { value: "mr", text: "Marathi" },
-    { value: "ta", text: "Tamil" },
-  ];
+  
   const { t } = useTranslation();
-
-  const [lang, setLang] = useState("");
 
   // This function put query that helps to
   // change the language
   return (
     <div className="h-screen w-full flex justify-center items-center">
-      {/* {window.location.pathname === "/" && (
-        <select value={lang} onChange={handleLanguage}>
-          {languages.map((item) => {
-            return (
-              <option key={item.value} value={item.value}>
-                {item.text}
-              </option>
-            );
-          })}
-        </select>
-      )} */}
       <div className="flex flex-col items-center w-[50vw]">
         <h1 className="text-6xl font-semibold text-gray-800">
-          {t("evn1")}{" "}
-          <span className="text-purple-gray-700">{t("Job")}</span>
+          {t("evn1")} <span className="text-purple-gray-700">{t("Job")}</span>
         </h1>
         <h1 className="text-center text-xl text-gray-700 mt-6">
           {t("search")}

@@ -3,16 +3,10 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
-import axios from "axios";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { Dropdown } from "semantic-ui-react";
-import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
-import logo from "../../assets/logo2.png";
+import logo from "../../assets/logo.png";
 
 const Header = ({ event }) => {
   const languages = [
@@ -65,105 +59,28 @@ const Header = ({ event }) => {
   return (
     <div className="px-12 py-2 flex justify-between items-center border-b">
       {/* <h1>{t('welcome')}</h1> */}
-      <Link className="font-bold " to="/">
-        <img src={logo} style={{ width: "100px" }} />
-      </Link>
-      {window.location.pathname === "/" && (
-        <select value={lang} onChange={handleLanguage}>
-          {languages.map((item) => {
-            return (
-              <option key={item.value} value={item.value}>
-                {item.text}
-              </option>
-            );
-          })}
-        </select>
-      )}
-
-      {/* <label>{t('choose')}</label> */}
-      {/* {token && (
-				<div className="px-64 flex flex-row justify-between items-center flex-1">
-                   
-					<Link to="/feed">
-						<h1 className="font-medium text-lg"><label>{t('home')}</label></h1>
-					</Link>
-
-					<Link to="/mentors">
-						<h1 className="font-medium text-lg"><label>{t('startups')}</label></h1>
-					</Link>
-
-					<Link to="/chat">
-						<h1 className="font-medium text-lg"><label>{t('chat')}</label></h1>
-					</Link>
-
-					<Link to="/myProfile">
-						<h1 className="font-medium text-lg"><label>{t('profile')}</label></h1>
-					</Link>
-
-					
-                    <div>
-      <button
-        id="fade-button"
-        aria-controls={open ? 'fade-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-        style={{color:"black", fontWeight:500, fontSize:"1.125rem", lineHeight:"1.75rem"}}
-      >
-        <label>{t('activities')}</label>
-      </button>
-      <Menu
-        id="fade-menu"
-        fullwidth
-        MenuListProps={{
-          'aria-labelledby': 'fade-button',
-        }}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        TransitionComponent={Fade}
-        sx={{margin:"10px", padding:"10px"}}
-      >
-        <Link to="/events">
-        <MenuItem   sx={{margin:"10px", padding:"10px", width:"120px"}}>Events</MenuItem>
+      <div className="py-2">
+        <Link
+          className="font-bold flex flex-col justify-between items-center"
+          to="/"
+        >
+          <img src={logo} style={{ width: "40px" }} />
+          <b> AccessAbility </b>
         </Link>
-        <Link to="/campaigns">
-        <MenuItem  sx={{margin:"10px", padding:"10px", width:"120px"}}>Campaigns</MenuItem>
-        </Link>
-      </Menu>
-    </div>
-				</div>
-			)} */}
-
-      {/* <Link className="font-bold " to="/">
-				<img src={logo} style={{height:"80px", width:"100px"}} />
-			</Link> */}
-
-      {/* {token && ( */}
-      {/* <div className="header__search">
-          <SearchIcon />
-          <input type="text" placeholder="Search bar" />
-        </div> */}
-      {/* )} */}
-
-      {/* <div className={`flex gap-4 ${token && "hidden"} items-center`}>
-          <Link className="font-semibold text-xl" to="/registermentor">
-            Become a Mentor
-          </Link>
-          <Link className="font-semibold text-xl" to="/registermentor">
-            Find a Mentor
-          </Link>
-          <Link to="/registermentee">
-            <button className="uppercase rounded-full border w-[8vw] py-2 hover:bg-purple-gray-600 hover:text-white transition-all duration-150">
-              Sign Up
-            </button>
-          </Link>
-          <Link to="/login">
-            <button className="uppercase rounded-full border w-[8vw] py-2 hover:bg-inherit hover:text-inherit bg-purple-gray-600 text-white transition-all duration-150">
-              Log in
-            </button>
-          </Link>
-        </div> */}
+      </div>
+      <div className="px-8 pt-4 flex justify-center items-center">
+        {window.location.pathname === "/" && (
+          <select value={lang} onChange={handleLanguage}>
+            {languages.map((item) => {
+              return (
+                <option key={item.value} value={item.value}>
+                  {item.text}
+                </option>
+              );
+            })}
+          </select>
+        )}
+      </div>
 
       {token ? (
         <div className="flex flex-row justify-end items-center flex-1 gap-8">
