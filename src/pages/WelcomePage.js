@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -8,18 +8,24 @@ import {
   View,
   Linking,
   Image,
-  FlatList
+  FlatList,
+  ActivityIndicator
 } from 'react-native';
-import {WebView} from 'react-native-webview';
+import { WebView } from 'react-native-webview';
 import LinearGradient from 'react-native-linear-gradient';
-import {height, width} from '../Consts';
+import { height, width } from '../Consts';
 import logo from '../assets/mentordots.png';
-import {useTheme } from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 import { black } from 'react-native-paper/lib/typescript/styles/colors';
 import { ScrollView } from 'react-native-gesture-handler';
+import Footer from '../components/Footer';
+import Voice from '@react-native-voice/voice';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 // import photo1 from '../assets/photo1.png';
 
-const WelcomePage = ({navigation}) => {
+const WelcomePage = ({ navigation }) => {
   const { colors } = useTheme();
   const githubFindMentor =
     'https://github.com/dishantzaveri/SIH-TeamEnemiesOfSyntaxx';
@@ -37,7 +43,42 @@ const WelcomePage = ({navigation}) => {
     // add more images here
   ];
 
-  function renderItem({item}){
+  const [isloading, setIsloading] = useState(false);
+  const [results, setResults] = useState([]);
+  const startRecognition = async () => {
+    setIsloading(true);
+    setResults([]);
+    try {
+      await Voice.start('en-US');
+      console.log("started");
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const stopRecognition = async () => {
+    try {
+      await Voice.stop();
+      setIsloading(false);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  Voice.onSpeechResults = (e) => {
+    setResults(e.value);
+    if (e.value[0].includes('resume')) {
+      console.log("tp");
+      navigation.navigate('Resume1');
+    }
+    else if(e.value[0]=="go to video call page"){
+      navigation.navigate('VideoCall');
+    }
+    console.log(e.value[0]);
+
+  };
+
+  function renderItem({ item }) {
     return (
       <View style={{ flex: 1, flexDirection: 'column', margin: 1 }}>
         <Image style={styles.image} source={item.source} />
@@ -47,14 +88,36 @@ const WelcomePage = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.main}>
-      
-      <Text style={styles.text1Style}>Arts by our Artisians</Text>
-      <FlatList
-        data={imageData}
-        numColumns={3}
-        renderItem={renderItem}
-        keyExtractor={item => item.id.toString()}
-      />
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('VideoCall')
+        }>
+        <Text style={styles.text1Style}>Arts by our Artisians</Text>
+      </TouchableOpacity>
+
+
+
+      <ScrollView>
+        <FlatList
+          nestedScrollEnabled
+          data={imageData}
+          numColumns={3}
+          renderItem={renderItem}
+          keyExtractor={item => item.id.toString()}
+        />
+
+        <TouchableOpacity
+          onPress={isloading ? stopRecognition : startRecognition}>
+          <View style={styles.footer}>
+            {isloading ? <ActivityIndicator size="large" color="red"></ActivityIndicator> :
+              <Ionicons
+                name='mic'
+                size={50}
+                color="#1D1042">
+              </Ionicons>}
+          </View>
+        </TouchableOpacity>
+      </ScrollView>
 
     </SafeAreaView>
   );
@@ -76,7 +139,7 @@ const styles = StyleSheet.create({
     marginTop: 150,
   },
   text1Style: {
-    margin:15,
+    margin: 15,
     fontSize: 25,
     color: '#007bff',
     fontWeight: 'bold',
@@ -118,8 +181,8 @@ const styles = StyleSheet.create({
   },
   image: {
     width: Dimensions.get('window').width / 3,
-    height:300,
-    margin:10
+    height: 300,
+    margin: 10
   },
   buttonText: {
     fontWeight: 'bold',
@@ -131,6 +194,14 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 23,
   },
+  footer: {
+    width: wp('100%'),
+    height: hp('8%'),
+    backgroundColor: '#B9F3FC',
+    marginTop: hp('0.01%'),
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
 });
 
-export {WelcomePage};
+export { WelcomePage };

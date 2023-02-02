@@ -20,8 +20,13 @@ import {
 import { width } from '../Consts'
 import Profile from '../assets/blueprofile.png';
 import { useNavigation } from '@react-navigation/native';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker'; // Migration from 2.x.x to 3.x.x => showImagePicker API is removed.
 
-const Resume2 = ({}) => {
+
+
+
+
+const Resume2 = ({ }) => {
     const { colors } = useTheme();
     const [objective, setObjective] = useState('');
     const [name1, setName1] = useState('');
@@ -29,13 +34,24 @@ const Resume2 = ({}) => {
     const [title, setTitle] = useState('');
     const [countrycode, setCountryCode] = useState('');
     const [mobileno, setMobileno] = useState('');
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState(Profile);
     const [gender, setGender] = useState('');
     const [dob, setDob] = useState('');
     const [email, setEmail] = useState('');
     const [city, setCity] = useState('');
     const navigation = useNavigation();
 
+    const selectImage = async () => {
+        const res = await launchImageLibrary({
+          mediaType: 'photo',
+        });
+        console.log(res.assets[0].uri);
+        setImage({
+          uri: res.assets[0].uri,
+          name: res.assets[0].fileName,
+          type: res.assets[0].type,
+        });
+      };
 
 
     return (
@@ -55,11 +71,10 @@ const Resume2 = ({}) => {
                             }}>
                             Personal Details
                         </Text>
-                        <TouchableOpacity >
+                        <TouchableOpacity
+                            onPress={selectImage} >
                             <Image
-                                source={
-                                  Profile 
-                                }
+                                source={image}
                                 style={styles.profile}
                             />
                         </TouchableOpacity>
@@ -210,9 +225,9 @@ const Resume2 = ({}) => {
                         <View style={styles.button}>
                             <Button style={styles.button1} labelStyle={styles.label1}>Cancel
                             </Button>
-                            <Button style={styles.button2} labelStyle={styles.label2}  onPress={() =>
-                        navigation.navigate('Resume3')
-                    } >Save & Next
+                            <Button style={styles.button2} labelStyle={styles.label2} onPress={() =>
+                                navigation.navigate('Resume3')
+                            } >Save & Next
                             </Button>
                         </View>
                     </Card>
