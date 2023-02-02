@@ -42,6 +42,7 @@ import ProfileScreen from '../pages/ProfileScreen';
 import TopPicksScreen from '../pages/TopPicksScreen';
 import ChatMain from '../pages/Chat/ChatMain';
 import { StartupDetails } from '../pages/StartupDetails';
+import ChatBot from '../components/ChatBot';
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -200,8 +201,8 @@ function Tabs() {
       />
 
       <Tab.Screen
-        name="Mentees"
-        component={MenteeScreen}
+        name="ChatBot"
+        component={ChatBot}
         options={{headerShown: false}}
       />
     </Tab.Navigator>
