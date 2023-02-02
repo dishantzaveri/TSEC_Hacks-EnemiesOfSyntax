@@ -43,6 +43,7 @@ import TopPicksScreen from '../pages/TopPicksScreen';
 import ChatMain from '../pages/Chat/ChatMain';
 import { StartupDetails } from '../pages/StartupDetails';
 import ChatBot from '../components/ChatBot';
+import TextToSpeech from '../pages/TextToSpeech';
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -144,9 +145,9 @@ function Tabs() {
           if (route.name === 'Mentors') {
             return <FontAwesome5 name="people-carry" size={27} color={color} />;
           }
-          if (route.name === 'Mentees') {
+          if (route.name === 'ChatBot') {
             return (
-              <FontAwesome5 name="people-arrows" size={27} color={color} />
+              <FontAwesome5 name="rocketchat" size={27} color={color} />
             );
           }
           if (route.name === 'Posts') {
@@ -336,6 +337,15 @@ const AppStack = () => {
         <Drawer.Screen
           name="Profile"
           component={Account}
+          options={{
+            drawerIcon: ({color}) => (
+              <Ionicons name="person-outline" size={22} color={color} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="TextToSpeech"
+          component={TextToSpeech}
           options={{
             drawerIcon: ({color}) => (
               <Ionicons name="person-outline" size={22} color={color} />
