@@ -12,6 +12,9 @@ import { Dyslexia } from "./screens/Dyslexia";
 import { DyslexiaReader } from "./screens/DyslexiaReader";
 import { Chat } from "./screens/Chat";
 import SignUp from "./screens/SignUp";
+import Portal from "./screens/Portal";
+import Blogs from "./screens/Blogs";
+import Training from "./screens/Training";
 function App() {
   return (
     <div className="App">
@@ -19,6 +22,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/portal" element={<Portal />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/courses" element={<Training />} />
           <Route path="/visually_impaired" element={<VisuallyImpaired />} />
           <Route path="/deaf_and_dumb" element={<DeafDumb />} />
           <Route path="/dyslexia" element={<Dyslexia />} />
