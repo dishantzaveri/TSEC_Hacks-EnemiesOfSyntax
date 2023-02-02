@@ -74,7 +74,7 @@ const Profile2 = ({navigation, route}) => {
         redirect: 'follow',
       };
       fetch(
-        'https://hackathon-a64l3uuv6q-uc.a.run.app/account/mentor/',
+        'http://127.0.0.1:8000/account/mentor/',
         requestOptions,
       )
         .then(response => response.text())
@@ -108,7 +108,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/education/',
+      'http://127.0.0.1:8000/account/education/',
       requestOptions,
     )
       .then(response => response.text())
@@ -142,7 +142,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/experience/',
+      'http://127.0.0.1:8000/account/experience/',
       requestOptions,
     )
       .then(response => response.text())
@@ -172,7 +172,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/gstverify/',
+      'http://127.0.0.1:8000/account/gstverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -199,7 +199,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/mentor/',
+      'http://127.0.0.1:8000/account/mentor/',
       requestOptions,
     )
       .then(response => {
@@ -235,7 +235,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/cinverify/',
+      'http://127.0.0.1:8000/account/cinverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -265,7 +265,7 @@ const Profile2 = ({navigation, route}) => {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/panverify/',
+      'http://127.0.0.1:8000/account/panverify/',
       requestOptions,
     )
       .then(response => response.text())

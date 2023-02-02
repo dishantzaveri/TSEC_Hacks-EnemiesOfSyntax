@@ -40,7 +40,7 @@ const UploadPost = () => {
       redirect: 'follow',
     };
 
-    fetch('https://hackathon-a64l3uuv6q-uc.a.run.app/api/posts/', requestOptions)
+    fetch('http://127.0.0.1:8000/api/posts/', requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));

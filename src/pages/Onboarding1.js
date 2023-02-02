@@ -59,8 +59,8 @@ const Onboarding1 = ({route}) => {
 
     fetch(
       route.params.role === 'mentor'
-        ? 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/mentor_register/'
-        : 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/entrepreneur_register/',
+        ? 'http://127.0.0.1:8000/account/mentor_register/'
+        : 'http://127.0.0.1:8000/account/entrepreneur_register/',
       requestOptions,
     )
       .then(response => response.text())

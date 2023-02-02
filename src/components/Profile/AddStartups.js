@@ -32,7 +32,7 @@ const GSTNumber = ({}) => {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/gstverify/',
+      'http://127.0.0.1:8000/account/gstverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -98,7 +98,7 @@ const CINNumber = ({}) => {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/cinverify/',
+      'http://127.0.0.1:8000/account/cinverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -220,7 +220,7 @@ const PanNumber = () => {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/panverify/',
+      'http://127.0.0.1:8000/account/panverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -239,7 +239,7 @@ const PanNumber = () => {
           redirect: 'follow',
         };
         fetch(
-          'https://hackathon-a64l3uuv6q-uc.a.run.app/account/startup/',
+          'http://127.0.0.1:8000/account/startup/',
           requestOptions2,
         )
           .then(response => response.text())
@@ -375,7 +375,7 @@ const PatentNumber = ({}) => {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/patentverify/',
+      'http://127.0.0.1:8000/account/patentverify/',
       requestOptions,
     )
       .then(response => response.text())
@@ -504,7 +504,7 @@ const AddStartups = ({navigation}) => {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/entrepreneur/',
+      'http://127.0.0.1:8000/account/entrepreneur/',
       requestOptions,
     )
       .then(response => response.text())

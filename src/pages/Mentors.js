@@ -28,7 +28,7 @@
 //   //   console.log(user?.token);
 //   //   var config = {
 //   //     method: 'get',
-//   //     url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/mentors_list/',
+//   //     url: 'http://127.0.0.1:8000/account/mentors_list/',
 //   //     headers: {
 //   //       Authorization: `Token ${user?.token}`,
 //   //       Cookie:
@@ -57,7 +57,7 @@
 //   //   );
 //   //   var config = {
 //   //     method: 'post',
-//   //     url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/search_mentors/',
+//   //     url: 'http://127.0.0.1:8000/account/search_mentors/',
 //   //     headers: myHeaders,
 //   //     data: data,
 //   //   };

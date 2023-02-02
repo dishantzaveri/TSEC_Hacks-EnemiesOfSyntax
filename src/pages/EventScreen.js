@@ -14,7 +14,6 @@ import {useNavigation} from '@react-navigation/native';
 
 const EventScreen = ({route}) => {
   const {event} = route.params;
-
   const {colors} = useTheme();
   const navigation = useNavigation();
 
@@ -99,7 +98,7 @@ const EventScreen = ({route}) => {
             }}>
             <Button
               title={'Donate'}
-              onPress={() => navigation.navigate('RazorpayScreens')}
+              // onPress={() => navigation.navigate('RazorpayScreens')}
               style={'solid'}
               buttonStyle={{
                 backgroundColor: '#00CFDE',

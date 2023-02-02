@@ -45,7 +45,7 @@ function Login1({navigation}) {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/login/',
+      'http://127.0.0.1:8000/account/login/',
       requestOptions,
     )
       .then(response => response.json())

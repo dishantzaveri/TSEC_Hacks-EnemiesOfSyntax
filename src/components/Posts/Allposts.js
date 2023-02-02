@@ -49,7 +49,7 @@ export default function AllPosts({navigation}) {
 
     var config = {
       method: 'get',
-      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/api/posts/',
+      url: 'http://127.0.0.1:8000/api/posts/',
       headers: {
         Authorization: 'Token 72f957f003d1ae579df255c5e46c5adefcb0d7c7',
         Cookie:

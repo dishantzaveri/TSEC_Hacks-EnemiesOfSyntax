@@ -38,7 +38,6 @@ import AddEventC from '../pages/AddEventC';
 // import {AlanView} from '@alan-ai/alan-sdk-react-native';
 import Matching from '../pages/Matching';
 import ProfileScreen from '../pages/ProfileScreen';
-import TopPicksScreen from '../pages/TopPicksScreen';
 import ChatMain from '../pages/Chat/ChatMain';
 import { StartupDetails } from '../pages/StartupDetails';
 import ChatBot from '../components/ChatBot';
@@ -50,6 +49,7 @@ import { CartIcon } from '../components/CartIcon';
 import { CartProvider } from '../../CartContext';
 import Track from '../pages/TrackPlayer';
 import TrackList from '../pages/TrackList';
+import AllEvents from '../pages/AllEvents';
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -177,8 +177,8 @@ function Tabs() {
       />
 
       <Tab.Screen
-        name="Upload"
-        component={UploadPost}
+        name="Events"
+        component={EventScreen}
         options={{
           headerShown: false,
         }}
@@ -213,8 +213,8 @@ const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen
-        name="HomeMain"
-        component={HomeScreen}
+        name="AllEvents"
+        component={AllEvents}
         screenOptions={{ headerShown: false }}
       />
       <HomeStack.Screen

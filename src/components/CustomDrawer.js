@@ -31,7 +31,7 @@ const CustomDrawer = props => {
     };
 
     fetch(
-      `https://hackathon-a64l3uuv6q-uc.a.run.app/account/${
+      `http://127.0.0.1:8000/account/${
         user?.is_mentor ? 'mentor' : 'entrepreneur'
       }/`,
       requestOptions,
