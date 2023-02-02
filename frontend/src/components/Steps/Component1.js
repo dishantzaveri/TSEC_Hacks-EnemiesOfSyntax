@@ -26,7 +26,7 @@ export default function FormPropsTextFields() {
   useEffect(() => {
     const options = {
       method: 'GET',
-      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/experience/',
+      url: 'http://localhost:8000/account/experience/',
       headers: {
         'Authorization': `Token ${token}`,
       }
@@ -84,7 +84,7 @@ export default function FormPropsTextFields() {
 
       // var config = {
       //   method: 'POST',
-      //   url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/experience/',
+      //   url: 'http://localhost:8000/account/experience/',
       //   headers: { 
       //     'Authorization': 'Token ' + token, 
       //     'Cookie': 'csrftoken=ONSFu7hzHlkazVZWCUFueznNNNq0ZUfY',
@@ -116,7 +116,7 @@ export default function FormPropsTextFields() {
       }
       var config = {
         method: 'post',
-        url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/experience/',
+        url: 'http://localhost:8000/account/experience/',
         headers: {
           'Authorization': 'Token ' + token,
         },

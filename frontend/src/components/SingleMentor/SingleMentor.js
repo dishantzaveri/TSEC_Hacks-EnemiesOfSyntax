@@ -42,7 +42,7 @@ const SingleMentor = () => {
 				<div className="flex items-center pb-4">
 					<img
 						className="w-[150px] h-[150px] rounded-full object-cover self-center"
-						src={'https://hackathon-a64l3uuv6q-uc.a.run.app/' + mentor.profile_pic}
+						src={'http://localhost:8000/' + mentor.profile_pic}
 					/>
 					<div className="ml-5">
 						<h1 className="font-extrabold text-[35px] cursor-pointer ml-4 self-center">

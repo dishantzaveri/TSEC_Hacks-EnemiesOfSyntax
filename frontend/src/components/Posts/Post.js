@@ -19,7 +19,7 @@ const CommentBody = ({ comment, comments }) => {
   const getComments = comment => {
     var config = {
       method: 'get',
-      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/api/comments/' + comment + '/',
+      url: 'http://localhost:8000/api/comments/' + comment + '/',
       headers: {
         'Authorization': 'Token ' + token,
       },
@@ -42,7 +42,7 @@ const CommentBody = ({ comment, comments }) => {
 
     var config = {
       method: 'post',
-      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/api/comments/',
+      url: 'http://localhost:8000/api/comments/',
       headers: {
         'Authorization': 'Token ' + token,
       },
@@ -95,7 +95,7 @@ const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
     console.log(id)
     var config = {
       method: 'post',
-      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/api/post-like/',
+      url: 'http://localhost:8000/api/post-like/',
       headers: {
         'Authorization': 'Token ' + token,
       },
@@ -115,7 +115,7 @@ const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
   const dislike = () => {
     var config = {
       method: 'delete',
-      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/api/post-like/' + likedId,
+      url: 'http://localhost:8000/api/post-like/' + likedId,
       headers: {
         'Authorization': 'Token ' + token,
       },
@@ -135,7 +135,7 @@ const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
   const getPosts = () => {
     var config = {
       method: 'get',
-      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/api/posts/',
+      url: 'http://localhost:8000/api/posts/',
       headers: {
         'Authorization': 'Token ' + token,
       },

@@ -118,7 +118,7 @@ const Gst = () => {
     //   redirect: 'follow'
     // };
 
-    // fetch("https://hackathon-a64l3uuv6q-uc.a.run.app/account/gstverify/", requestOptions)
+    // fetch("http://localhost:8000/account/gstverify/", requestOptions)
     //   .then(response => response.text())
     //   .then(result => console.log(result))
     //   .catch(error => console.log('error', error));

@@ -20,7 +20,7 @@ const Mentor = ({ mentor }) => {
         <img
           src={
             mentor?.profile_pic
-              ? `https://hackathon-a64l3uuv6q-uc.a.run.app/${mentor.profile_pic}`
+              ? `http://localhost:8000/${mentor.profile_pic}`
               : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png"
           }
           style={{
@@ -74,7 +74,7 @@ export default function Mentors() {
   const getMentorsList = async () => {
     var config = {
       method: "get",
-      url: "https://hackathon-a64l3uuv6q-uc.a.run.app/account/mentors_list/",
+      url: "http://localhost:8000/account/mentors_list/",
       headers: {
         Authorization: `Token ${token}`,
       },
@@ -95,7 +95,7 @@ export default function Mentors() {
     formData.append("expertise", expertise);
     var config = {
       method: "post",
-      url: "https://hackathon-a64l3uuv6q-uc.a.run.app/account/search_mentors/",
+      url: "http://localhost:8000/account/search_mentors/",
       headers: {
         Authorization: `Token ${token}`,
       },

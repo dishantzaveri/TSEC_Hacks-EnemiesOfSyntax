@@ -52,7 +52,7 @@ const AddEventC = () => {
       redirect: 'follow',
     };
 
-    fetch('https://hackathon-a64l3uuv6q-uc.a.run.app/news/funding/', requestOptions)
+    fetch('http://localhost:8000/news/funding/', requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -75,7 +75,7 @@ const AddEventC = () => {
   const getStartUps = async () => {
     var config = {
       method: 'get',
-      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/startup/',
+      url: 'http://localhost:8000/account/startup/',
       headers: {
         Authorization: 'Token 72f957f003d1ae579df255c5e46c5adefcb0d7c7',
       },

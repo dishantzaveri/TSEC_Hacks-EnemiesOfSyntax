@@ -90,7 +90,7 @@ const style = {
 const Schemes = (scheme) => {
   // var config = {
   //     method: 'get',
-  //     url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/news/scheme/',
+  //     url: 'http://localhost:8000/news/scheme/',
   //     headers: {
   //       'Authorization': 'Token 8ee14cbf8c09c0baeae939b60041b703ed240e82'
   //     }

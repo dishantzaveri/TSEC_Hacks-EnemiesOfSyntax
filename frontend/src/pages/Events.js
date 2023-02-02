@@ -80,7 +80,7 @@ const Events = () => {
 
   // const getEvents = async () => {
   //   const res = await axios.get(
-  //     "https://hackathon-a64l3uuv6q-uc.a.run.app/api/session/"
+  //     "http://localhost:8000/api/session/"
   //   );
 
   //   console.log(res.data);

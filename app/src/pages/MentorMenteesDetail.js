@@ -53,7 +53,7 @@ const MentorMenteesDetail = ({ route, props }) => {
           <Image
             source={{
               uri: data?.profile_pic
-                ? `https://hackathon-a64l3uuv6q-uc.a.run.app/${data.profile_pic}`
+                ? `http://localhost:8000/${data.profile_pic}`
                 : 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png',
             }}
             style={{

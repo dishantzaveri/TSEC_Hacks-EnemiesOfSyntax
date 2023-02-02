@@ -51,7 +51,7 @@ export default function FormPropsTextFields() {
   const getStartups = () => {
     let config = {
       method: 'get',
-      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/startup/',
+      url: 'http://localhost:8000/account/startup/',
       headers: {
         'Authorization': 'Token ' + token
       }
@@ -68,7 +68,7 @@ export default function FormPropsTextFields() {
   // const postGst = () => {
   //   let config = {
   //     method: 'post',
-  //     url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/gstverify/',
+  //     url: 'http://localhost:8000/account/gstverify/',
   //     headers: { 
   //       'Authorization': 'Token ' + token
   //     },
@@ -105,7 +105,7 @@ export default function FormPropsTextFields() {
 
       var config = {
         method: 'post',
-        url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/panverify/',
+        url: 'http://localhost:8000/account/panverify/',
         headers: {
           'Authorization': 'Token ' + token,
         },

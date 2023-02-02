@@ -56,7 +56,7 @@ export default function Startups() {
   const getMentorsList = async () => {
     var config = {
       method: "get",
-      url: "https://hackathon-a64l3uuv6q-uc.a.run.app/account/startups_list/",
+      url: "http://localhost:8000/account/startups_list/",
       headers: {
         Authorization: `Token ${token}`,
       },

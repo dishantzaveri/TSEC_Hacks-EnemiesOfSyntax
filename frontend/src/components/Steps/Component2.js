@@ -32,7 +32,7 @@ export default function FormPropsTextFields() {
   useEffect(() => {
     const options = {
       method: 'GET',
-      url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/education/',
+      url: 'http://localhost:8000/account/education/',
       headers: {
         'Authorization': `Token ${token}`,
       }
@@ -49,7 +49,7 @@ export default function FormPropsTextFields() {
       setList(curr);
       const options = {
         method: 'POST',
-        url: 'https://hackathon-a64l3uuv6q-uc.a.run.app/account/education/',
+        url: 'http://localhost:8000/account/education/',
         data: {
           institute: input.institute,
           degree: input.degree,

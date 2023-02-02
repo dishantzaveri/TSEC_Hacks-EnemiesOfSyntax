@@ -13,7 +13,7 @@ const HomeScreen = ({ navigation }) => {
       redirect: 'follow',
     };
 
-    fetch('https://hackathon-a64l3uuv6q-uc.a.run.app/news/funding/', requestOptions)
+    fetch('http://localhost:8000/news/funding/', requestOptions)
       .then(response => response.json())
       .then(result => {
         console.log(result);

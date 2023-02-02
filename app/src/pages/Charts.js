@@ -25,7 +25,7 @@ export default function Charts() {
             redirect: 'follow'
         };
 
-        fetch("https://hackathon-a64l3uuv6q-uc.a.run.app/news/Top25Fundedcompanybargraphapi/", requestOptions)
+        fetch("http://localhost:8000/news/Top25Fundedcompanybargraphapi/", requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
@@ -41,7 +41,7 @@ export default function Charts() {
             redirect: 'follow'
         };
 
-        fetch("https://hackathon-a64l3uuv6q-uc.a.run.app/news/Fundingperregionbargraphapi/", requestOptions)
+        fetch("http://localhost:8000/news/Fundingperregionbargraphapi/", requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
