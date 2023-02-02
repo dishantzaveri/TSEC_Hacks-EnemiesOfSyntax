@@ -40,7 +40,7 @@ function SignUp1({ navigation }) {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/entrepreneur_register/',
+      'http://127.0.0.1:8000/account/entrepreneur_register/',
       requestOptions,
     )
       .then(response => response.text())

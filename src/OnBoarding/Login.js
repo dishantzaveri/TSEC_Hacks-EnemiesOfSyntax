@@ -44,7 +44,7 @@ function Login({navigation}) {
     };
 
     fetch(
-      'https://hackathon-a64l3uuv6q-uc.a.run.app/account/login/',
+      'http://127.0.0.1:8000/account/login/',
       requestOptions,
     )
       .then(response => response.json())
@@ -106,8 +106,8 @@ function Login({navigation}) {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate('Tabs');
-          // saveData();
+          // navigation.navigate('AppStack');
+          saveData();
         }}>
         <Text style={styles.textStyle}>Login</Text>
       </TouchableOpacity>

@@ -67,7 +67,7 @@ const MenteesStack = createNativeStackNavigator();
 //   console.log(`got command event ${JSON.stringify(data)}`);
 // });
 
-const MentorsScreens = () => {
+const Jobs = () => {
   return (
     <MentorStack.Navigator screenOptions={{ headerShown: false }}>
       <MentorStack.Screen
@@ -140,8 +140,8 @@ function Tabs() {
           if (route.name === 'Home') {
             return <Entypo name="home" size={27} color={color} />;
           }
-          if (route.name === 'Mentors') {
-            return <FontAwesome5 name="people-carry" size={27} color={color} />;
+          if (route.name === 'Jobs') {
+            return <FontAwesome5 name="connectdevelop" size={27} color={color} />;
           }
           if (route.name === 'ChatBot') {
             return (
@@ -185,8 +185,8 @@ function Tabs() {
       />
 
       <Tab.Screen
-        name="Mentors"
-        component={MentorsScreens}
+        name="Jobs"
+        component={Jobs}
         options={{
           headerShown: false,
           headerStyle: {
