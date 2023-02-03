@@ -25,7 +25,6 @@ import Resume1 from '../pages/Resume1';
 import Resume3 from '../pages/Resume3';
 import Resume5 from '../pages/Resume5';
 import Resume6 from '../pages/Resume6';
-import Resume4 from '../pages/Resume4';
 import ReferralClub from '../pages/ReferralClub';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import UploadPost from '../components/Posts/UploadPost';
@@ -252,11 +251,6 @@ const ResumeStackScreen = () => {
         screenOptions={{ headerShown: false }}
       />
       <ResumeStack.Screen
-        name="Resume4"
-        component={Resume4}
-        screenOptions={{ headerShown: false }}
-      />
-      <ResumeStack.Screen
         name="Resume5"
         component={Resume5}
         screenOptions={{ headerShown: false }}
@@ -346,7 +340,7 @@ const AppStack = () => {
             ),
           }}
         />
-        <Drawer.Screen
+        {/* <Drawer.Screen
           name="TextToSpeech"
           component={TextToSpeech}
           options={{
@@ -354,23 +348,13 @@ const AppStack = () => {
               <Ionicons name="person-outline" size={22} color={color} />
             ),
           }}
-        />
+        /> */}
         <Drawer.Screen
           name="VideoCall"
           component={VideoCall}
           options={{
             drawerIcon: ({ color }) => (
               <Ionicons name="md-videocam" size={22} color={color} />
-            ),
-          }}
-        />
-
-        <Drawer.Screen
-          name="Browse"
-          component={MatchingScreens}
-          options={{
-            drawerIcon: ({ color }) => (
-              <Ionicons name="person" size={22} color={color} />
             ),
           }}
         />
@@ -403,7 +387,7 @@ const AppStack = () => {
             ),
           }}
         />
-        <Drawer.Screen
+        {/* <Drawer.Screen
           name="Search Startups"
           component={SearchJobs}
           options={{
@@ -412,7 +396,7 @@ const AppStack = () => {
               <Ionicons name="search" size={22} color={color} />
             ),
           }}
-        />
+        /> */}
         <Drawer.Screen
           name="Blog"
           component={Blog}

@@ -15,9 +15,8 @@ export default function Resume() {
     const insets = useSafeAreaInsets();
     return (
          <SafeAreaView style={styles.container}>
-            {/* <View></View> */}
             <Tab.Navigator
-                initialRouteName="MyResume"
+                initialRouteName="ResumeBuilder"
                 screenOptions={{
                     activeTintColor: "#00CFDE",
                     labelStyle: { fontSize: 11 },

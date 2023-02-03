@@ -20,6 +20,7 @@ import {
 import { height, width } from '../Consts';
 import { useNavigation } from '@react-navigation/native';
 import Tts from 'react-native-tts';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Resume5 = ({}) => {
     const { colors } = useTheme();
@@ -67,6 +68,11 @@ const Resume5 = ({}) => {
                         </Text>
 
                         <Subheading>Profile*</Subheading>
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("Profile")}>
+
+                        </TouchableOpacity>
+                        <View style={{ flexDirection: "row" }}>
                         <TextInput
                             value={profile}
                             onChangeText={setProfile}
@@ -80,7 +86,24 @@ const Resume5 = ({}) => {
                             }}
                             placeholder={'Your Job Profile'}
                         />
+                            <TouchableOpacity
+                               >
+
+                              
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
+
+                            </TouchableOpacity>
+                        </View>
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("Organization")}>
                             <Subheading>Organization*</Subheading>
+                        </TouchableOpacity>
+                        <View style={{flexDirection:'row'}}>
+            
                         <TextInput
                             value={organization}
                             onChangeText={setOrganization}
@@ -94,7 +117,19 @@ const Resume5 = ({}) => {
                             }}
                             placeholder={'Organization'}
                         />
-    <Subheading>Location*</Subheading>
+                        <TouchableOpacity >       
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
+                            </TouchableOpacity>
+                        </View>
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("Location")}>
+                            <Subheading>Location*</Subheading>
+                        </TouchableOpacity>
+                        <View style={{flexDirection:'row'}}>
                         <TextInput
                             value={location}
                             onChangeText={setLocation}
@@ -108,7 +143,20 @@ const Resume5 = ({}) => {
                             }}
                             placeholder={'Location'}
                         />
-                        <RadioButton.Group onValueChange={j => setWorkFromHome(j)} value={workfromhome}>
+                        <TouchableOpacity
+                               >
+
+                              
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
+
+                            </TouchableOpacity>
+
+                        </View>
+                        {/* <RadioButton.Group onValueChange={j => setWorkFromHome(j)} value={workfromhome}>
                             <View style={{ flexDirection: 'column', marginBottom: 10 }}>
                                 {learnings.map((i, k) => (
                                     <View
@@ -123,8 +171,8 @@ const Resume5 = ({}) => {
                                     </View>
                                 ))}
                             </View>
-                        </RadioButton.Group>
-
+                        </RadioButton.Group> */}
+{/* 
                         <Subheading>Enter Your Objective</Subheading>
 
 
@@ -141,8 +189,12 @@ const Resume5 = ({}) => {
                                 //backgroundColor: colors.background,
                             }}
                             placeholder={'Objective (Max 300 words)'}
-                        />
+                        /> */}
                         <Subheading>Start Date</Subheading>
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("Start Date")}>
+                        </TouchableOpacity>
+                        <View style={{flexDirection:'row'}}>
                         <TextInput
                             value={startdate}
                             onChangeText={setStartDate}
@@ -156,7 +208,25 @@ const Resume5 = ({}) => {
                             }}
                             placeholder={'Select Start Date'}
                         />
+                           <TouchableOpacity
+                               >
+
+                              
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
+
+                            </TouchableOpacity>
+                        </View>
                         <Subheading>End Date</Subheading>
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("End Date")}>
+
+                        </TouchableOpacity>
+                        <View style={{flexDirection:'row'}}>
+                        
                         <TextInput
                             value={enddate}
                             onChangeText={setEndDate}
@@ -170,7 +240,19 @@ const Resume5 = ({}) => {
                             }}
                             placeholder={'Select End Date'}
                         />
-                            <RadioButton.Group onValueChange={j => setWorkhere(j)} value={workhere}>
+                           <TouchableOpacity
+                               >
+
+                              
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
+
+                            </TouchableOpacity>
+                        </View>
+                            {/* <RadioButton.Group onValueChange={j => setWorkhere(j)} value={workhere}>
                             <View style={{ flexDirection: 'column', marginBottom: 10 }}>
                                 {works.map((i, k) => (
                                     <View
@@ -185,8 +267,8 @@ const Resume5 = ({}) => {
                                     </View>
                                 ))}
                             </View>
-                        </RadioButton.Group>
-                        <Subheading>Description</Subheading>
+                        </RadioButton.Group> */}
+                        {/* <Subheading>Description</Subheading>
                         <TextInput
                             value={description}
                             onChangeText={setDescription}
@@ -199,7 +281,7 @@ const Resume5 = ({}) => {
                                 //backgroundColor: colors.background,
                             }}
                             placeholder={'Add short description of your work done.'}
-                        />
+                        /> */}
                         <View style={styles.button}>
                             <Button style={styles.button1} labelStyle={styles.label1}>Cancel
                             </Button>
@@ -221,13 +303,14 @@ const styles = StyleSheet.create({
         padding: 20,
         width: '85%',
         alignSelf: 'center',
-        marginVertical: 20,
+        marginTop: 60,
         elevation: 3,
         backgroundColor: '#fff',
         shadowOffset: { width: 1, height: 1 },
         shadowColor: '#333',
         shadowOpacity: 0.1,
         shadowRadius: 1,
+        height: '91%',
     },
     button: {
 
@@ -288,6 +371,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         paddingLeft: 10,
         borderRadius: 8,
+        width:280
     },
     nameInput2: {
 

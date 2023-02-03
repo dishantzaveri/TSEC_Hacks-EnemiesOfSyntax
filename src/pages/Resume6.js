@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';;
 import {
     View,
     StyleSheet,
@@ -24,6 +24,8 @@ import {
 import { height, width } from '../Consts';
 import Add from '../assets/add.png';
 import { useNavigation } from '@react-navigation/native';
+import Tts from 'react-native-tts';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Resume6 = ({ }) => {
     const { colors } = useTheme();
@@ -32,6 +34,17 @@ const Resume6 = ({ }) => {
     const [degree, setDegree] = useState('');
     const [institute, setInstitute] = useState('');
     const navigation = useNavigation();
+
+       
+    useEffect(() => {
+
+        Tts.getInitStatus().then(() => {
+            Tts.speak('Enter your Skills.');
+        });
+
+      
+    }, []);
+
 
 
     return (
@@ -53,6 +66,11 @@ const Resume6 = ({ }) => {
                         </Text>
 
                         <Subheading>Skills*</Subheading>
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("Skills")}>
+
+                        </TouchableOpacity>
+                        <View style={{ flexDirection: "row" }}>
                         <TextInput
                             value={degree}
                             onChangeText={setDegree}
@@ -66,6 +84,18 @@ const Resume6 = ({ }) => {
                             }}
                             placeholder={'Search your skills here'}
                         />
+                          <TouchableOpacity
+                               >
+
+                              
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
+
+                            </TouchableOpacity>
+                        </View>
 
                         <Subheading>Your Added Skills</Subheading>
 

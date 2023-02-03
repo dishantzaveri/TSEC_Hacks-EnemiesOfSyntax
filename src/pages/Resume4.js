@@ -19,8 +19,10 @@ import {
 } from 'react-native-paper';
 import { height, width } from '../Consts';
 import { useNavigation } from '@react-navigation/native';
+import Tts from 'react-native-tts';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const Resume4 = ({}) => {
+const Resume4 = ({ }) => {
     const { colors } = useTheme();
     //   const {currentUser, setCurrentUser} = useContext(AuthContext);
     const [objective, setObjective] = useState('');
@@ -36,7 +38,16 @@ const Resume4 = ({}) => {
     const [workhere, setWorkhere] = useState('');
     const navigation = useNavigation();
 
-    
+    useEffect(() => {
+
+        Tts.getInitStatus().then(() => {
+            Tts.speak('Enter your job details.');
+        });
+
+
+    }, []);
+
+
 
 
     return (
@@ -56,8 +67,11 @@ const Resume4 = ({}) => {
                             }}>
                             Internship Details
                         </Text>
-
-                        <Subheading>Profile*</Subheading>
+                        <TouchableOpacity
+                            onPress={() => Tts.speak("Profile")}>
+                            <Subheading>Profile*</Subheading>
+                        </TouchableOpacity>
+                        <View style={{ flexDirection: "row" }}>
                         <TextInput
                             value={profile}
                             onChangeText={setProfile}
@@ -71,7 +85,18 @@ const Resume4 = ({}) => {
                             }}
                             placeholder={'Your Job Profile'}
                         />
+                        <TouchableOpacity>
+                            <Ionicons
+                                name='mic'
+                                size={40}
+                                color="#1D1042">
+                            </Ionicons>
+                        </TouchableOpacity>
+                        </View>
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("Organization")}>
                             <Subheading>Organization*</Subheading>
+                        </TouchableOpacity>
                         <TextInput
                             value={organization}
                             onChangeText={setOrganization}
@@ -85,7 +110,18 @@ const Resume4 = ({}) => {
                             }}
                             placeholder={'Organization'}
                         />
-    <Subheading>Location*</Subheading>
+                        <TouchableOpacity>
+                            <Ionicons
+                                name='mic'
+                                size={40}
+                                color="#1D1042">
+                            </Ionicons>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("Location")}>
+                            <Subheading>Location*</Subheading>
+                        </TouchableOpacity>
+                       
                         <TextInput
                             value={location}
                             onChangeText={setLocation}
@@ -99,6 +135,13 @@ const Resume4 = ({}) => {
                             }}
                             placeholder={'Location'}
                         />
+                         <TouchableOpacity>
+                            <Ionicons
+                                name='mic'
+                                size={40}
+                                color="#1D1042">
+                            </Ionicons>
+                        </TouchableOpacity>
                         <RadioButton.Group onValueChange={j => setWorkFromHome(j)} value={workfromhome}>
                             <View style={{ flexDirection: 'column', marginBottom: 10 }}>
                                 {learnings.map((i, k) => (
@@ -161,7 +204,7 @@ const Resume4 = ({}) => {
                             }}
                             placeholder={'Select End Date'}
                         />
-                            <RadioButton.Group onValueChange={j => setWorkhere(j)} value={workhere}>
+                        <RadioButton.Group onValueChange={j => setWorkhere(j)} value={workhere}>
                             <View style={{ flexDirection: 'column', marginBottom: 10 }}>
                                 {works.map((i, k) => (
                                     <View
@@ -195,8 +238,8 @@ const Resume4 = ({}) => {
                             <Button style={styles.button1} labelStyle={styles.label1}  >Cancel
                             </Button>
                             <Button style={styles.button2} labelStyle={styles.label2} onPress={() =>
-                        navigation.navigate('Resume5')
-                    }>Save & Next
+                                navigation.navigate('Resume5')
+                            }>Save & Next
                             </Button>
                         </View>
                     </Card>
@@ -212,19 +255,21 @@ const styles = StyleSheet.create({
         padding: 20,
         width: '85%',
         alignSelf: 'center',
-        marginVertical: 20,
+        marginTop: 60,
         elevation: 3,
         backgroundColor: '#fff',
         shadowOffset: { width: 1, height: 1 },
         shadowColor: '#333',
         shadowOpacity: 0.1,
         shadowRadius: 1,
+        height: '90%',
     },
     button: {
 
         justifyContent: 'space-between',
         alignSelf: 'center',
         flexDirection: 'row',
+        margin:height * 0.1,
     },
     button1: {
         width: width * 0.25,
@@ -279,6 +324,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         paddingLeft: 10,
         borderRadius: 8,
+        width:280
     },
     nameInput2: {
 
@@ -287,7 +333,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         fontFamily: 'Poppins-Regular',
         fontSize: 17,
-       padding: 10,
+        padding: 10,
         borderRadius: 8,
     },
     nameInput3: {
