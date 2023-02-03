@@ -153,6 +153,11 @@ function Tabs() {
               <MaterialIcons name="dynamic-feed" size={27} color={color} />
             );
           }
+          if (route.name === 'Upload') {
+            return (
+              <MaterialIcons name="cloud-upload" size={27} color={color} />
+            );
+          }
         },
         tabBarStyle: {
           backgroundColor: 'white',
@@ -188,13 +193,13 @@ function Tabs() {
         }}
       />
 
-      {/* <Tab.Screen
-        name="Events"
-        component={EventScreen}
+      <Tab.Screen
+        name="Upload"
+        component={UploadPost}
         options={{
           headerShown: false,
         }}
-      /> */}
+      />
 
 
       <Tab.Screen
