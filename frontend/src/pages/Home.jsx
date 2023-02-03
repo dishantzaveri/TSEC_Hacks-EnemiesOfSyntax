@@ -30,7 +30,7 @@ import Eligibility from "../components/Eligibility.js";
 import alanBtn from "@alan-ai/alan-sdk-web";
 
 const Section1 = () => {
-  
+
   const { t } = useTranslation();
 
   // This function put query that helps to
@@ -246,19 +246,21 @@ const Home = () => {
               navigate('/signup');
               break;
             case 'feed':
-              navigate('/feed');
+              navigate('/startups');
               break;
             case 'community':
-              navigate('/community');
+              navigate('/feed');
               break;
             case 'profile':
-
+              navigate('/profile');
+              break;
             default:
               break;
           }
         }
       }
-    });
+    }).playText('Welcome to our website, you can navigate to different pages by saying navigate to home, login, register, feed, community, profile');
+
   }, []);
 
   return (
