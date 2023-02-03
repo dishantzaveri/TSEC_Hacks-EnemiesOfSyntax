@@ -149,7 +149,7 @@ const Schemes = (scheme) => {
                 <option>Entertainment</option>
               </select>
             </div>
-            <button className="text-white rounded-3xl bg-purple-gray-600 p-2">
+            <button className="text-white rounded-3xl bg-[#2ebcb8] p-2">
               Search
             </button>
           </div>

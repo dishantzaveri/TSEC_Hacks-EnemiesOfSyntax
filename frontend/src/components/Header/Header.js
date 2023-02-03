@@ -139,20 +139,6 @@ const Header = ({ event }) => {
                   {t("events")}
                 </MenuItem>
               </Link>
-              <Link to="/campaigns">
-                <MenuItem
-                  sx={{ margin: "10px", padding: "10px", width: "140px" }}
-                >
-                  {t("campaigns")}
-                </MenuItem>
-              </Link>
-              <Link to="/matchedmentors">
-                <MenuItem
-                  sx={{ margin: "10px", padding: "10px", width: "140px" }}
-                >
-                  {t("match")}
-                </MenuItem>
-              </Link>
               <Link to="/schemes">
                 <MenuItem
                   sx={{ margin: "10px", padding: "10px", width: "140px" }}

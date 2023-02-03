@@ -49,7 +49,7 @@ export default function  Navbar  ()  {
           </button> 
         </Link>
         <Link to="/login">
-          <button className="uppercase rounded-full border w-[8vw] py-2 hover:bg-inherit hover:text-inherit bg-[#] text-white transition-all duration-150">
+          <button className="uppercase rounded-full border w-[8vw] py-2 hover:bg-inherit hover:text-inherit bg-[#2ebcb8] text-white transition-all duration-150">
             Log in
           </button>
         </Link>
