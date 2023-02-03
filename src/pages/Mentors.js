@@ -92,9 +92,9 @@
 //       }}>
 //       <FlatList
 //       >
-        
+
 //       </FlatList>
-      
+
 //     </SafeAreaView>
 //   );
 // };
@@ -134,8 +134,8 @@
 // export {Mentors};
 
 
-import React, {useEffect, useState} from 'react';
-import { FlatList, Image, Text, View, StyleSheet, TouchableOpacity , ActivityIndicator} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, Image, Text, View, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import Tts from 'react-native-tts';
 import RNShake from 'react-native-shake';
 import Mailer from 'react-native-mail';
@@ -149,45 +149,66 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 const jobs = [
   {
     id: 1,
-    title: 'Software Engineer',
-    company: 'Apple',
-    description: 'Develop and maintain iOS and macOS apps',
-    logo: 'https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo-768x432.png',
+    title: 'Customer Service Representative',
+    company: 'Ability Beyond Disability',
+    description: 'Provide excellent customer service to clients with disabilities',
+    logo: 'https://ngofeed.com/wp-content/uploads/2019/11/Smile_Foundation_Logo.jpg.webp',
   },
   {
     id: 2,
-    title: 'Product Manager',
-    company: 'Google',
-    description: 'Define product strategy and drive product development',
-    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAZfEWHjOuKYnfVPZ12VuNhnl3mRdkrXypresw2aP4ZA&s',
+    title: 'Community Outreach Coordinator',
+    company: 'Access Living',
+    description: 'Develop and implement community outreach programs for people with disabilities',
+    logo: 'https://ngofeed.com/wp-content/uploads/2021/08/PNG-Format_New-Logo_Dark-Background-300x240.png.webp',
   },
   {
     id: 3,
-    title: 'Designer',
-    company: 'Facebook',
-    description: 'Create and iterate on product designs',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png',
+    title: 'Human Resources Specialist',
+    company: 'Disabled Sports USA',
+    description: 'Develop and implement human resources policies and procedures for a non-profit organization',
+    logo: 'https://ngofeed.com/wp-content/uploads/2019/11/giveindia-300x106.jpg.webp',
   },
   {
     id: 4,
-    title: 'Data Scientist',
-    company: 'Microsoft',
-    description: 'Build and implement machine learning models',
-    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPQ5o5AsVIoMkANy-BpZWBQmUnqAV1wVq9Hzv8uwJpjw&s',
+    title: 'Web Designer',
+    company: 'Disabled and Proud',
+    description: 'Design and maintain a website for a non-profit organization promoting disability rights',
+    logo: 'https://ngofeed.com/wp-content/uploads/2019/11/Goonj-logo-300x188.jpg.webp',
   },
   {
     id: 5,
-    title: 'Operations Manager',
-    company: 'Amazon',
-    description: 'Optimize and scale operations processes',
-    logo: 'https://companieslogo.com/img/orig/AMZN-e9f942e4.png?t=1632523695',
+    title: 'Marketing Manager',
+    company: 'United Cerebral Palsy',
+    description: 'Develop and implement marketing strategies for a non-profit organization',
+    logo: 'https://ngofeed.com/wp-content/uploads/2019/11/Care-India-300x300.jpg.webp',
   },
+  {
+    id: 6,
+    title: 'Financial Analyst',
+    company: 'National Multiple Sclerosis Society',
+    description: 'Analyze financial data and provide recommendations to support a non-profit organization',
+    logo: 'https://ngofeed.com/wp-content/uploads/2019/11/Nanhi-kali-logo.jpg.webp',
+  },
+  {
+    id: 7,
+    title: 'Program Coordinator',
+    company: 'Paralyzed Veterans of America',
+    description: 'Coordinate programs and services for veterans with disabilities',
+    logo: 'https://ngofeed.com/wp-content/uploads/2019/11/HelpAge-India.jpg.webp',
+  },
+  {
+    id: 8,
+    title: 'Grant Writer',
+    company: 'Disabled American Veterans',
+    description: 'Write grant proposals to secure funding for programs and services for veterans with disabilities',
+    logo: 'https://ngofeed.com/wp-content/uploads/2019/11/Pratham-logo-e1575048400556-81x70.jpg.webp',
+  }
 ];
 
 const JobListing = ({ title, company, description, logo }) => (
   <View style={styles.jobContainer}>
     <View style={styles.logoContainer}>
-      <Image source={{uri: logo}} style={styles.logo} />
+      <Image source={{ uri: logo }} style={styles.logo} />
     </View>
     <View style={styles.detailsContainer}>
       <Text style={styles.jobTitle}>{title}</Text>
@@ -248,8 +269,8 @@ const Mentors = () => {
 
   Voice.onSpeechResults = (e) => {
     setResults(e.value);
-    if(e.value[0]=="designer role"){
-        // sendEmail();
+    if (e.value[0] == "designer role") {
+      // sendEmail();
     }
     // setIsloading(false);
     // if (e.value[0].includes('resume')) {
@@ -265,22 +286,22 @@ const Mentors = () => {
     // }else if(e.value[0]=="open drawer"){
     //   navigation.openDrawer();
     // }
-    console.log(e.value[0]+"aaaa");
+    console.log(e.value[0] + "aaaa");
 
   };
 
-  const Footer=()=>(
+  const Footer = () => (
     <TouchableOpacity
-          onPress={isloading ? stopRecognition : startRecognition}>
-          <View style={styles.footer}>
-            {isloading ? <ActivityIndicator size="large" color="red"></ActivityIndicator> :
-              <Ionicons
-                name='mic'
-                size={50}
-                color="#1D1042">
-              </Ionicons>}
-          </View>
-        </TouchableOpacity>
+      onPress={isloading ? stopRecognition : startRecognition}>
+      <View style={styles.footer}>
+        {isloading ? <ActivityIndicator size="large" color="red"></ActivityIndicator> :
+          <Ionicons
+            name='mic'
+            size={50}
+            color="#1D1042">
+          </Ionicons>}
+      </View>
+    </TouchableOpacity>
   )
 
 
@@ -290,10 +311,10 @@ const Mentors = () => {
       // Your code here...
       console.log('Shake!');
     })
-    Tts.getInitStatus().then(() => {
-      Tts.speak('Here are some of the jobs of your interest!! The first job is Software Engineer at Apple, another one is of Product Manager at Google and the third one is of Designer at Facebook. These jobs are most suitable according to your profile. To apply on the jobs shake your device and speak the job title and company name or you can click below on the mic icon.');
-    });
-   
+    // Tts.getInitStatus().then(() => {
+    //   Tts.speak('Here are some of the jobs of your interest!! The first job is Software Engineer at Apple, another one is of Product Manager at Google and the third one is of Designer at Facebook. These jobs are most suitable according to your profile. To apply on the jobs shake your device and speak the job title and company name or you can click below on the mic icon.');
+    // });
+
     // return () => {
     //   // Your code here...
     //   // Tts.removeEventListener('tts-finish', (event) => {
@@ -302,30 +323,30 @@ const Mentors = () => {
     // }
   }, []);
 
-  return(
-    <View style={{flex:1}}>
-    <Text style={{color:"#007bff", fontSize:25, marginLeft:20, marginBottom:20, marginTop:10}}>Here are some of the jobs of your interest!!</Text>
-    
-    <FlatList
-    data={jobs}
-    renderItem={({ item }) => (
-      <JobListing
-        title={item.title}
-        company={item.company}
-        description={item.description}
-        logo={item.logo}
-      />
-    )}
-    keyExtractor={item => item.id.toString()}
-  />
-   
+  return (
+    <View style={{ flex: 1 }}>
+      <Text style={{ color: "#007bff", fontSize: 25, marginLeft: 20, marginBottom: 20, marginTop: 10 }}>Here are some of the jobs of your interest!!</Text>
 
-  <Footer/>
-  </View>
+      <FlatList
+        data={jobs}
+        renderItem={({ item }) => (
+          <JobListing
+            title={item.title}
+            company={item.company}
+            description={item.description}
+            logo={item.logo}
+          />
+        )}
+        keyExtractor={item => item.id.toString()}
+      />
+
+
+      <Footer />
+    </View>
   );
 
-  
-    };
+
+};
 
 const styles = StyleSheet.create({
   jobContainer: {
@@ -334,6 +355,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
     alignItems: 'center',
+    height:150
   },
   logoContainer: {
     width: 50,
@@ -349,16 +371,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   jobTitle: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
-    color:"black"
+    color: "black"
   },
   jobCompany: {
-    fontSize: 14,
+    fontSize: 16,
     color: 'gray',
   },
   jobDescription: {
-    fontSize: 12,
+    fontSize: 14,
     color: '#333',
   },
   buttonContainer: {
@@ -387,4 +409,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {Mentors};
+export { Mentors };
