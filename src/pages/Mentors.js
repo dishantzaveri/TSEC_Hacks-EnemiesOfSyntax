@@ -135,7 +135,7 @@
 
 
 import React, { useEffect, useState } from 'react';
-import { FlatList, Image, Text, View, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { FlatList, Image, Text, View, StyleSheet, TouchableOpacity, ActivityIndicator,Platform, PermissionsAndroid } from 'react-native';
 import Tts from 'react-native-tts';
 import RNShake from 'react-native-shake';
 import Mailer from 'react-native-mail';
@@ -143,6 +143,8 @@ import RNFS from 'react-native-fs';
 import Voice from '@react-native-voice/voice';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import FilePickerManager from 'react-native-file-picker';
+// import RNGetRealPath from 'react-native-get-real-path';
 
 
 
@@ -205,6 +207,25 @@ const jobs = [
   }
 ];
 
+
+const filePicker = () => {
+  FilePickerManager.showFilePicker(null, (response) => {
+    // setFilePath(response.uri);
+    // console.log(
+    //   // response.uri,
+    //   // response.type,
+    //   // response.fileName,
+    //   // response.fileSize,
+    //   response.
+    // );
+  });
+
+
+  
+};
+
+
+
 const JobListing = ({ title, company, description, logo }) => (
   <View style={styles.jobContainer}>
     <View style={styles.logoContainer}>
@@ -216,7 +237,9 @@ const JobListing = ({ title, company, description, logo }) => (
       <Text style={styles.jobDescription}>{description}</Text>
     </View>
     <View style={styles.buttonContainer}>
-      <TouchableOpacity style={styles.applyButton}>
+      <TouchableOpacity style={styles.applyButton} onPress={
+        filePicker
+      }>
         <Text style={styles.applyButtonText}>Apply Now</Text>
       </TouchableOpacity>
     </View>
@@ -224,29 +247,49 @@ const JobListing = ({ title, company, description, logo }) => (
 );
 
 
-// const sendEmail = () => {
-//   const options = {
-//     subject: 'Subject of the Email',
-//     body: 'Message body of the email',
-//     recipients: ['talkshrey@gmail.com'],
-//     attachments: [
-//       RNFS.DocumentDirectoryPath +  '/src/assets/resume.pdf',
-//     ],
-//   };
+const sendEmail = () => {
+  // const options = {
+  //   subject: 'Subject of the Email',
+  //   body: 'Message body of the email',
+  //   recipients: ['talkshrey@gmail.com'],
+  //   attachments: [
+  //     RNFS.DocumentDirectoryPath +  '/src/assets/resume.pdf',
+  //   ],
+  // };
 
-//   Mailer.mail(options, (error, event) => {
-//     if (error) {
-//       console.error(error);
-//     }
-//   });
-// };
+  Mailer.mail({
+    subject: 'Subject of the email',
+    recipients: ['zaveridishant@gmail.com'],
+    body: 'https://drive.google.com/file/d/1jc5jMaNI5HmPYKPH1iAFE93XPGdLHkHu/view?usp=sharing',
+    isHTML: true,
+    attachment: {
+      path: '/storage/emulated/0/Android/Resume - Yash Shah-2.pdf',
+      type: 'pdf',
+      name: 'Yash Shah-2.pdf',
+    }
+  }, (error, event) => {
+    Alert.alert(
+      error,
+      event,
+      [
+        {text: 'Ok', onPress: () => console.log('OK: Email Error Response')},
+        {text: 'Cancel', onPress: () => console.log('CANCEL: Email Error Response')}
+      ],
+      { cancelable: true }
+    )
+  });
+};
 
 const Mentors = () => {
 
 
 
+  // const externalStorageDirectory = RNFS.ExternalDirectoryPath;
+  // console.log(`External storage directory: ${externalStorageDirectory}`);
+
   const [isloading, setIsloading] = useState(false);
   const [results, setResults] = useState([]);
+  const [filePath, setFilePath] = useState('');
   const startRecognition = async () => {
     setIsloading(true);
     setResults([]);
@@ -269,8 +312,10 @@ const Mentors = () => {
 
   Voice.onSpeechResults = (e) => {
     setResults(e.value);
-    if (e.value[0] == "designer role") {
-      // sendEmail();
+    if (e.value[0] == "I want to apply for web designer") {
+      Voice.destroy().then(Voice.removeAllListeners);
+      sendEmail();
+
     }
     // setIsloading(false);
     // if (e.value[0].includes('resume')) {
@@ -289,6 +334,8 @@ const Mentors = () => {
     console.log(e.value[0] + "aaaa");
 
   };
+
+
 
   const Footer = () => (
     <TouchableOpacity
@@ -325,7 +372,7 @@ const Mentors = () => {
 
   return (
     <View style={{ flex: 1 ,backgroundColor:'white'}}>
-      <Text style={{ color: "#007bff", fontSize: 25, marginLeft: 20, marginBottom: 20, marginTop: 10 }}>Here are some of the jobs of your interest!!</Text>
+      <Text style={{ color: "#007bff", fontSize: 25, marginLeft: 20, marginBottom: 20, marginTop: 10 }}>Jobs of your interest!!</Text>
 
       <FlatList
         data={jobs}
