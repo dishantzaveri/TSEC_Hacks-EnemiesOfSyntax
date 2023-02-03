@@ -42,7 +42,6 @@ function News() {
       image: "",
     },
   ]);
-  console.log(blogs);
   const newsArticle = (heading, subtitle, img) => (
     <div className="widget_article">
       <div className="widgets_articleleft">

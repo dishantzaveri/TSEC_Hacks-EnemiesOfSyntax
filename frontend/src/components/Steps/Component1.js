@@ -25,41 +25,7 @@ export default function FormPropsTextFields() {
     start_year: "",
     end_year: "",
   });
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "http://localhost:8000/account/experience/",
-      headers: {
-        Authorization: `Token ${token}`,
-      },
-    };
-    axios(options)
-      .then((res) => {
-        console.log(res.data);
-        navigate("/login");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
-  // useEffect(() => {
-  //   console.log(token);
-  //   const options = {
-  //     method: "GET",
-  //     url: "http://localhost:8000/account/experience/",
-  //     headers: {
-  //       Authorization: `Token ${token}`,
-  //     },
-  //   };
-  //   axios(options)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
 
   const submit = async () => {
     var data = JSON.stringify({
@@ -86,6 +52,7 @@ export default function FormPropsTextFields() {
     await axios(world)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
+        navigate("/login")
       })
       .catch(function (error) {
         console.log(error);

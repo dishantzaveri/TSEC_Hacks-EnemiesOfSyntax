@@ -45,7 +45,7 @@ function Feed() {
             <div className="content">
               <h1 className="text-5xl">Your daily feed</h1>
               <h1 className="text-2xl mt-4 text-slate-700">
-                Explore what others are doing and report places not convenient
+                Explore what others are doing and report places which are not convenient
                 for you.
               </h1>
             </div>
@@ -68,7 +68,6 @@ function Feed() {
             // message="This is my message"
             // photoUrl={photoUrl}
             />
-            {/* ))} */}
           </FlipMove>
         </div>
         <div className="col-span-1"></div>

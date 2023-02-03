@@ -30,6 +30,7 @@ export default function FormPropsTextFields() {
     }
   };
   useEffect(() => {
+    console.log(token);
     const options = {
       method: "GET",
       url: "http://localhost:8000/account/education/",
@@ -45,24 +46,13 @@ export default function FormPropsTextFields() {
         console.log(err);
       });
   }, []);
-  const convertDate = (date) => {
-    return (
-      date.toJSON().substr(5, 2) +
-      "-" +
-      date.toJSON().substr(8, 2) +
-      "-" +
-      date.toJSON().substr(0, 4)
-    );
-  };
   const add = async () => {
     console.log(token);
 
     if (
       input.institute &&
       input.degree &&
-      input.study_field &&
-      input.start_date &&
-      input.end_date
+      input.study_field
     ) {
       const curr = [...list];
       curr.push(input);
@@ -74,14 +64,14 @@ export default function FormPropsTextFields() {
           institute: input.institute,
           degree: input.degree,
           study_field: input.study_field,
-          start_date: convertDate(input.start_date),
-          end_date: convertDate(input.end_date),
+          start_date: "02-02-2021",
+          end_date: "02-02-2023",
           grade: "9.33",
-          extracurriculars: null,
-          description: null,
+          extracurriculars: "This is dummy extracurriculars",
+          description: "This is dummy description",
         }),
         headers: {
-          "Authorization": "Token 325e2421ab848e6bfbc1903a22d1fca948044ce4",
+          "Authorization": `Token ${token}`,
           "Content-Type": "application/json",
         },
       };
@@ -95,7 +85,6 @@ export default function FormPropsTextFields() {
     } else {
       alert("Please fill all the fields");
     }
-    console.log(list);
   };
   const remove = (index) => {
     const curr = [...list];
@@ -105,7 +94,6 @@ export default function FormPropsTextFields() {
   return (
     <div
       class="bg-purple-gray-100 px-6 py-8 rounded shadow-md text-black w-full"
-      // class="bg-purple-gray-100"
       component="form"
       sx={{
         "& .MuiTextField-root": { m: 1, width: "25ch" },

@@ -43,19 +43,13 @@ export default function  Navbar  ()  {
       
 
       <div className={`flex gap-4 ${token && "hidden"} items-center`}>
-        <Link className="font-semibold text-xl" to="/registermentor">
-          Become a Mentor
-        </Link>
-        <Link className="font-semibold text-xl" to="/registermentor">
-          Find a Mentor
-        </Link>
-        <Link to="/registermentee">
+        <Link to="/signup">
           <button className="uppercase rounded-full border w-[8vw] py-2 hover:bg-purple-gray-600 hover:text-white transition-all duration-150">
             Sign Up
-          </button>
+          </button> 
         </Link>
         <Link to="/login">
-          <button className="uppercase rounded-full border w-[8vw] py-2 hover:bg-inherit hover:text-inherit bg-purple-gray-600 text-white transition-all duration-150">
+          <button className="uppercase rounded-full border w-[8vw] py-2 hover:bg-inherit hover:text-inherit bg-[#] text-white transition-all duration-150">
             Log in
           </button>
         </Link>
@@ -64,11 +58,11 @@ export default function  Navbar  ()  {
       {token && (
         <>
         <div className="header__right">
-        <Link to="/feed">
+        <Link to="/mentors">
         <HeaderOption Icon={HomeIcon} title="Home" />
         </Link>
-        <Link to="/mentors">
-        <HeaderOption Icon={SupervisorAccountIcon} title="Mentors" />
+        <Link to="/feed">
+        <HeaderOption Icon={SupervisorAccountIcon} title="Feed" />
         </Link>
 
         <Link to="/chat">
