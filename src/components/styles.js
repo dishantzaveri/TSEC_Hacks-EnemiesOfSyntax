@@ -35,8 +35,6 @@ const styles = StyleSheet.create({
   typeMsgContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    
   
   },
 

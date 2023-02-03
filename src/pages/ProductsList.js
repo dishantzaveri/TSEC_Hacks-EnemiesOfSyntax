@@ -86,7 +86,7 @@ export function ProductsList ({navigation}) {
               <Ionicons
                 name='mic'
                 size={50}
-                color="#1D1042">
+                color="#000000">
               </Ionicons>}
           </View>
         </TouchableOpacity>
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   footer: {
     width: wp('100%'),
     height: hp('7%'),
-    backgroundColor: '#B9F3FC',
+    backgroundColor: '#2eb6b8',
     marginTop: hp('0.01%'),
     justifyContent: 'center',
     alignItems: 'center'
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   text1Style: {
     margin: 15,
     fontSize: 25,
-    color: '#007bff',
+    color: '#2eb6b8',
     fontWeight: 'bold',
     alignContent: 'center',
     justifyContent: 'center',
