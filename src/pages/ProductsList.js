@@ -21,8 +21,16 @@ export function ProductsList ({navigation}) {
     );
   }
 
-  console. disableYellowBox = true;
-  
+  // console. disableYellowBox = true;
+  useEffect(() => {
+
+        
+
+    return () => {
+        setIsloading(false);
+        Voice.destroy().then(Voice.removeAllListeners);
+    }
+}, []);
   const [products, setProducts] = useState([]);
   const [isloading, setIsloading] = useState(false);
   const [results, setResults] = useState([]);
@@ -48,11 +56,16 @@ export function ProductsList ({navigation}) {
 
   Voice.onSpeechResults = (e) => {
     setResults(e.value);
+    // setIsloading(false);
     if (e.value[0].includes('resume')) {
       console.log("tp");
+      setIsloading(false);
+      // Voice.destroy().then(Voice.removeAllListeners);
       navigation.navigate('Resume1');
     }
     else if(e.value[0]=="go to video call page"){
+      setIsloading(false);
+      Voice.destroy().then(Voice.removeAllListeners);
       navigation.navigate('VideoCall');
     }else if(e.value[0]=="open drawer"){
       navigation.openDrawer();

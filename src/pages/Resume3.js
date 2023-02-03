@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     View,
     StyleSheet,
@@ -20,6 +20,10 @@ import {
 import { height, width } from '../Consts';
 import Add from '../assets/add.png';
 import { useNavigation } from '@react-navigation/native';
+import Tts from 'react-native-tts';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+
 
 const Resume3 = ({}) => {
     const { colors } = useTheme();
@@ -29,7 +33,14 @@ const Resume3 = ({}) => {
     const [institute, setInstitute] = useState('');
     const navigation = useNavigation();
     
+    useEffect(() => {
 
+        Tts.getInitStatus().then(() => {
+            Tts.speak('Enter your education details.');
+        });
+
+      
+    }, []);
 
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
@@ -48,8 +59,12 @@ const Resume3 = ({}) => {
                             }}>
                             Education Details
                         </Text>
-
-                        <Subheading>Degree Name*</Subheading>
+                        
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("Degree Name")}>
+                            <Subheading>Degree Name*</Subheading>
+                        </TouchableOpacity>
+                        <View style={{ flexDirection: "row" }}>
                         <TextInput
                             value={degree}
                             onChangeText={setDegree}
@@ -63,10 +78,26 @@ const Resume3 = ({}) => {
                             }}
                             placeholder={'Degree Name'}
                         />
+                        <TouchableOpacity
+                               >
 
-                        <Subheading>Institute Name</Subheading>
+                              
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
 
+                            </TouchableOpacity>
+                        </View>
+                        
 
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("Institute Name")}>
+                            <Subheading>Institute Name*</Subheading>
+                        </TouchableOpacity>
+
+                        <View style={{flexDirection:'row'}}>
                         <TextInput
                             value={institute}
                             onChangeText={setInstitute}
@@ -81,7 +112,24 @@ const Resume3 = ({}) => {
                             }}
                             placeholder={'Institute Name'}
                         />
-                        <Subheading>Start Date</Subheading>
+                       <TouchableOpacity
+                               >
+
+                              
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
+
+                            </TouchableOpacity>
+
+                        </View>
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("Start Date")}>
+                            <Subheading>Start Date*</Subheading>
+                        </TouchableOpacity>
+                        <View style={{flexDirection:'row'}}>
                         <TextInput
                             value={startdate}
                             onChangeText={setStartDate}
@@ -95,7 +143,23 @@ const Resume3 = ({}) => {
                             }}
                             placeholder={'Select Start Date'}
                         />
-                        <Subheading>End Date</Subheading>
+                         <TouchableOpacity
+                               >
+
+                              
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
+
+                            </TouchableOpacity>
+                        </View>
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("End Date")}>
+                            <Subheading>End Date*</Subheading>
+                        </TouchableOpacity>
+                        <View style={{flexDirection:'row'}}>
                         <TextInput
                             value={enddate}
                             onChangeText={setEndDate}
@@ -109,6 +173,18 @@ const Resume3 = ({}) => {
                             }}
                             placeholder={'Select End Date'}
                         />
+                            <TouchableOpacity
+                               >
+
+                              
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
+
+                            </TouchableOpacity>
+                        </View>
                         <View style={styles.add}>
                            
                                 <Text style={styles.addmore}>Add More</Text>
@@ -123,7 +199,7 @@ const Resume3 = ({}) => {
                             <Button style={styles.button1} labelStyle={styles.label1}>Cancel
                             </Button>
                             <Button style={styles.button2} labelStyle={styles.label2}  onPress={() =>
-                        navigation.navigate('Resume4')
+                        navigation.navigate('Resume5')
                     }>Save & Next
                             </Button>
                         </View>
@@ -141,7 +217,7 @@ const styles = StyleSheet.create({
         padding: 20,
         width: '85%',
         alignSelf: 'center',
-        marginVertical: 20,
+        marginTop: 60,
         elevation: 3,
         backgroundColor: '#fff',
         shadowOffset: { width: 1, height: 1 },
@@ -217,6 +293,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         paddingLeft: 10,
         borderRadius: 8,
+        width:280
     },
     nameInput2: {
         flex: 1,

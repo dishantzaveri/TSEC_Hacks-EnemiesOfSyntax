@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {
     View,
     StyleSheet,
@@ -8,6 +8,7 @@ import {
     ToastAndroid,
     KeyboardAvoidingView,
     ScrollView,
+    ActivityIndicator
 } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import {
@@ -21,6 +22,9 @@ import { width } from '../Consts'
 import Profile from '../assets/blueprofile.png';
 import { useNavigation } from '@react-navigation/native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker'; // Migration from 2.x.x to 3.x.x => showImagePicker API is removed.
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Voice from '@react-native-voice/voice';
+import Tts from 'react-native-tts';
 
 
 
@@ -28,8 +32,8 @@ import { launchCamera, launchImageLibrary } from 'react-native-image-picker'; //
 
 const Resume2 = ({ }) => {
     const { colors } = useTheme();
-    const [objective, setObjective] = useState('');
-    const [name1, setName1] = useState('');
+    const [about, setAbout] = useState('');
+    const [name, setName] = useState('');
     const [name2, setName2] = useState('');
     const [title, setTitle] = useState('');
     const [countrycode, setCountryCode] = useState('');
@@ -43,15 +47,55 @@ const Resume2 = ({ }) => {
 
     const selectImage = async () => {
         const res = await launchImageLibrary({
-          mediaType: 'photo',
+            mediaType: 'photo',
         });
         console.log(res.assets[0].uri);
         setImage({
-          uri: res.assets[0].uri,
-          name: res.assets[0].fileName,
-          type: res.assets[0].type,
+            uri: res.assets[0].uri,
+            name: res.assets[0].fileName,
+            type: res.assets[0].type,
         });
-      };
+    };
+    // useEffect(() => {
+
+        
+
+    //     return () => {
+    //         setIsloading(false);
+    //         Voice.destroy().then(Voice.removeAllListeners);
+    //     }
+    // }, []);
+    const [isloading, setIsloading] = useState(false);
+    const [results, setResults] = useState([]);
+    const startRecognition = async () => {
+        setIsloading(true);
+        setResults([]);
+        try {
+            await Voice.start('en-US');
+            console.log("started");
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    const stopRecognition = async () => {
+        try {
+            await Voice.stop();
+            setIsloading(false);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    Voice.onSpeechResults = (e) => {
+        setResults(e.value);
+        setName(e.value[0]);
+        setIsloading(false);
+        // Voice.destroy().then(Voice.removeAllListeners);
+
+        // console.log(e.value[0]);
+
+    };
 
 
     return (
@@ -80,21 +124,39 @@ const Resume2 = ({ }) => {
                         </TouchableOpacity>
 
 
-                        <Subheading>Enter Your Name*</Subheading>
-                        <TextInput
-                            value={title}
-                            onChangeText={setTitle}
-                            underlineColorAndroid="transparent"
-                            placeholderTextColor={colors.textAfter}
-                            style={{
-                                ...styles.nameInput,
-                                borderColor: colors.lightblack,
-                                color: colors.text,
-                                //backgroundColor: colors.background,
-                            }}
-                            placeholder={'Title'}
-                        />
-                        <TextInput
+                         <TouchableOpacity 
+                        onPress={()=>Tts.speak("Enter your name")}>
+                            <Subheading>Enter your name*</Subheading>
+                        </TouchableOpacity>
+                        <View style={{ flexDirection: "row" }}>
+                            <TextInput
+                                value={name}
+                                onChangeText={setName}
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={colors.textAfter}
+                                style={{
+                                    ...styles.nameInput,
+                                    borderColor: colors.lightblack,
+                                    color: colors.text,
+                                    //backgroundColor: colors.background,
+                                }}
+                                placeholder={'Full Name'}
+                            />
+                            <TouchableOpacity
+                                onPress={isloading ? stopRecognition : startRecognition}>
+
+                                {isloading ? <ActivityIndicator size="large" color="red"></ActivityIndicator> :
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>}
+
+                            </TouchableOpacity>
+
+                        </View>
+
+                        {/* <TextInput
                             value={name1}
                             onChangeText={setName1}
                             underlineColorAndroid="transparent"
@@ -120,14 +182,17 @@ const Resume2 = ({ }) => {
                                 //backgroundColor: colors.background,
                             }}
                             placeholder={'Last Name'}
-                        />
+                        /> */}
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("Tell me about yourself")}>
+                            <Subheading>Tell me about yourself*</Subheading>
+                        </TouchableOpacity>
+                        
 
-                        <Subheading>Enter Your Objective</Subheading>
-
-
+                        <View style={{ flexDirection: "row" }}>
                         <TextInput
-                            value={objective}
-                            onChangeText={setObjective}
+                            value={about}
+                            onChangeText={setAbout}
                             underlineColorAndroid="transparent"
                             placeholderTextColor={colors.textAfter}
                             multiline
@@ -137,9 +202,22 @@ const Resume2 = ({ }) => {
                                 color: colors.text,
                                 //backgroundColor: colors.background,
                             }}
-                            placeholder={'Objective (Max 300 words)'}
+                            placeholder={'About (Max 300 words)'}
                         />
-                        <Subheading>Choose Your Gender</Subheading>
+                        <TouchableOpacity
+                               >
+
+                              
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
+
+                            </TouchableOpacity>
+                        </View>
+                       
+                        {/* <Subheading>Choose Your Gender</Subheading>
                         <TextInput
                             value={gender}
                             onChangeText={setGender}
@@ -152,21 +230,12 @@ const Resume2 = ({ }) => {
                                 //backgroundColor: colors.background,
                             }}
                             placeholder={'Gender'}
-                        />
-                        <Subheading>Enter Your Mobile Number</Subheading>
-                        <TextInput
-                            value={countrycode}
-                            onChangeText={setCountryCode}
-                            underlineColorAndroid="transparent"
-                            placeholderTextColor={colors.textAfter}
-                            style={{
-                                ...styles.nameInput,
-                                borderColor: colors.lightblack,
-                                color: colors.text,
-                                //backgroundColor: colors.background,
-                            }}
-                            placeholder={'Country Code'}
-                        />
+                        /> */}
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("Enter your mobile number")}>
+                            <Subheading>Enter your mobile no.*</Subheading>
+                        </TouchableOpacity>
+                        <View style={{ flexDirection: "row" }}>
                         <TextInput
                             value={mobileno}
                             onChangeText={setMobileno}
@@ -180,21 +249,25 @@ const Resume2 = ({ }) => {
                             }}
                             placeholder={'Phone Number'}
                         />
-                        <Subheading>Enter Your DOB</Subheading>
-                        <TextInput
-                            value={dob}
-                            onChangeText={setDob}
-                            underlineColorAndroid="transparent"
-                            placeholderTextColor={colors.textAfter}
-                            style={{
-                                ...styles.nameInput,
-                                borderColor: colors.lightblack,
-                                color: colors.text,
-                                //backgroundColor: colors.background,
-                            }}
-                            placeholder={'DOB'}
-                        />
-                        <Subheading>Enter Your Email Address</Subheading>
+                        <TouchableOpacity
+                               >
+
+                              
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
+
+                            </TouchableOpacity>
+                      
+                        </View>
+                        
+                        <TouchableOpacity 
+                        onPress={()=>Tts.speak("Enter Your Email Address")}>
+                            <Subheading>Enter your email address</Subheading>
+                        </TouchableOpacity>
+                        <View style={{ flexDirection: "row" }}>
                         <TextInput
                             value={email}
                             onChangeText={setEmail}
@@ -208,7 +281,24 @@ const Resume2 = ({ }) => {
                             }}
                             placeholder={'Email Address'}
                         />
-                        <Subheading>Current City</Subheading>
+                        <TouchableOpacity
+                               >
+
+                              
+                                    <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
+
+                            </TouchableOpacity>
+                        </View>
+                        
+                         <TouchableOpacity 
+                        onPress={()=>Tts.speak("Enter Your City")}>
+                            <Subheading>City</Subheading>
+                        </TouchableOpacity>
+                        <View style={{ flexDirection: "row" }}>
                         <TextInput
                             value={city}
                             onChangeText={setCity}
@@ -222,6 +312,14 @@ const Resume2 = ({ }) => {
                             }}
                             placeholder={'Current City'}
                         />
+                        <TouchableOpacity>
+                        <Ionicons
+                                        name='mic'
+                                        size={40}
+                                        color="#1D1042">
+                                    </Ionicons>
+                        </TouchableOpacity>
+                        </View>
                         <View style={styles.button}>
                             <Button style={styles.button1} labelStyle={styles.label1}>Cancel
                             </Button>
@@ -240,10 +338,10 @@ const Resume2 = ({ }) => {
 
 const styles = StyleSheet.create({
     card: {
-        padding: 20,
+        paddingHorizontal: 20,
         width: '85%',
         alignSelf: 'center',
-        marginVertical: 20,
+        marginTop: 80,
         elevation: 3,
         backgroundColor: '#fff',
         shadowOffset: { width: 1, height: 1 },
@@ -310,6 +408,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         paddingLeft: 10,
         borderRadius: 8,
+        width: 280
     },
     nameInput2: {
         flex: 1,

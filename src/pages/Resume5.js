@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     View,
     StyleSheet,
@@ -19,7 +19,7 @@ import {
 } from 'react-native-paper';
 import { height, width } from '../Consts';
 import { useNavigation } from '@react-navigation/native';
-
+import Tts from 'react-native-tts';
 
 const Resume5 = ({}) => {
     const { colors } = useTheme();
@@ -35,6 +35,15 @@ const Resume5 = ({}) => {
     const [workfromhome, setWorkFromHome] = useState('');
     const [workhere, setWorkhere] = useState('')
     const navigation = useNavigation();
+    
+    useEffect(() => {
+
+        Tts.getInitStatus().then(() => {
+            Tts.speak('Enter your job details.');
+        });
+
+      
+    }, []);
 
     
 
