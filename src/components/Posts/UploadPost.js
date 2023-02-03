@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
-import {launchImageLibrary} from 'react-native-image-picker';
+import React, { useState } from 'react';
+import { launchImageLibrary } from 'react-native-image-picker';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 const UploadPost = () => {
   const [title, setTitle] = useState('');
@@ -25,8 +25,7 @@ const UploadPost = () => {
 
     var myHeaders = new Headers();
     myHeaders.append(
-      'Authorization',
-      'Token 72f957f003d1ae579df255c5e46c5adefcb0d7c7',
+      'Authorization', 'Token 8ee751c251eee9774e1e4a508ac3dc8f2b2791a6'
     );
     myHeaders.append(
       'Cookie',

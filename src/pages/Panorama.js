@@ -1,6 +1,6 @@
 // import React from 'react';
 // import {View, Text,StyleSheet,Dimensions} from 'react-native';
-// import PanoramaView from "@lightbase/react-native-panorama-view";
+import PanoramaView from "@lightbase/react-native-panorama-view";
 
 // const Panorama = () => (
 //   <View style={styles.container}>
