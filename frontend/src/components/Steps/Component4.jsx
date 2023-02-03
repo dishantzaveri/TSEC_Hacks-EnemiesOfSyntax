@@ -99,12 +99,12 @@ export default function FormPropsTextFields() {
     details
       ? details
       : {
-          name: "",
-          email: "",
-          password: "",
-          photo: null,
-          type: "None",
-        }
+        name: "",
+        email: "",
+        password: "",
+        photo: null,
+        type: "None",
+      }
   );
   useEffect(() => {
     alanBtn({
