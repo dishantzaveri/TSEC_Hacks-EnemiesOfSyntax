@@ -16,6 +16,7 @@ import Profile2 from '../components/Profile/Profile2';
 import AddStartups from '../components/Profile/AddStartups';
 import LocationTracer from '../pages/LocationTracer';
 import AllTabs from './AppStack'
+import Splash from '../pages/Splash';
 
 const Stack = createNativeStackNavigator();
 const OnboardingStack = createNativeStackNavigator();
@@ -70,7 +71,10 @@ const Onboarding = () => {
 const AuthStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-   
+      <Stack.Screen
+        name="Splash"
+        component={Splash}
+        options={{ headerShown: false }}></Stack.Screen>
       <Stack.Screen
         name="Login"
         component={Login}

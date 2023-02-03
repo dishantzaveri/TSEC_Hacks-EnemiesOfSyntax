@@ -25,6 +25,56 @@ function Login({navigation}) {
   const [password, setPassword] = useState('');
   const [tok, setTok] = useState();
   const dispatch = useDispatch();
+
+  const saveData2 = async () => {
+    const STORAGE_KEY1 = '@save_token';
+    var myHeaders = new Headers();
+    myHeaders.append(
+      'Cookie',
+      'csrftoken=o4q1Ihf3JTBVbPIRuFvCtHZVT3RHp0X8; sessionid=0rx0ut9910ocx5ggaz1l6en6khbzxg1n',
+    );
+    var formdata = new FormData();
+    formdata.append('email', 'zaveridishant@gmail.com');
+    formdata.append('password', 'abc@1234');
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: formdata,
+      redirect: 'follow',
+    };
+
+    fetch(
+      'http://127.0.0.1:8000/account/login/',
+      requestOptions,
+    )
+      .then(response => response.json())
+      .then(async result => {
+        setTok(result.token);
+        console.log(result);
+        await AsyncStorage.setItem(STORAGE_KEY1, JSON.stringify(result));
+        dispatch(setUser(result));
+        const uuid = result.name.split(' ')[0] + result.email.split('@')[0];
+        CometChat.login(uuid, CONSTANTS.AUTH_KEY).then(
+          user => {
+            console.log('Login Successful:', {user});
+          },
+          error => {
+            console.log('Login failed with exception:', {error});
+          },
+        );
+      })
+      .catch(error => console.log('error', error));
+    // try {
+    //   //await AsyncStorage.clear();
+    //    AsyncStorage.setItem(STORAGE_KEY1, token);
+    //   console.log(STORAGE_KEY1);
+    // } catch (e) {
+    //   //console.log(token);
+    //   Alert.alert('Failed to save the data to the storage');
+    // }
+  };
+  
   const saveData = async () => {
     const STORAGE_KEY1 = '@save_token';
     var myHeaders = new Headers();
@@ -121,7 +171,8 @@ function Login({navigation}) {
             .then(() => {
               Alert.alert('Authentication Successful!');
               console.log('Done');
-              navigation.navigate('Tabs');
+              // navigation.navigate('Tabs');
+              saveData2();
             })
             .catch(() => {
               Alert.alert('Fingerprint Did not match');

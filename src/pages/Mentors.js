@@ -324,7 +324,7 @@ const Mentors = () => {
   }, []);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1 ,backgroundColor:'white'}}>
       <Text style={{ color: "#007bff", fontSize: 25, marginLeft: 20, marginBottom: 20, marginTop: 10 }}>Here are some of the jobs of your interest!!</Text>
 
       <FlatList
