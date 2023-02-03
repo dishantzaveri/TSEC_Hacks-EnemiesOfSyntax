@@ -39,9 +39,9 @@ const Section1 = () => {
     <div className="h-screen w-full flex justify-center items-center">
       <div className="flex flex-col items-center w-[50vw]">
         <h1 className="text-6xl font-semibold text-gray-800">
-          {t("evn1")} <span className="text-purple-gray-700">{t("Job")}</span>
+          {t("evn1")} <span className="text-[#2eb6b8]">{t("Job")}</span>
         </h1>
-        <h1 className="text-center text-xl text-gray-700 mt-6">
+        <h1 className="text-center text-xl mt-6">
           {t("search")}
         </h1>
         <div className="flex items-center border rounded-full w-full bg-white text-gray-700 mt-12 box-content">
@@ -52,8 +52,8 @@ const Section1 = () => {
             placeholder="Search Mentor"
           />
           <Link to="/login">
-            <div className="h-full px-8 py-4 bg-purple-gray-600 rounded-r-full cursor-pointer">
-              <h1 className="text-white text-lg font-bold uppercase">Search</h1>
+            <div className="h-full px-8 py-4 bg-[#2eb6b8] rounded-r-full cursor-pointer">
+              <h1 className="text-white  text-lg font-bold uppercase">Search</h1>
             </div>
           </Link>
         </div>
@@ -271,7 +271,7 @@ const Home = () => {
       <div className="px-24 bg-white h-screen mt-4">
         <h1 className="text-center text-5xl font-bold pt-20">Activities</h1>
         <h1 className="text-xl text-gray-500 text-center mt-6 mb-12">
-          Find investors & incubators in your region that can support your
+          Find investors in your region that can support your
           startup's growth...
         </h1>
         <div className="grid grid-cols-2 gap-16 my-6">
@@ -305,186 +305,6 @@ const Home = () => {
             )}
             {mentorLocation && (
               <SimpleMap location={mentorLocation} zoomLevel={3} h={"350px"} />
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="w-full bg-gray-100 px-24">
-        <h1 className="text-center text-5xl font-bold py-16">Statistics</h1>
-        <div className="grid grid-cols-3 gap-16 my-6">
-          <div className="h-full w-full flex flex-col justify-center">
-            <h1 className="text-xl font-semibold mb-2">Top Company Funds</h1>
-            {topFunds && (
-              <div className="h-[350px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart width={500} height={350} data={topFunds}>
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="x" fill="#7B1FA2" />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            )}
-            {!topFunds && (
-              <div className="h-[350px] animate-pulse">
-                <div className="h-full w-full bg-slate-500 rounded-xl">
-                  <div className="w-full h-full flex flex-col justify-center items-center">
-                    <VscLoading className="w-8 h-8 animate-spin text-center text-gray-600" />
-                    <h1 className="text-xl mt-2">Loading...</h1>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="h-full w-full flex flex-col justify-center">
-            <h1 className="text-xl font-semibold mb-2">Top Funding Regions</h1>
-            {regions && (
-              <div className="h-[350px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart width={500} height={350} data={regions}>
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="x" fill="#7B1FA2" />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            )}
-            {!regions && (
-              <div className="h-[350px] animate-pulse">
-                <div className="h-full w-full bg-slate-500 rounded-xl">
-                  <div className="w-full h-full flex flex-col justify-center items-center">
-                    <VscLoading className="w-8 h-8 animate-spin text-center text-gray-600" />
-                    <h1 className="text-xl mt-2">Loading...</h1>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="h-full w-full flex flex-col justify-center">
-            <h1 className="text-xl font-semibold mb-2">
-              Company Counts per Month
-            </h1>
-            {companyCMP && (
-              <div className="h-[350px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart width={500} height={350} data={companyCMP}>
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="x" fill="#7B1FA2" />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            )}
-            {!companyCMP && (
-              <div className="h-[350px] animate-pulse">
-                <div className="h-full w-full bg-slate-500 rounded-xl">
-                  <div className="w-full h-full flex flex-col justify-center items-center">
-                    <VscLoading className="w-8 h-8 animate-spin text-center text-gray-600" />
-                    <h1 className="text-xl mt-2">Loading...</h1>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="h-full w-full flex flex-col justify-center">
-            <h1 className="text-xl font-semibold mb-2">Monthwise Funding</h1>
-            {monthlyFunding && (
-              <div className="h-[350px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart width={500} height={350} data={monthlyFunding}>
-                    <Pie
-                      dataKey="x"
-                      data={monthlyFunding}
-                      outerRadius={120}
-                      fill="#7B1FA2"
-                      label
-                    />
-                    <Tooltip />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-            )}
-            {!monthlyFunding && (
-              <div className="h-[350px] animate-pulse">
-                <div className="h-full w-full bg-slate-500 rounded-xl">
-                  <div className="w-full h-full flex flex-col justify-center items-center">
-                    <VscLoading className="w-8 h-8 animate-spin text-center text-gray-600" />
-                    <h1 className="text-xl mt-2">Loading...</h1>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="h-full w-full flex flex-col justify-center">
-            <h1 className="text-xl font-semibold mb-2">
-              Funding in Sectors & Stage
-            </h1>
-            {sector?.sector && sector?.stage && (
-              <div className="h-[350px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart width={500} height={350} data={monthlyFunding}>
-                    <Pie
-                      dataKey="x"
-                      data={sector.sector}
-                      outerRadius={80}
-                      fill="#7B1FA2"
-                    />
-                    <Pie
-                      dataKey="x"
-                      data={sector.stage}
-                      innerRadius={100}
-                      outerRadius={120}
-                      fill="#7B1FA2"
-                      label
-                    />
-                    <Tooltip />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-            )}
-            {(!sector?.sector || !sector?.stage) && (
-              <div className="h-[350px] animate-pulse">
-                <div className="h-full w-full bg-slate-500 rounded-xl">
-                  <div className="w-full h-full flex flex-col justify-center items-center">
-                    <VscLoading className="w-8 h-8 animate-spin text-center text-gray-600" />
-                    <h1 className="text-xl mt-2">Loading...</h1>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="h-full w-full flex flex-col justify-center">
-            <h1 className="text-xl font-semibold mb-2">
-              Companies Funded Per State
-            </h1>
-            {state && (
-              <div className="h-[350px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart width={500} height={350} data={state}>
-                    <Pie
-                      dataKey="x"
-                      data={state}
-                      outerRadius={120}
-                      fill="#7B1FA2"
-                      label
-                    />
-                    <Tooltip />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-            )}
-            {!state && (
-              <div className="h-[350px] animate-pulse">
-                <div className="h-full w-full bg-slate-500 rounded-xl">
-                  <div className="w-full h-full flex flex-col justify-center items-center">
-                    <VscLoading className="w-8 h-8 animate-spin text-center text-gray-600" />
-                    <h1 className="text-xl mt-2">Loading...</h1>
-                  </div>
-                </div>
-              </div>
             )}
           </div>
         </div>

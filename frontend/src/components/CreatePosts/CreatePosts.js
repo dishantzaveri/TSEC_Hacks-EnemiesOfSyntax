@@ -221,7 +221,7 @@ const CreatePosts = () => {
               });
             }}
           />
-          <button onClick={() => handleSubmitButton()}>Post</button>
+          <button className="bg-[#2ebcb8]" onClick={() => handleSubmitButton()}>Post</button>
         </div>
       </div>
       {!openURL.photo && !openURL.youtube && !progress && uploadData.file && (

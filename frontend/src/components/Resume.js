@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
 import Header from "./Header/Header";
-import CssBaseline from "@mui/material/node/CssBaseline";
 
 export default function Resume() {
   const { token } = useSelector((state) => state.auth);
