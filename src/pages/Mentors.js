@@ -134,11 +134,15 @@
 // export {Mentors};
 
 
-import React, {useEffect} from 'react';
-import { FlatList, Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { FlatList, Image, Text, View, StyleSheet, TouchableOpacity , ActivityIndicator} from 'react-native';
 import Tts from 'react-native-tts';
 import RNShake from 'react-native-shake';
-
+import Mailer from 'react-native-mail';
+import RNFS from 'react-native-fs';
+import Voice from '@react-native-voice/voice';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 
 
@@ -198,7 +202,89 @@ const JobListing = ({ title, company, description, logo }) => (
   </View>
 );
 
+
+// const sendEmail = () => {
+//   const options = {
+//     subject: 'Subject of the Email',
+//     body: 'Message body of the email',
+//     recipients: ['talkshrey@gmail.com'],
+//     attachments: [
+//       RNFS.DocumentDirectoryPath +  '/src/assets/resume.pdf',
+//     ],
+//   };
+
+//   Mailer.mail(options, (error, event) => {
+//     if (error) {
+//       console.error(error);
+//     }
+//   });
+// };
+
 const Mentors = () => {
+
+
+
+  const [isloading, setIsloading] = useState(false);
+  const [results, setResults] = useState([]);
+  const startRecognition = async () => {
+    setIsloading(true);
+    setResults([]);
+    try {
+      await Voice.start('en-US');
+      console.log("started");
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const stopRecognition = async () => {
+    try {
+      await Voice.stop();
+      setIsloading(false);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  Voice.onSpeechResults = (e) => {
+    setResults(e.value);
+    if(e.value[0]=="designer role"){
+        // sendEmail();
+    }
+    // setIsloading(false);
+    // if (e.value[0].includes('resume')) {
+    //   console.log("tp");
+    //   setIsloading(false);
+    //   // Voice.destroy().then(Voice.removeAllListeners);
+    //   navigation.navigate('Resume1');
+    // }
+    // else if(e.value[0]=="go to video call page"){
+    //   setIsloading(false);
+    //   Voice.destroy().then(Voice.removeAllListeners);
+    //   navigation.navigate('VideoCall');
+    // }else if(e.value[0]=="open drawer"){
+    //   navigation.openDrawer();
+    // }
+    console.log(e.value[0]+"aaaa");
+
+  };
+
+  const Footer=()=>(
+    <TouchableOpacity
+          onPress={isloading ? stopRecognition : startRecognition}>
+          <View style={styles.footer}>
+            {isloading ? <ActivityIndicator size="large" color="red"></ActivityIndicator> :
+              <Ionicons
+                name='mic'
+                size={50}
+                color="#1D1042">
+              </Ionicons>}
+          </View>
+        </TouchableOpacity>
+  )
+
+
+
   useEffect(() => {
     const subscription = RNShake.addListener(() => {
       // Your code here...
@@ -217,9 +303,10 @@ const Mentors = () => {
   }, []);
 
   return(
-    <View>
+    <View style={{flex:1}}>
     <Text style={{color:"#007bff", fontSize:25, marginLeft:20, marginBottom:20, marginTop:10}}>Here are some of the jobs of your interest!!</Text>
-  <FlatList
+    
+    <FlatList
     data={jobs}
     renderItem={({ item }) => (
       <JobListing
@@ -231,6 +318,9 @@ const Mentors = () => {
     )}
     keyExtractor={item => item.id.toString()}
   />
+   
+
+  <Footer/>
   </View>
   );
 
@@ -286,6 +376,14 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 14,
+  },
+  footer: {
+    width: wp('100%'),
+    height: hp('7%'),
+    backgroundColor: '#B9F3FC',
+    marginTop: hp('0.01%'),
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 });
 
