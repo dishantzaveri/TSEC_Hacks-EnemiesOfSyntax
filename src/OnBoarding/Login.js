@@ -178,7 +178,7 @@ function Login({navigation}) {
               Alert.alert('Fingerprint Did not match');
             })
         }>
-        <Text style={styles.textStyle}>Use Your Fingerprint</Text>
+        <Text style={styles.textStyle}>Fingerprint</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
@@ -222,11 +222,11 @@ const styles = StyleSheet.create({
     marginLeft: wp('10%'),
   },
   button: {
-    backgroundColor: '#0065ff',
-    margin: 10,
+    backgroundColor: '#2eb6b8',
+    marginTop:15 ,
     padding: 10,
     borderRadius: 10,
-    width: wp('85%'),
+    width: wp('35%'),
   },
 });
 

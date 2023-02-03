@@ -16,7 +16,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import signInLogo from '../assets/signin.png';
+import signInLogo from './disabled.webp';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {
   Button,
@@ -75,7 +75,7 @@ function SignUpMentor({ navigation }) {
         }}
         placeholderTextColor="grey"
       />
-      <DropDownPicker
+      {/* <DropDownPicker
         open={open}
         value={value}
         items={items}
@@ -90,7 +90,7 @@ function SignUpMentor({ navigation }) {
           paddingHorizontal: 20,
           marginTop: 20,
         }}
-      />
+      /> */}
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
@@ -108,13 +108,13 @@ function SignUpMentor({ navigation }) {
         }}>
            <Text style={styles.textStyle}>Sign Up</Text>
       </TouchableOpacity>
-        <View >
+        {/* <View >
 
           <Button style={styles.button2} labelStyle={styles.label2} onPress={() =>
             navigation.navigate('LocationTracer')
           }>Location
           </Button>
-        </View>
+        </View> */}
        
     </KeyboardAvoidingView>
   );
@@ -146,11 +146,11 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   button: {
-    backgroundColor: '#0065ff',
+    backgroundColor: '#2eb6b8',
     marginTop: 20,
     padding: 10,
     borderRadius: 10,
-    width: wp('85%'),
+    width: wp('35%'),
   },
   button1: {
     width: width * 0.25,
@@ -168,9 +168,9 @@ const styles = StyleSheet.create({
   button2: {
     width: width * 0.3,
     alignSelf: 'center',
-    backgroundColor: '#00CFDE',
+    backgroundColor: '#2eb6b8',
     flexDirection: 'row',
-    margin: 10,
+    margin: 20,
     alignContent: 'center',
     borderWidth: 1,
     borderRadius: 10,

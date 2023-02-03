@@ -632,6 +632,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignSelf: 'center',
     flexDirection: 'row',
+    backgroundColor: '#2eb6b8',
   },
   button1: {
     width: width * 0.35,
@@ -647,7 +648,7 @@ const styles = StyleSheet.create({
   button2: {
     width: width * 0.2,
     alignSelf: 'center',
-    backgroundColor: '#00CFDE',
+    backgroundColor: '#2eb6b8',
     flexDirection: 'row',
     margin: 10,
     alignContent: 'center',

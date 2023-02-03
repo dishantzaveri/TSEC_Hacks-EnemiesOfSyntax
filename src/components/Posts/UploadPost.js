@@ -72,13 +72,13 @@ const UploadPost = () => {
           elevation: 3,
           backgroundColor: 'white',
         }}>
-        <Text
+        {/* <Text
           style={{
             fontSize: 18,
             fontWeight: 'bold',
           }}>
           Upload A Post
-        </Text>
+        </Text> */}
       </View>
       <ScrollView>
         {image ? (
@@ -105,7 +105,8 @@ const UploadPost = () => {
               color: 'black',
               marginBottom: 10,
             }}>
-            Enter Details
+            Report public spaces which are
+            not under PWD already, to authorities.
           </Text>
           <View
             style={{
@@ -165,7 +166,7 @@ const UploadPost = () => {
               <TouchableOpacity
                 style={{
                   padding: 10,
-                  backgroundColor: 'lightblue',
+                  backgroundColor: '#2eb6b8',
                   borderRadius: 100,
                   alignSelf: 'baseline',
                 }}
@@ -183,7 +184,7 @@ const UploadPost = () => {
             <TouchableOpacity
               style={{
                 padding: 12,
-                backgroundColor: 'lightblue',
+                backgroundColor: '#2eb6b8',
                 borderRadius: 10,
               }}
               onPress={post}>

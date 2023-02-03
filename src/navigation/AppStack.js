@@ -302,7 +302,7 @@ const AppStack = () => {
         drawerContent={props => <CustomDrawer {...props} />}
         screenOptions={{
           headerShown: false,
-          drawerActiveBackgroundColor: '#aa18ea',
+          drawerActiveBackgroundColor: '#2eb6b8',
           drawerActiveTintColor: '#fff',
           drawerInactiveTintColor: '#333',
           drawerLabelStyle: {
@@ -421,7 +421,7 @@ const AppStack = () => {
             ),
           }}
         /> */}
-        <Drawer.Screen
+        {/* <Drawer.Screen
           name="ReferralClub"
           component={ReferralClub}
           options={{
@@ -430,7 +430,7 @@ const AppStack = () => {
               <EvilIcons name="pointer" size={22} color={color} />
             ),
           }}
-        />
+        /> */}
       </Drawer.Navigator>
       {/* <AlanView
         projectid={

@@ -325,7 +325,7 @@ const Mentors = () => {
 
   return (
     <View style={{ flex: 1 ,backgroundColor:'white'}}>
-      <Text style={{ color: "#007bff", fontSize: 25, marginLeft: 20, marginBottom: 20, marginTop: 10 }}>Here are some of the jobs of your interest!!</Text>
+      <Text style={{ color: "#2eb6b8", fontSize: 25, marginLeft: 20, marginBottom: 20, marginTop: 10 ,alignContent:'center',alignSelf:'center'}}>Recommended jobs!</Text>
 
       <FlatList
         data={jobs}
@@ -390,19 +390,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   applyButton: {
-    backgroundColor: '#0080ff',
+    backgroundColor: '#2eb6b8',
     padding: 10,
     borderRadius: 5,
   },
   applyButtonText: {
-    color: '#fff',
+    color: 'white',
     fontWeight: 'bold',
     fontSize: 14,
   },
   footer: {
     width: wp('100%'),
     height: hp('7%'),
-    backgroundColor: '#B9F3FC',
+    backgroundColor: '#2eb6b8',
     marginTop: hp('0.01%'),
     justifyContent: 'center',
     alignItems: 'center'
